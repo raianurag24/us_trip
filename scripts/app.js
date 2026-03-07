@@ -97,11 +97,26 @@ function renderDay({ cities, days, activities, venues, hotels }) {
   const container = document.getElementById('activities');
   container.appendChild(buildDayNav(prevDay, nextDay));
 
-  // Activities
-  day.activities.forEach(ref => {
-    const act = resolveActivity(ref, day.date, activities);
-    if (!act) return;
-    container.appendChild(buildActivityCard(act, venues, hotels));
+  // Resolve all activities (filter nulls)
+  const resolved = day.activities
+    .map(ref => resolveActivity(ref, day.date, activities))
+    .filter(Boolean);
+
+  // Filter buttons
+  const filtersDiv = document.getElementById('activityFilters');
+  const typeSet = new Set(resolved.map(a => filterType(a)));
+  if (filtersDiv && typeSet.size > 1) {
+    buildFilterButtons([...typeSet], filtersDiv, container);
+  }
+
+  // Activities + commute strips
+  resolved.forEach((act, i) => {
+    const card = buildActivityCard(act, venues, hotels);
+    container.appendChild(card);
+    const next = resolved[i + 1];
+    if (next && isVenueAct(act) && isVenueAct(next)) {
+      container.appendChild(buildCommuteStrip(act, next, day.city));
+    }
   });
 
   // Day navigation (bottom)
@@ -134,6 +149,7 @@ function renderCityHero(city) {
 // ── Activity card builder ─────────────────────
 function buildActivityCard(act, venues, hotels) {
   const card = el('div', 'activity-card');
+  card.dataset.type = filterType(act);
 
   if (act.type === 'flight') {
     card.classList.add('card-flight');
@@ -207,7 +223,7 @@ function buildActivityCard(act, venues, hotels) {
     }
 
     const icon = el('div', 'ac-icon');
-    icon.textContent = act.type === 'experience' ? '🎟️' : '📍';
+    icon.textContent = venueIcon(venue, act.type);
 
     card.appendChild(icon);
     card.appendChild(left);
@@ -280,6 +296,127 @@ function buildDayNav(prevDay, nextDay) {
   nav.appendChild(prevLink);
   nav.appendChild(nextLink);
   return nav;
+}
+
+// ── Filter helpers ─────────────────────────────
+function filterType(act) {
+  if (act.type === 'visit' || act.type === 'experience') return 'sightseeing';
+  return act.type;
+}
+
+function isVenueAct(act) {
+  return act.type === 'visit' || act.type === 'experience';
+}
+
+function buildFilterButtons(types, filtersEl, activitiesEl) {
+  const typeMap = {
+    flight:      { icon: '✈️',  label: 'Flights' },
+    train:       { icon: '🚆',  label: 'Trains' },
+    hotel:       { icon: '🏨',  label: 'Hotels' },
+    sightseeing: { icon: '🗺️', label: 'Sightseeing' },
+  };
+
+  const allBtn = el('button', 'filter-btn active');
+  allBtn.dataset.filter = 'all';
+  allBtn.textContent = 'All';
+  filtersEl.appendChild(allBtn);
+
+  const preferred = ['flight', 'train', 'hotel', 'sightseeing'];
+  const ordered = preferred.filter(t => types.includes(t)).concat(types.filter(t => !preferred.includes(t)));
+  ordered.forEach(type => {
+    const info = typeMap[type] || { icon: '•', label: type };
+    const btn = el('button', 'filter-btn');
+    btn.dataset.filter = type;
+    btn.textContent = `${info.icon} ${info.label}`;
+    filtersEl.appendChild(btn);
+  });
+
+  filtersEl.addEventListener('click', e => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    filtersEl.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    activitiesEl.querySelectorAll('.activity-card').forEach(card => {
+      const t = card.dataset.type;
+      card.classList.toggle('hidden', filter !== 'all' && t !== filter);
+    });
+    activitiesEl.querySelectorAll('.commute-strip').forEach(strip => {
+      strip.classList.toggle('hidden', filter !== 'all' && filter !== 'sightseeing');
+    });
+    // also hide day-nav when filtered
+    activitiesEl.querySelectorAll('.day-nav').forEach(nav => nav.classList.toggle('hidden', filter !== 'all'));
+  });
+}
+
+// ── Commute strip ──────────────────────────────
+function commuteInfo(cityId) {
+  const map = {
+    sf:   { icon: '🚡', label: 'Cable car / Walk' },
+    la:   { icon: '🚗', label: 'Drive / Uber' },
+    lv:   { icon: '🚶', label: 'Walk along the Strip' },
+    nf:   { icon: '🚶', label: 'Walk' },
+    dc:   { icon: '🚶', label: 'Walk / Metro' },
+    ny:   { icon: '🚇', label: 'Subway / Walk' },
+  };
+  return map[cityId] || { icon: '🚕', label: 'Uber' };
+}
+
+function timeToMins(t) {
+  if (!t) return null;
+  const parts = t.split(':').map(Number);
+  return parts[0] * 60 + (parts[1] || 0);
+}
+
+function buildCommuteStrip(actA, actB, cityId) {
+  const info  = commuteInfo(cityId);
+  const strip = el('div', 'commute-strip');
+  strip.dataset.type = 'commute';
+
+  const endA   = timeToMins(actA.time) != null ? timeToMins(actA.time) + (actA.duration_min || 0) : null;
+  const startB = timeToMins(actB.time);
+  const gap    = endA != null && startB != null ? startB - endA : null;
+  const travelTxt = (gap != null && gap > 0) ? `~${gap}m travel` : '~15m travel';
+
+  strip.innerHTML = `
+    <span class="commute-icon">${info.icon}</span>
+    <span class="commute-label">${info.label}</span>
+    <span class="commute-dur">${travelTxt}</span>`;
+  return strip;
+}
+
+// ── Venue icons ────────────────────────────────
+function venueIcon(venue, type) {
+  const id = (venue.id || '').toLowerCase();
+  if (id === 'amnh')                                          return '🦕';
+  if (id === 'intrepid')                                     return '⚓';
+  if (id === 'statue_of_liberty' || id === 'ellis_island')  return '🗽';
+  if (id === 'disneyland')                                   return '🎢';
+  if (id === 'high_roller')                                  return '🎡';
+  if (id === 'sphere_las_vegas')                             return '🔮';
+  if (id === 'bellagio_fountains')                           return '⛲';
+  if (id === 'empire_state_building' || id === 'summit' || id === 'top_of_the_rock') return '🏙️';
+  if (id === 'griffith_observatory' || id === 'lake_hollywood_park')                  return '🔭';
+  if (id === 'brooklyn_bridge' || id === 'dumbo')            return '🌉';
+  if (id === 'high_line')                                    return '🌿';
+  if (id === 'central_park' || id === 'washington_square_park' || id === 'yosemite_valley' || id === 'el_capitan') return '🌳';
+  if (id === 'grand_central_terminal')                       return '🚉';
+  if (id === 'times_square' || id === 'fremont_street' || id === 'las_vegas_strip' || id === 'hollywood_walk_of_fame') return '✨';
+  if (id === 'dolby_theatre')                                return '🎬';
+  if (id === 'powell_cable_car')                             return '🚡';
+  if (id === 'pier_39' || id === 'circle_line_cruise')       return '⛴️';
+  if (id === 'lombard_street' || id === 'battery_spencer')   return '📸';
+  if (id === 'tunnel_view' || id.includes('yosemite') || id === 'bridalveil_fall') return '⛰️';
+  if (id === 'white_house' || id === 'capitol_hill')         return '🏛️';
+  if (id === 'lincoln_memorial' || id === 'washington_monument') return '🗿';
+  if (id === 'niagara_falls')                                return '💧';
+  if (id === 'maid_of_the_mist' || id === 'cave_of_the_winds') return '🌊';
+  if (id === 'flylinq_zipline' || id === 'vegas_strip_helicopter') return '🪂';
+  if (id === 'hudson_yards')                                 return '🏗️';
+  if (id === 'wall_street')                                  return '💰';
+  if (id === 'friends_building')                             return '🛋️';
+  if (id === 'bryant_park')                                  return '🌳';
+  return type === 'experience' ? '🎟️' : '📍';
 }
 
 function el(tag, cls) {
