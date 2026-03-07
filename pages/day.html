@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Day Detail — US Trip</title>
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="inner">
+      <div class="brand">
+        <a href="index.html" class="brand-back">← Back</a>
+        <span class="brand-title">🇺🇸 US Trip</span>
+        <span class="brand-dates">May – June 2026</span>
+      </div>
+      <nav id="cityNav" class="city-nav"></nav>
+    </div>
+  </header>
+
+  <!-- City hero banner -->
+  <div id="cityHero" class="city-hero hidden"></div>
+
+  <main class="container">
+    <div class="day-header">
+      <h2 id="dayTitle"></h2>
+      <div id="dayDate" class="day-date"></div>
+    </div>
+
+    <div id="activities" class="activity-list"></div>
+  </main>
+
+  <!-- Image modal -->
+  <div id="imageModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" id="imageModalBackdrop"></div>
+    <div class="modal-box">
+      <button class="modal-close" id="imageModalClose">✕</button>
+      <img id="modalImg" src="" alt="" />
+      <p id="modalCaption" class="modal-caption"></p>
+    </div>
+  </div>
+
+  <!-- Map modal -->
+  <div id="mapModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" id="mapModalBackdrop"></div>
+    <div class="modal-box map-modal-box">
+      <button class="modal-close" id="mapModalClose">✕</button>
+      <p id="mapVenueName" class="map-venue-name"></p>
+      <div id="leafletMap" style="height:380px;width:100%;border-radius:8px;overflow:hidden;"></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../scripts/app.js"></script>
+</body>
+</html>
