@@ -47,15 +47,105 @@ function renderCityNav(cities, days) {
     if (firstDay) pill.href = `day.html?id=${firstDay.id}`;
     nav.appendChild(pill);
   });
-}
+  // — Day Itinerary toggle pill (visible on all pages)
+  const itinPill = el('a', 'city-pill city-pill--itinerary');
+  itinPill.textContent = '📅 Day Itinerary';
+  if (document.getElementById('days-list')) {
+    // Index page: toggle to list view
+    itinPill.href = '#';
+    itinPill.addEventListener('click', e => { e.preventDefault(); setView('list'); });
+  } else {
+    // Day page: navigate to index in list view
+    itinPill.href = 'index.html?view=list';
+  }
+  nav.appendChild(itinPill);}
 
 // ── INDEX PAGE ────────────────────────────────
 function renderIndex({ cities, days, venues, activities, hotels }) {
 
-  // Days list
+  // Build both views
+  renderOverview({ cities, days });
+  renderDayList({ cities, days });
+
+  // Wire view-toggle buttons
+  document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.addEventListener('click', () => setView(btn.dataset.view));
+  });
+
+  // Check URL param for initial view
+  const params = new URLSearchParams(location.search);
+  setView(params.get('view') === 'list' ? 'list' : 'overview');
+}
+
+function setView(view) {
+  const overviewEl = document.getElementById('overview-grid');
+  const listEl     = document.getElementById('days-list');
+  document.querySelectorAll('.view-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.view === view);
+  });
+  if (overviewEl) overviewEl.classList.toggle('hidden', view !== 'overview');
+  if (listEl)     listEl.classList.toggle('hidden', view !== 'list');
+}
+
+// ── OVERVIEW GRID (city-grouped tiles) ─────────────────────────
+function renderOverview({ cities, days }) {
+  const grid = document.getElementById('overview-grid');
+  if (!grid) return;
+
+  // Group days by city in itinerary order
+  const groups = [];
+  const seen = new Map();
+  days.forEach(d => {
+    if (!seen.has(d.city)) {
+      const g = { cityId: d.city, days: [] };
+      seen.set(d.city, g);
+      groups.push(g);
+    }
+    seen.get(d.city).days.push(d);
+  });
+
+  groups.forEach(group => {
+    const city     = cities.find(c => c.id === group.cityId);
+    const isTravel = group.cityId === 'travel';
+    const cityName = city ? city.name : (isTravel ? '✈️ Travel' : group.cityId);
+    const heroPath = city ? BASE + city.hero_image : null;
+
+    const section = el('div', 'city-group');
+
+    // Section header
+    const hdr = el('div', 'city-group-header');
+    hdr.innerHTML = `
+      <span class="city-group-name">${cityName}</span>
+      <span class="city-group-count">${group.days.length} day${group.days.length > 1 ? 's' : ''}</span>`;
+    section.appendChild(hdr);
+
+    // Tile grid (2-col; single-day cities get a span-2 full-width tile)
+    const tileGrid = el('div', 'day-tile-grid');
+    group.days.forEach(day => {
+      const tile = el('a', 'day-tile');
+      tile.href  = `day.html?id=${day.id}`;
+
+      if (group.days.length === 1) tile.classList.add('day-tile--full');
+
+      if (heroPath) tile.style.backgroundImage = `url('${heroPath}')`;
+
+      tile.innerHTML = `
+        <span class="day-tile-badge">${formatShortDate(day.date)}</span>
+        <div class="day-tile-title">${day.title}</div>
+        <div class="day-tile-count">${day.activities.length} activities</div>`;
+      tileGrid.appendChild(tile);
+    });
+    section.appendChild(tileGrid);
+    grid.appendChild(section);
+  });
+}
+
+// ── DAY LIST (chronological, second view) ─────────────────────
+function renderDayList({ cities, days }) {
   const list = document.getElementById('days-list');
+  if (!list) return;
   days.forEach(day => {
-    const city = cities.find(c => c.id === day.city);
+    const city     = cities.find(c => c.id === day.city);
     const cityName = city ? city.name : (day.city === 'travel' ? 'Travel Day' : day.city || '');
     const card = el('a', 'day-card');
     card.href = `day.html?id=${day.id}`;
