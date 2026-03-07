@@ -1,0 +1,101 @@
+{
+ "hotels":[
+
+{
+"id":"hotel_sfo_spero",
+"name":"Hotel Spero, Vignette Collection",
+"city":"sf",
+"location":"San Francisco",
+"address":"405 Taylor St, San Francisco, CA",
+"check_in":"15:00",
+"check_out":"11:00",
+"early_checkin":"Requested",
+"description":"Hotel Spero is a historic boutique hotel located near Union Square. Its central location makes it easy to reach cable cars, Fisherman’s Wharf and Golden Gate viewpoints.",
+"image_folder":"hotel_spero",
+"lat":37.7852,
+"lng":-122.4110
+},
+
+{
+"id":"hotel_la_airbnb",
+"name":"West Hollywood Airbnb",
+"city":"la",
+"location":"West Hollywood",
+"check_in":"15:00",
+"check_out":"11:00",
+"early_checkin":"Possible",
+"description":"A comfortable apartment stay in West Hollywood offering quick access to Beverly Hills, Hollywood Boulevard and Griffith Observatory.",
+"image_folder":"la_airbnb",
+"lat":34.0900,
+"lng":-118.3617
+},
+
+{
+"id":"hotel_lv_excalibur",
+"name":"Excalibur Hotel & Casino",
+"city":"lv",
+"location":"Las Vegas Strip",
+"address":"3850 Las Vegas Blvd S",
+"check_in":"15:00",
+"check_out":"11:00",
+"description":"A castle-themed resort on the Las Vegas Strip. Its location provides easy access to Bellagio, MGM Grand and other major attractions.",
+"image_folder":"excalibur",
+"lat":36.0988,
+"lng":-115.1754
+},
+
+{
+"id":"hotel_nf",
+"name":"Niagara Falls Hotel",
+"city":"nf",
+"location":"Niagara Falls",
+"check_in":"15:00",
+"check_out":"11:00",
+"description":"A hotel near Niagara Falls providing convenient access to Maid of the Mist and Cave of the Winds experiences.",
+"image_folder":"niagara_hotel",
+"lat":43.0896,
+"lng":-79.0849
+},
+
+{
+"id":"hotel_dc",
+"name":"Washington DC Hotel",
+"city":"dc",
+"location":"Washington DC",
+"check_in":"16:00",
+"check_out":"11:00",
+"description":"A centrally located hotel allowing quick access to the National Mall, White House and major monuments.",
+"image_folder":"washington_hotel",
+"lat":38.9072,
+"lng":-77.0369
+},
+
+{
+"id":"hotel_ny_queens",
+"name":"Residence Inn New York Queens",
+"city":"ny",
+"location":"Queens",
+"address":"38-39 9th St, Long Island City",
+"check_in":"16:00",
+"check_out":"11:00",
+"description":"A spacious stay in Long Island City offering skyline views of Manhattan and easy subway access to Midtown attractions.",
+"image_folder":"residence_inn_queens",
+"lat":40.7527,
+"lng":-73.9560
+},
+
+{
+"id":"hotel_ny_times_square",
+"name":"Motto by Hilton Times Square",
+"city":"ny",
+"location":"Times Square",
+"check_in":"15:00",
+"check_out":"11:00",
+"description":"A modern boutique hotel steps from Times Square, placing you at the heart of Manhattan’s theater and entertainment district.",
+"image_folder":"motto_times_square",
+"lat":40.7580,
+"lng":-73.9855
+}
+
+ ]
+}

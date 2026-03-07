@@ -1,0 +1,110 @@
+{
+  "transport":[
+
+    {
+      "id":"flight_del_sfo",
+      "mode":"flight",
+      "type":"international",
+      "airline":"Singapore Airlines",
+      "flight_number":"SQ403",
+      "from_airport":"DEL",
+      "to_airport":"SFO",
+      "departure_city":"Delhi",
+      "arrival_city":"San Francisco",
+      "departure_time":"2026-05-23T21:55",
+      "arrival_time":"2026-05-24T09:10",
+      "duration_hours":15.5,
+      "tracker_url":"https://www.flightaware.com/live/flight/SQ403"
+    },
+
+    {
+      "id":"flight_sfo_lax",
+      "mode":"flight",
+      "type":"domestic",
+      "airline":"Alaska Airlines",
+      "flight_number":"AS1329",
+      "from_airport":"SFO",
+      "to_airport":"LAX",
+      "departure_city":"San Francisco",
+      "arrival_city":"Los Angeles",
+      "departure_time":"2026-05-26T09:57",
+      "arrival_time":"2026-05-26T11:31",
+      "duration_hours":1.5,
+      "tracker_url":"https://www.flightaware.com/live/flight/AS1329"
+    },
+
+    {
+      "id":"flight_lax_las",
+      "mode":"flight",
+      "type":"domestic",
+      "airline":"TBD",
+      "flight_number":"TBD",
+      "from_airport":"LAX",
+      "to_airport":"LAS",
+      "departure_city":"Los Angeles",
+      "arrival_city":"Las Vegas",
+      "departure_time":"2026-05-28T08:30",
+      "arrival_time":"2026-05-28T09:45",
+      "duration_hours":1.2
+    },
+
+    {
+      "id":"flight_las_buf",
+      "mode":"flight",
+      "type":"domestic",
+      "airline":"TBD",
+      "flight_number":"TBD",
+      "from_airport":"LAS",
+      "to_airport":"BUF",
+      "departure_city":"Las Vegas",
+      "arrival_city":"Buffalo",
+      "departure_time":"2026-05-30T07:00",
+      "arrival_time":"2026-05-30T14:30",
+      "duration_hours":4.5
+    },
+
+    {
+      "id":"flight_buf_dc",
+      "mode":"flight",
+      "type":"domestic",
+      "airline":"TBD",
+      "flight_number":"TBD",
+      "from_airport":"BUF",
+      "to_airport":"DCA",
+      "departure_city":"Buffalo",
+      "arrival_city":"Washington DC",
+      "departure_time":"2026-05-31T09:30",
+      "arrival_time":"2026-05-31T11:00",
+      "duration_hours":1.5
+    },
+
+    {
+      "id":"amtrak_dc_nyc",
+      "mode":"train",
+      "operator":"Amtrak",
+      "train_type":"Northeast Regional / Acela",
+      "from_station":"Washington Union Station",
+      "to_station":"New York Penn Station",
+      "departure_time":"2026-06-02T09:00",
+      "arrival_time":"2026-06-02T12:00",
+      "duration_hours":3
+    },
+
+    {
+      "id":"flight_jfk_del",
+      "mode":"flight",
+      "type":"international",
+      "airline":"Lufthansa",
+      "flight_number":"LH405",
+      "from_airport":"JFK",
+      "to_airport":"DEL",
+      "departure_city":"New York",
+      "arrival_city":"Delhi",
+      "departure_time":"2026-06-05T21:50",
+      "arrival_time":"2026-06-07T01:55",
+      "duration_hours":14,
+      "tracker_url":"https://www.flightaware.com/live/flight/LH405"
+    }
+
+  ]
+}

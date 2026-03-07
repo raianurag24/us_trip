@@ -1,0 +1,143 @@
+{
+ "cities":[
+
+{
+"id":"sf",
+"name":"San Francisco",
+"country":"USA",
+"hero_image":"images/cities/san_francisco/hero.jpg",
+"description":"San Francisco is a city of dramatic hills, Victorian houses and iconic bay views. Cable cars climb steep streets while the Golden Gate Bridge rises above the Pacific fog. It blends historic charm with one of the most beautiful urban settings in the world.",
+"why_special":"The city combines coastal scenery, historic neighborhoods and world-famous landmarks like the Golden Gate Bridge.",
+"weather":{
+"expected_temp_day_c":18,
+"expected_temp_evening_c":13,
+"conditions":"Cool coastal weather with occasional fog and wind."
+},
+"clothing":{
+"day":"Light layers",
+"evening":"Light jacket or hoodie"
+},
+"tips":[
+"Fog and wind can make evenings feel colder than expected.",
+"Uber works well across the city but some steep streets make walking slow.",
+"Carry a light jacket even on sunny days."
+]
+},
+
+{
+"id":"la",
+"name":"Los Angeles",
+"country":"USA",
+"hero_image":"images/cities/los_angeles/hero.jpg",
+"description":"Los Angeles is the global capital of entertainment where Hollywood studios, palm-lined boulevards and hillside viewpoints define the landscape. From celebrity sidewalks to panoramic sunset viewpoints, the city blends glamour with dramatic Pacific sunsets.",
+"why_special":"The heart of the global film industry and home to some of the most famous landmarks in pop culture.",
+"weather":{
+"expected_temp_day_c":25,
+"expected_temp_evening_c":18,
+"conditions":"Warm sunny weather with clear skies."
+},
+"clothing":{
+"day":"Light summer clothes",
+"evening":"Light jacket"
+},
+"tips":[
+"Traffic can be heavy so allow extra time between locations.",
+"Uber is the easiest way to move between Hollywood locations.",
+"Sunset at Griffith Observatory offers the best skyline views."
+]
+},
+
+{
+"id":"lv",
+"name":"Las Vegas",
+"country":"USA",
+"hero_image":"images/cities/las_vegas/hero.jpg",
+"description":"Las Vegas is a surreal desert city where extravagant resorts recreate global landmarks and neon lights turn night into spectacle. The Strip is a continuous stream of fountains, casinos, shows and skyline views unlike anywhere else in the world.",
+"why_special":"A city built entirely for entertainment where the night skyline becomes the main attraction.",
+"weather":{
+"expected_temp_day_c":35,
+"expected_temp_evening_c":26,
+"conditions":"Hot desert weather with very dry air."
+},
+"clothing":{
+"day":"Light breathable clothing",
+"evening":"Comfortable summer wear"
+},
+"tips":[
+"Afternoons can be extremely hot so plan indoor attractions.",
+"Most attractions are walkable along the Strip.",
+"Nighttime helicopter flights offer spectacular views."
+]
+},
+
+{
+"id":"nf",
+"name":"Niagara Falls",
+"country":"USA / Canada",
+"hero_image":"images/cities/niagara_falls/hero.jpg",
+"description":"Niagara Falls is one of the most powerful waterfalls on Earth where millions of liters of water thunder over the edge every second. The experience is immersive, with mist rising high above the gorge and boats sailing directly into the falls.",
+"why_special":"Few natural landmarks in the world match the scale and power of Niagara Falls.",
+"weather":{
+"expected_temp_day_c":22,
+"expected_temp_evening_c":16,
+"conditions":"Mild temperatures with strong mist near the waterfalls."
+},
+"clothing":{
+"day":"Light clothes",
+"evening":"Light jacket"
+},
+"tips":[
+"Expect to get wet during boat and walkway experiences.",
+"Waterproof phone protection is useful.",
+"Even sunny days can feel cool near the mist."
+]
+},
+
+{
+"id":"dc",
+"name":"Washington DC",
+"country":"USA",
+"hero_image":"images/cities/washington_dc/hero.jpg",
+"description":"Washington DC is the political heart of the United States and a city defined by grand monuments, museums and tree-lined boulevards. The National Mall connects some of the country’s most important landmarks including the Capitol, Washington Monument and Lincoln Memorial.",
+"why_special":"Few cities concentrate so many historic monuments and national landmarks in one walkable area.",
+"weather":{
+"expected_temp_day_c":24,
+"expected_temp_evening_c":18,
+"conditions":"Warm spring weather with comfortable evenings."
+},
+"clothing":{
+"day":"Comfortable walking clothes",
+"evening":"Light jacket"
+},
+"tips":[
+"Most monuments are within walking distance along the National Mall.",
+"Sunset creates beautiful reflections in the Lincoln Memorial Reflecting Pool.",
+"Carry water when walking long distances."
+]
+},
+
+{
+"id":"ny",
+"name":"New York City",
+"country":"USA",
+"hero_image":"images/cities/new_york/hero.jpg",
+"description":"New York City is one of the most dynamic cities on Earth where iconic skyscrapers, world-class museums and vibrant neighborhoods create a skyline known around the globe. From Central Park to Times Square, every corner tells a story.",
+"why_special":"The city’s energy, skyline and cultural diversity make it one of the most exciting places to explore.",
+"weather":{
+"expected_temp_day_c":23,
+"expected_temp_evening_c":17,
+"conditions":"Warm early summer weather with comfortable evenings."
+},
+"clothing":{
+"day":"Light summer clothing",
+"evening":"Light jacket"
+},
+"tips":[
+"The subway is often the fastest way to move across Manhattan.",
+"Observation decks offer the best skyline views near sunset.",
+"Central Park provides a peaceful break from the city energy."
+]
+}
+
+ ]
+}
