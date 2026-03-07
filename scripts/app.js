@@ -25,8 +25,8 @@ async function boot() {
 
   renderCityNav(cities, days);
 
-  if (document.getElementById('days-list'))   renderIndex(data);
-  if (document.getElementById('activities'))  renderDay(data);
+  if (document.getElementById('overview-grid')) renderIndex(data);
+  if (document.getElementById('activities'))   renderDay(data);
 
   initModals();
 }
@@ -47,44 +47,18 @@ function renderCityNav(cities, days) {
     if (firstDay) pill.href = `day.html?id=${firstDay.id}`;
     nav.appendChild(pill);
   });
-  // — Day Itinerary toggle pill (visible on all pages)
+  // — Day Itinerary pill — always navigates to home page
   const itinPill = el('a', 'city-pill city-pill--itinerary');
-  itinPill.textContent = '📅 Day Itinerary';
-  if (document.getElementById('days-list')) {
-    // Index page: toggle to list view
-    itinPill.href = '#';
-    itinPill.addEventListener('click', e => { e.preventDefault(); setView('list'); });
-  } else {
-    // Day page: navigate to index in list view
-    itinPill.href = 'index.html?view=list';
+  itinPill.textContent = '📅 Itinerary';
+  itinPill.href = document.getElementById('overview-grid') ? '#' : 'index.html';
+  if (document.getElementById('overview-grid')) {
+    itinPill.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
   }
   nav.appendChild(itinPill);}
 
 // ── INDEX PAGE ────────────────────────────────
 function renderIndex({ cities, days, venues, activities, hotels }) {
-
-  // Build both views
   renderOverview({ cities, days });
-  renderDayList({ cities, days });
-
-  // Wire view-toggle buttons
-  document.querySelectorAll('.view-btn').forEach(btn => {
-    btn.addEventListener('click', () => setView(btn.dataset.view));
-  });
-
-  // Check URL param for initial view
-  const params = new URLSearchParams(location.search);
-  setView(params.get('view') === 'list' ? 'list' : 'overview');
-}
-
-function setView(view) {
-  const overviewEl = document.getElementById('overview-grid');
-  const listEl     = document.getElementById('days-list');
-  document.querySelectorAll('.view-btn').forEach(b => {
-    b.classList.toggle('active', b.dataset.view === view);
-  });
-  if (overviewEl) overviewEl.classList.toggle('hidden', view !== 'overview');
-  if (listEl)     listEl.classList.toggle('hidden', view !== 'list');
 }
 
 // ── OVERVIEW GRID (city-grouped tiles) ─────────────────────────
@@ -127,7 +101,10 @@ function renderOverview({ cities, days }) {
 
       if (group.days.length === 1) tile.classList.add('day-tile--full');
 
-      if (heroPath) tile.style.backgroundImage = `url('${heroPath}')`;
+      // Per-day hero image, with city image as CSS fallback
+      const dayImg  = `${BASE}images/days/${day.id}/hero.jpg`;
+      const cityImg = heroPath ? `, url('${heroPath}')` : '';
+      tile.style.backgroundImage = `url('${dayImg}')${cityImg}`;
 
       tile.innerHTML = `
         <span class="day-tile-badge">${formatShortDate(day.date)}</span>
@@ -137,29 +114,6 @@ function renderOverview({ cities, days }) {
     });
     section.appendChild(tileGrid);
     grid.appendChild(section);
-  });
-}
-
-// ── DAY LIST (chronological, second view) ─────────────────────
-function renderDayList({ cities, days }) {
-  const list = document.getElementById('days-list');
-  if (!list) return;
-  days.forEach(day => {
-    const city     = cities.find(c => c.id === day.city);
-    const cityName = city ? city.name : (day.city === 'travel' ? 'Travel Day' : day.city || '');
-    const card = el('a', 'day-card');
-    card.href = `day.html?id=${day.id}`;
-    card.innerHTML = `
-      <div class="day-card-left">
-        <div class="day-badge">${formatShortDate(day.date)}</div>
-      </div>
-      <div class="day-card-body">
-        <div class="day-card-city">${cityName}</div>
-        <div class="day-card-title">${day.title}</div>
-        <div class="day-card-count muted">${day.activities.length} activities</div>
-      </div>
-      <div class="day-card-arrow">›</div>`;
-    list.appendChild(card);
   });
 }
 
@@ -174,9 +128,9 @@ function renderDay({ cities, days, activities, venues, hotels }) {
   const prevDay = dayIdx > 0              ? days[dayIdx - 1] : null;
   const nextDay = dayIdx < days.length-1  ? days[dayIdx + 1] : null;
 
-  // City hero
+  // Day hero (per-day image, city data for overlay text)
   const city = cities.find(c => c.id === day.city);
-  if (city) renderCityHero(city);
+  renderDayHero(city, day);
 
   // Day header
   document.title = `${day.title} — US Trip`;
@@ -213,27 +167,37 @@ function renderDay({ cities, days, activities, venues, hotels }) {
   container.appendChild(buildDayNav(prevDay, nextDay));
 }
 
-function renderCityHero(city) {
-  const hero   = document.getElementById('cityHero');
-  const imgSrc = BASE + city.hero_image;
+function renderDayHero(city, day) {
+  const hero     = document.getElementById('cityHero');
+  const dayImgSrc = `${BASE}images/days/${day.id}/hero.jpg`;
+  // Fallback to city image if available
+  const fallbackSrc = city ? BASE + city.hero_image : null;
+
   hero.className = 'city-hero';
-  hero.style.backgroundImage = `url('${imgSrc}')`;
+  hero.style.backgroundImage = fallbackSrc
+    ? `url('${dayImgSrc}'), url('${fallbackSrc}')`
+    : `url('${dayImgSrc}')`;
+
+  const name    = city ? city.name : (day.city === 'travel' ? 'Travel Day' : day.title);
+  const why     = city ? (city.why_special || '') : '';
+  const meta    = city
+    ? `${weatherIcon()} ${city.weather.expected_temp_day_c}°C day · ${city.weather.expected_temp_evening_c}°C eve &nbsp;·&nbsp; ${city.weather.conditions}`
+    : '';
+  const clothing = city
+    ? `👕 ${city.clothing.day} &nbsp;·&nbsp; 🧥 ${city.clothing.evening}`
+    : '';
+
   hero.innerHTML = `
     <div class="city-hero-overlay">
       <div class="city-hero-content">
-        <h1 class="city-hero-name">${city.name}</h1>
-        <p class="city-hero-why">${city.why_special || ''}</p>
-        <div class="city-hero-meta">
-          ${weatherIcon()} ${city.weather.expected_temp_day_c}°C day · ${city.weather.expected_temp_evening_c}°C eve
-          &nbsp;·&nbsp; ${city.weather.conditions}
-        </div>
-        <div class="city-hero-clothing">
-          👕 ${city.clothing.day} &nbsp;·&nbsp; 🧥 ${city.clothing.evening}
-        </div>
+        <h1 class="city-hero-name">${name}</h1>
+        ${why ? `<p class="city-hero-why">${why}</p>` : ''}
+        ${meta ? `<div class="city-hero-meta">${meta}</div>` : ''}
+        ${clothing ? `<div class="city-hero-clothing">${clothing}</div>` : ''}
         <button class="hero-zoom-btn" aria-label="View full image">🔍 View photo</button>
       </div>
     </div>`;
-  hero.querySelector('.hero-zoom-btn').addEventListener('click', () => openImageModal(imgSrc, city.name));
+  hero.querySelector('.hero-zoom-btn').addEventListener('click', () => openImageModal(dayImgSrc, day.title));
 }
 
 // ── Activity card builder ─────────────────────
@@ -290,6 +254,7 @@ function buildActivityCard(act, venues, hotels) {
   if (act.type === 'visit' || act.type === 'experience') {
     const venue = venues.find(v => v.id === act.venue_id) || { name: act.venue_id, lat: null, lng: null };
     card.classList.add(act.type === 'experience' ? 'card-experience' : 'card-visit');
+    if (venue.image_folder) card.classList.add('card-has-photo');
 
     const left = el('div', 'ac-body');
     left.innerHTML = `
@@ -299,6 +264,18 @@ function buildActivityCard(act, venues, hotels) {
       ${venue.tip ? `<div class="ac-tip">💡 ${venue.tip}</div>` : ''}`;
 
     const right = el('div', 'ac-right');
+
+    // Venue photo thumbnail
+    if (venue.image_folder) {
+      const imgSrc = `${BASE}images/venues/${venue.image_folder}/hero.jpg`;
+      const thumb  = el('div', 'venue-thumb');
+      thumb.style.backgroundImage = `url('${imgSrc}')`;
+      thumb.setAttribute('role', 'button');
+      thumb.setAttribute('aria-label', `View photo: ${venue.name}`);
+      thumb.addEventListener('click', () => openImageModal(imgSrc, venue.name));
+      right.appendChild(thumb);
+    }
+
     if (act.duration_min) {
       const durSpan = el('span', 'ac-duration');
       durSpan.textContent = fmtDuration(act.duration_min);

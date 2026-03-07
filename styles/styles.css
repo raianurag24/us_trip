@@ -388,7 +388,7 @@ img { display: block; }
   align-items: center;
   gap: 6px;
   flex-shrink: 0;
-  min-width: 54px;
+  min-width: 80px;
 }
 .ac-duration {
   font-size: 12px;
@@ -396,6 +396,21 @@ img { display: block; }
   text-align: center;
   white-space: nowrap;
 }
+
+/* Venue photo thumbnail in activity card */
+.venue-thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  cursor: zoom-in;
+  flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,.15);
+  transition: transform .15s, box-shadow .15s;
+  background-color: #d0d8e4;
+}
+.venue-thumb:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,0,0,.22); }
 .map-btn {
   background: none;
   border: none;
