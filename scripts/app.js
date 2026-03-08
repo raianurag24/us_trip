@@ -42,7 +42,7 @@ function load(path) {
 /** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
 function imgPath(type, folder, manifest) {
   const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
-  return `${BASE}images/${type}/${folder}/${file}?v=35`;
+  return `${BASE}images/${type}/${folder}/${file}?v=36`;
 }
 
 // ── CITY NAV (header — all pages) ───────────────
@@ -150,6 +150,55 @@ function renderDay({ cities, days, activities, venues, hotels, manifest }) {
   // Day navigation (top)
   const container = document.getElementById('activities');
   container.appendChild(buildDayNav(prevDay, nextDay));
+
+  // Show an arrival / flight widget at the top of the day if a flight
+  // is scheduled to arrive on this date (use arrival_note or destination).
+  const incomingFlight = activities.find(a => a.type === 'flight' && (
+    (a.arrival_note && a.arrival_note.includes(formatShortDate(day.date))) ||
+    (a.to === 'SFO' && new Date(a.date + 'T00:00:00') < new Date(day.date + 'T00:00:00'))
+  ));
+  if (incomingFlight) {
+    const topWidget = el('div');
+    topWidget.innerHTML = `
+      <div class="flight-card">
+
+        <div class="flight-title">✈ Singapore Airlines SQ32</div>
+
+        <div class="flight-subtitle">Delhi → Singapore → San Francisco</div>
+
+        <div class="route-map">
+
+          <div class="airport">
+            <div class="code">DEL</div>
+            <div class="time">21:55</div>
+          </div>
+
+          <div class="route-line">
+            <div class="plane">✈</div>
+          </div>
+
+          <div class="airport">
+            <div class="code">SFO</div>
+            <div class="time">08:50</div>
+          </div>
+
+        </div>
+
+        <div class="flight-meta">Aircraft: Airbus A350-900 <br>Airline: Singapore Airlines</div>
+
+        <div class="flight-buttons">
+          <a href="https://flightaware.com/live/flight/SQ32" target="_blank" rel="noopener">Live Flight Tracker</a>
+          <a href="https://www.google.com/search?q=SQ32+flight" target="_blank" rel="noopener">Google Flight Info</a>
+        </div>
+
+      </div>
+
+      <div class="flight-tracker">
+        <iframe src="https://flightaware.com/live/flight/SQ32" width="100%" height="420" frameborder="0"></iframe>
+      </div>
+    `;
+    container.appendChild(topWidget);
+  }
 
   // Resolve all activities (filter nulls)
   const resolved = day.activities
