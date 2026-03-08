@@ -18,9 +18,12 @@
         "uber_sfo_hotel",
         "hotel_sfo",
         "rest_sfo",
+        "walk_hotel_powell",
         "powell_cable_car",
         "lombard_street",
+        "walk_lombard_pier",
         "pier_39",
+        "uber_pier39_battery",
         "battery_spencer"
       ]
     },

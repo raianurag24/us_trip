@@ -747,6 +747,39 @@
       "title": "Rest Window · 11:30 AM – 2:00 PM",
       "body": "<b>Early check-in</b> is arranged — drop luggage and freshen up immediately on arrival. A short rest here makes a big difference for <b>jet lag & sleep</b> on your first night. 13+ hour overnight flight means everyone will need it, especially the kids.",
       "icon": "🛌"
+    },
+    {
+      "id": "walk_hotel_powell",
+      "type": "travel",
+      "mode": "walk",
+      "date": "2026-05-24",
+      "time": "13:15",
+      "from": "Hotel Spero",
+      "to": "Powell St Cable Car",
+      "duration_min": 5,
+      "note": "Short 5-min walk from the hotel to the Powell St terminus."
+    },
+    {
+      "id": "walk_lombard_pier",
+      "type": "travel",
+      "mode": "walk",
+      "date": "2026-05-24",
+      "time": "14:35",
+      "from": "Lombard Street",
+      "to": "Pier 39",
+      "duration_min": 18,
+      "note": "Walk down to Fisherman's Wharf, then along the waterfront to Pier 39."
+    },
+    {
+      "id": "uber_pier39_battery",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-05-24",
+      "time": "16:05",
+      "from": "Pier 39",
+      "to": "Battery Spencer",
+      "duration_min": 30,
+      "note": "Uber XL up to the Marin Headlands for the Golden Gate sunset view. ~$35-50."
     }
   ]
 }
