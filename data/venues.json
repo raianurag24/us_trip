@@ -779,5 +779,35 @@
     "tip": "Covered by the Go City Pass. Allow 60 minutes. The African Safari and Space experiences are the most popular.",
     "lat": 36.1083,
     "lng": -115.1725
+  },
+  {
+    "id": "beverly_hills_sign",
+    "name": "Beverly Hills Sign",
+    "city": "la",
+    "image_folder": "beverly_hills_sign",
+    "description": "The iconic Beverly Hills sign at Beverly Gardens Park — the classic photo stop for any LA visit. A quick stroll through the manicured gardens and the famous sign is right there for the family shot.",
+    "tip": "Best light in the afternoon. The gardens run along Santa Monica Blvd — worth a short walk through.",
+    "lat": 34.0785,
+    "lng": -118.3968
+  },
+  {
+    "id": "rodeo_drive",
+    "name": "Rodeo Drive",
+    "city": "la",
+    "image_folder": "rodeo_drive",
+    "description": "The world's most famous luxury shopping street — palm tree-lined and packed with Gucci, Chanel, Louis Vuitton and Tiffany. Even if you're not shopping, the street itself is a spectacle: immaculate storefronts, luxury cars and that unmistakeable Beverly Hills glamour.",
+    "tip": "Walk the two blocks between Wilshire Blvd and Santa Monica Blvd. The end of Rodeo Dr has the cobblestone Via Rodeo section which is great for photos.",
+    "lat": 34.0692,
+    "lng": -118.3987
+  },
+  {
+    "id": "sunset_strip",
+    "name": "Sunset Strip",
+    "city": "la",
+    "image_folder": "sunset_strip",
+    "description": "The legendary stretch of Sunset Boulevard through West Hollywood — home of the Whisky a Go Go, The Viper Room and the most iconic rock 'n' roll mile in America. A drive-through experience that hits different at dusk when the billboards light up.",
+    "tip": "Whisky a Go Go (8901 Sunset Blvd) and The Viper Room (8852 Sunset Blvd) are the main icons to look out for as you cruise past.",
+    "lat": 34.0903,
+    "lng": -118.3863
   }
 ]

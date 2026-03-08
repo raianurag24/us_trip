@@ -637,6 +637,96 @@
       "to": "West Hollywood Airbnb",
       "duration_min": 55,
       "note": "Kids will likely fall asleep in the car on the way back!"
+    },
+    {
+      "id": "uber_lax_airbnb",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-05-26",
+      "time": "11:45",
+      "from": "LAX",
+      "to": "West Hollywood Airbnb",
+      "duration_min": 35,
+      "note": "Uber XL for the family. Allow 30–45 min depending on traffic."
+    },
+    {
+      "id": "uber_airbnb_beverly",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-05-26",
+      "time": "13:00",
+      "from": "West Hollywood Airbnb",
+      "to": "Beverly Hills",
+      "duration_min": 12,
+      "note": "Uber XL — quick 12-minute ride."
+    },
+    {
+      "id": "beverly_hills_sign_visit",
+      "type": "visit",
+      "venue_id": "beverly_hills_sign",
+      "date": "2026-05-26",
+      "time": "1:15 PM",
+      "duration_min": 15
+    },
+    {
+      "id": "rodeo_drive_visit",
+      "type": "visit",
+      "venue_id": "rodeo_drive",
+      "date": "2026-05-26",
+      "time": "1:35 PM",
+      "duration_min": 25
+    },
+    {
+      "id": "sunset_strip_visit",
+      "type": "experience",
+      "venue_id": "sunset_strip",
+      "date": "2026-05-26",
+      "time": "2:05 PM",
+      "duration_min": 15
+    },
+    {
+      "id": "uber_beverly_hollywood",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-05-26",
+      "time": "2:25 PM",
+      "from": "Sunset Strip",
+      "to": "Hollywood Boulevard",
+      "duration_min": 10,
+      "note": "Uber XL — 10 minutes."
+    },
+    {
+      "id": "uber_hollywood_lake",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-05-26",
+      "time": "4:00 PM",
+      "from": "Hollywood Boulevard",
+      "to": "Lake Hollywood Park",
+      "duration_min": 12,
+      "note": "Uber XL — 12 minutes."
+    },
+    {
+      "id": "uber_lake_griffith",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-05-26",
+      "time": "4:30 PM",
+      "from": "Lake Hollywood Park",
+      "to": "Griffith Observatory",
+      "duration_min": 15,
+      "note": "Uber XL — 15 minutes up into the hills."
+    },
+    {
+      "id": "uber_griffith_airbnb",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-05-26",
+      "time": "6:15 PM",
+      "from": "Griffith Observatory",
+      "to": "West Hollywood Airbnb",
+      "duration_min": 20,
+      "note": "Uber XL back to Airbnb — dinner at home."
     }
   ]
 }

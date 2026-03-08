@@ -42,11 +42,20 @@
       "title": "Hollywood and LA Skyline",
       "activities": [
         "flight_sfo_lax",
+        "uber_lax_airbnb",
         "hotel_la",
+        "uber_airbnb_beverly",
+        "beverly_hills_sign_visit",
+        "rodeo_drive_visit",
+        "sunset_strip_visit",
+        "uber_beverly_hollywood",
         "hollywood_walk_of_fame",
         "dolby_theatre",
+        "uber_hollywood_lake",
         "lake_hollywood_park",
-        "griffith_observatory"
+        "uber_lake_griffith",
+        "griffith_observatory",
+        "uber_griffith_airbnb"
       ]
     },
     {
