@@ -42,7 +42,7 @@ function load(path) {
 /** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
 function imgPath(type, folder, manifest) {
   const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
-  return `${BASE}images/${type}/${folder}/${file}?v=39`;
+  return `${BASE}images/${type}/${folder}/${file}?v=40`;
 }
 
 // ── CITY NAV (header — all pages) ───────────────
@@ -151,52 +151,37 @@ function renderDay({ cities, days, activities, venues, hotels, manifest }) {
   const container = document.getElementById('activities');
   container.appendChild(buildDayNav(prevDay, nextDay));
 
-  // Determine flights relevant to this day. We use the day's explicit
-  // `activities` ordering to decide whether a flight should appear at
-  // the top (incoming/arrival) or the bottom (outgoing/departure).
-  // Select flights relevant to this day. Prefer strict date match; only
-  // include previous-day flights that explicitly arrive into this
-  // day's city airport (e.g., a DEL->SIN flight arriving into SIN should
-  // not be shown on the SFO day). This prevents showing DEL→SIN on 24 May.
-  const flightsOnDate = activities.filter(a => a.type === 'flight' && (
-    a.date === day.date || (
-      a.arrival_note && a.arrival_note.includes(formatShortDate(day.date)) &&
-      // only include arrival-note matches when they arrive into SFO for SF day
-      (day.city === 'sf' && a.to === 'SFO')
-    )
+  // Determine flights referenced explicitly by this day's activity list
+  // as well as flights scheduled for the day. This lets us render any
+  // flights the user intentionally placed at the end of `day.activities`
+  // (they should appear at the page bottom) while still showing
+  // scheduled arrivals at the top.
+  const flightsScheduled = activities.filter(a => a.type === 'flight' && (
+    a.date === day.date || (a.arrival_note && a.arrival_note.includes(formatShortDate(day.date)))
   ));
 
-  // Preserve any flight references that appear in `day.activities` in order
-  // so we can infer placement (start vs end of the list).
-  const orderedFlightIds = day.activities
-    .map(ref => {
-      const ra = resolveActivity(ref, day.date, activities);
-      return ra && ra.type === 'flight' && ra.id ? ra.id : null;
-    })
-    .filter(Boolean);
+  // Flights referenced directly in the day's activity ordering
+  const flightsByRef = day.activities
+    .map(ref => resolveActivity(ref, day.date, activities))
+    .filter(Boolean)
+    .filter(a => a.type === 'flight');
 
+  // Identify a contiguous suffix of `day.activities` that are flights —
+  // those belong at the bottom of the page (departures/connecting legs).
+  const bottomIds = [];
+  for (let i = day.activities.length - 1; i >= 0; i--) {
+    const ra = resolveActivity(day.activities[i], day.date, activities);
+    if (ra && ra.type === 'flight' && ra.id) bottomIds.push(ra.id);
+    else break;
+  }
+  bottomIds.reverse();
+  const bottomFlights = bottomIds.map(id => activities.find(a => a.id === id)).filter(Boolean);
+
+  // Top flights: scheduled flights for the day, plus any referenced
+  // flights that are not part of the bottom suffix.
   const topFlights = [];
-  const bottomFlights = [];
-  flightsOnDate.forEach(f => {
-    const pos = orderedFlightIds.indexOf(f.id);
-    // Prefer placing flights that appear at the end of `day.activities`
-    // into `bottomFlights`. This ensures single-flight days (pos===0
-    // and pos===last) are treated as departures at the page bottom.
-    if (pos === orderedFlightIds.length - 1 && orderedFlightIds.length > 0) {
-      bottomFlights.push(f);
-    } else if (pos === 0) {
-      topFlights.push(f);
-    } else if (pos > 0 && pos < orderedFlightIds.length - 1) {
-      // If a flight is referenced in the middle of the day's list, treat
-      // it as part of the main flow (render at top near other arrival info).
-      topFlights.push(f);
-    } else {
-      // Fallback: if the flight has an explicit arrival note for this day,
-      // show it at the top, otherwise add to top by default.
-      if (f.arrival_note && f.arrival_note.includes(formatShortDate(day.date))) topFlights.push(f);
-      else topFlights.push(f);
-    }
-  });
+  flightsScheduled.forEach(f => { if (!bottomIds.includes(f.id)) topFlights.push(f); });
+  flightsByRef.forEach(f => { if (!bottomIds.includes(f.id) && !topFlights.some(t => t.id === f.id)) topFlights.push(f); });
 
   // For exclusion from the activity list below we use the combined set.
   const dayFlights = topFlights.concat(bottomFlights);

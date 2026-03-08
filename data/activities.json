@@ -527,6 +527,22 @@
       "tracker_url": "https://www.flightaware.com/live/flight/LH405"
     },
     {
+      "id": "flight_fra_del",
+      "type": "flight",
+      "category": "international",
+      "date": "2026-06-06",
+      "time": "13:20",
+      "arrival_time": "01:30",
+      "arrival_note": "arrives 7 Jun",
+      "from": "FRA",
+      "to": "DEL",
+      "flight_number": "LH760",
+      "airline": "Lufthansa",
+      "aircraft": "Airbus A350-900",
+      "baggage": "1PC",
+      "tracker_url": "https://www.flightaware.com/live/flight/LH760"
+    },
+    {
       "id": "disney_uber_to",
       "type": "travel",
       "mode": "uber",
