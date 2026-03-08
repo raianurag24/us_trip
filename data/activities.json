@@ -882,7 +882,7 @@
     {
       "id": "hoho_dumbo_midtown_2026_06_03",
       "type": "travel",
-      "mode": "bus",
+      "mode": "hoho",
       "date": "2026-06-03",
       "time": "15:30",
       "from": "DUMBO",

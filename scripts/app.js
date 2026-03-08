@@ -42,7 +42,7 @@ function load(path) {
 /** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
 function imgPath(type, folder, manifest) {
   const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
-  return `${BASE}images/${type}/${folder}/${file}?v=31`;
+  return `${BASE}images/${type}/${folder}/${file}?v=32`;
 }
 
 // ── CITY NAV (header — all pages) ───────────────
@@ -520,13 +520,22 @@ function buildFilterButtons(types, filtersEl, activitiesEl) {
 
 // ── Travel act strip (from explicit travel activities) ────────────────────
 function buildTravelActStrip(act) {
-  const modeIcon  = act.mode === 'uber' ? '🚗'
-                  : act.mode === 'walk' ? '🚶'
-                  : act.mode === 'bus'  ? '🚌'
+  const modeIcon  = act.mode === 'uber'   ? '🚗'
+                  : act.mode === 'walk'   ? '🚶'
+                  : act.mode === 'bus'    ? '🚌'
+                  : act.mode === 'subway' ? '🚇'
+                  : act.mode === 'hoho'   ? '🚌'
+                  : act.mode === 'train'  ? '🚆'
                   : '🚕';
-  const modeLabel = act.mode === 'uber' ? 'Uber XL'
-                  : act.mode === 'walk' ? 'Walk'
+
+  const modeLabel = act.mode === 'uber'   ? 'Uber'
+                  : act.mode === 'walk'   ? 'Walk'
+                  : act.mode === 'bus'    ? 'Bus'
+                  : act.mode === 'subway' ? 'Subway'
+                  : act.mode === 'hoho'   ? 'HOHO / Tour Bus'
+                  : act.mode === 'train'  ? 'Train'
                   : (act.mode || 'Transfer');
+
   const route  = (act.from && act.to) ? `${act.from} → ${act.to}` : modeLabel;
   const durTxt = act.duration_min ? `~${fmtDuration(act.duration_min)}` : '';
 
@@ -535,6 +544,7 @@ function buildTravelActStrip(act) {
   strip.innerHTML = `
     <span class="commute-icon">${modeIcon}</span>
     <span class="commute-label">${route}</span>
+    <span class="commute-mode">${modeLabel}</span>
     ${durTxt ? `<span class="commute-dur">${durTxt}</span>` : ''}`;
   return strip;
 }

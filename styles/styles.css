@@ -498,6 +498,7 @@ img { display: block; }
 }
 .commute-icon  { font-size: 15px; }
 .commute-label { flex: 1; }
+.commute-mode  { font-size: 12px; font-weight: 600; color: #1a3c5e; background: #f0f6ff; padding: 3px 8px; border-radius: 12px; border: 1px solid var(--border); margin-left: 6px; }
 .commute-dur   { font-weight: 600; color: #888; }
 
 /* ══════════════════════════════════════════════
