@@ -42,7 +42,7 @@ function load(path) {
 /** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
 function imgPath(type, folder, manifest) {
   const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
-  return `${BASE}images/${type}/${folder}/${file}?v=36`;
+  return `${BASE}images/${type}/${folder}/${file}?v=37`;
 }
 
 // ── CITY NAV (header — all pages) ───────────────
@@ -160,41 +160,56 @@ function renderDay({ cities, days, activities, venues, hotels, manifest }) {
   if (incomingFlight) {
     const topWidget = el('div');
     topWidget.innerHTML = `
+      <!-- Leg 1: DEL → SIN (SQ403) -->
       <div class="flight-card">
-
-        <div class="flight-title">✈ Singapore Airlines SQ32</div>
-
-        <div class="flight-subtitle">Delhi → Singapore → San Francisco</div>
-
+        <div class="flight-title">✈ Singapore Airlines SQ403</div>
+        <div class="flight-subtitle">Delhi → Singapore</div>
         <div class="route-map">
-
           <div class="airport">
             <div class="code">DEL</div>
             <div class="time">21:55</div>
           </div>
-
-          <div class="route-line">
-            <div class="plane">✈</div>
+          <div class="route-line"><div class="plane">✈</div></div>
+          <div class="airport">
+            <div class="code">SIN</div>
+            <div class="time">06:15</div>
           </div>
+        </div>
+        <div class="flight-meta">Aircraft: Airbus A350-900<br>Airline: Singapore Airlines</div>
+        <div class="flight-buttons">
+          <a href="https://flightaware.com/live/flight/SQ403" target="_blank" rel="noopener">Live Flight Tracker</a>
+          <a href="https://www.google.com/search?q=SQ403+flight" target="_blank" rel="noopener">Google Flight Info</a>
+        </div>
+      </div>
 
+      <!-- Leg 2: SIN → SFO (SQ32) -->
+      <div class="flight-card">
+        <div class="flight-title">✈ Singapore Airlines SQ32</div>
+        <div class="flight-subtitle">Singapore → San Francisco</div>
+        <div class="route-map">
+          <div class="airport">
+            <div class="code">SIN</div>
+            <div class="time">20:45</div>
+          </div>
+          <div class="route-line"><div class="plane">✈</div></div>
           <div class="airport">
             <div class="code">SFO</div>
             <div class="time">08:50</div>
           </div>
-
         </div>
-
-        <div class="flight-meta">Aircraft: Airbus A350-900 <br>Airline: Singapore Airlines</div>
-
+        <div class="flight-meta">Aircraft: Airbus A350-900<br>Airline: Singapore Airlines</div>
         <div class="flight-buttons">
           <a href="https://flightaware.com/live/flight/SQ32" target="_blank" rel="noopener">Live Flight Tracker</a>
           <a href="https://www.google.com/search?q=SQ32+flight" target="_blank" rel="noopener">Google Flight Info</a>
         </div>
-
       </div>
 
+      <!-- Trackers (stacked; may be blocked by X-Frame-Options on some sites) -->
       <div class="flight-tracker">
-        <iframe src="https://flightaware.com/live/flight/SQ32" width="100%" height="420" frameborder="0"></iframe>
+        <iframe src="https://flightaware.com/live/flight/SQ403" width="100%" height="220" frameborder="0"></iframe>
+      </div>
+      <div class="flight-tracker">
+        <iframe src="https://flightaware.com/live/flight/SQ32" width="100%" height="220" frameborder="0"></iframe>
       </div>
     `;
     container.appendChild(topWidget);
