@@ -6,7 +6,10 @@
    accordingly using pure fetch + DOM.
 ────────────────────────────────────────────── */
 
-const BASE = '../';
+const isIndex  = !!document.getElementById('overview-grid');
+const BASE     = isIndex ? '' : '../';
+const DAY_PATH = isIndex ? 'pages/day.html' : 'day.html';
+const HOME_URL = isIndex ? '#'              : '../index.html';
 
 let leafletMap = null;
 let leafletMarker = null;
@@ -44,14 +47,14 @@ function renderCityNav(cities, days) {
     const firstDay = days.find(d => d.city === city.id);
     const pill = el('a', 'city-pill');
     pill.textContent = city.name;
-    if (firstDay) pill.href = `day.html?id=${firstDay.id}`;
+    if (firstDay) pill.href = `${DAY_PATH}?id=${firstDay.id}`;
     nav.appendChild(pill);
   });
   // — Day Itinerary pill — always navigates to home page
   const itinPill = el('a', 'city-pill city-pill--itinerary');
   itinPill.textContent = '📅 Itinerary';
-  itinPill.href = document.getElementById('overview-grid') ? '#' : 'index.html';
-  if (document.getElementById('overview-grid')) {
+  itinPill.href = HOME_URL;
+  if (isIndex) {
     itinPill.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
   }
   nav.appendChild(itinPill);}
@@ -97,7 +100,7 @@ function renderOverview({ cities, days }) {
     const tileGrid = el('div', 'day-tile-grid');
     group.days.forEach(day => {
       const tile = el('a', 'day-tile');
-      tile.href  = `day.html?id=${day.id}`;
+      tile.href  = `${DAY_PATH}?id=${day.id}`;
 
       if (group.days.length === 1) tile.classList.add('day-tile--full');
 
@@ -347,14 +350,14 @@ function buildDayNav(prevDay, nextDay) {
   const prevLink = el('a', 'day-nav-btn day-nav-prev');
   const nextLink = el('a', 'day-nav-btn day-nav-next');
   if (prevDay) {
-    prevLink.href = `day.html?id=${prevDay.id}`;
+    prevLink.href = `${DAY_PATH}?id=${prevDay.id}`;
     prevLink.innerHTML = `‹ <span>${prevDay.title}</span>`;
   } else {
     prevLink.classList.add('disabled');
     prevLink.innerHTML = `‹ <span>First day</span>`;
   }
   if (nextDay) {
-    nextLink.href = `day.html?id=${nextDay.id}`;
+    nextLink.href = `${DAY_PATH}?id=${nextDay.id}`;
     nextLink.innerHTML = `<span>${nextDay.title}</span> ›`;
   } else {
     nextLink.classList.add('disabled');
