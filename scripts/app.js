@@ -289,8 +289,9 @@ function buildActivityCard(act, venues, hotels) {
     if (venue.image_folder) card.classList.add('card-has-photo');
 
     const left = el('div', 'ac-body');
+    const durTxt = act.duration_min ? ` <span class="ac-dur-inline">(${fmtDuration(act.duration_min)})</span>` : '';
     left.innerHTML = `
-      <div class="ac-title">${venue.name || act.venue_id}</div>
+      <div class="ac-title">${venue.name || act.venue_id}${durTxt}</div>
       <div class="ac-sub">${act.time || ''}</div>
       ${venue.description ? `<div class="ac-desc">${venue.description}</div>` : ''}
       ${venue.tip ? `<div class="ac-tip">💡 ${venue.tip}</div>` : ''}`;
@@ -318,9 +319,7 @@ function buildActivityCard(act, venues, hotels) {
     }
 
     if (act.duration_min) {
-      const durSpan = el('span', 'ac-duration');
-      durSpan.textContent = fmtDuration(act.duration_min);
-      right.appendChild(durSpan);
+      // duration already in title — skip separate span
     }
 
     const icon = el('div', 'ac-icon');

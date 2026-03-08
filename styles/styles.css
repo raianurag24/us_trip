@@ -388,29 +388,30 @@ img { display: block; }
   align-items: center;
   gap: 6px;
   flex-shrink: 0;
-  min-width: 136px;
+  min-width: 200px;
 }
-.ac-duration {
+.ac-duration { display: none; } /* now inline in title */
+.ac-dur-inline {
   font-size: 12px;
+  font-weight: 400;
   color: var(--muted);
-  text-align: center;
-  white-space: nowrap;
+  margin-left: 3px;
 }
 
 /* Venue photo thumbnail in activity card */
 .venue-thumb {
-  width: 130px;
-  height: 130px;
-  border-radius: 8px;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
   background-size: cover;
   background-position: center;
   cursor: zoom-in;
   flex-shrink: 0;
-  box-shadow: 0 1px 4px rgba(0,0,0,.15);
+  box-shadow: 0 2px 8px rgba(0,0,0,.18);
   transition: transform .15s, box-shadow .15s;
   background-color: #d0d8e4;
 }
-.venue-thumb:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,.22); }
+.venue-thumb:hover { transform: scale(1.02); box-shadow: 0 6px 18px rgba(0,0,0,.25); }
 
 /* Map link inline in card body */
 .map-link {
