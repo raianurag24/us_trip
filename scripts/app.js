@@ -42,7 +42,7 @@ function load(path) {
 /** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
 function imgPath(type, folder, manifest) {
   const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
-  return `${BASE}images/${type}/${folder}/${file}?v=26`;
+  return `${BASE}images/${type}/${folder}/${file}?v=27`;
 }
 
 // ── CITY NAV (header — all pages) ───────────────
@@ -165,6 +165,10 @@ function renderDay({ cities, days, activities, venues, hotels, manifest }) {
 
   // Activities + commute strips
   resolved.forEach((act, i) => {
+    if (act.type === 'travel') {
+      container.appendChild(buildTravelActStrip(act));
+      return;
+    }
     const card = buildActivityCard(act, venues, hotels, manifest);
     container.appendChild(card);
     const next = resolved[i + 1];
@@ -491,11 +495,36 @@ function buildFilterButtons(types, filtersEl, activitiesEl) {
       card.classList.toggle('hidden', filter !== 'all' && t !== filter);
     });
     activitiesEl.querySelectorAll('.commute-strip').forEach(strip => {
-      strip.classList.toggle('hidden', filter !== 'all' && filter !== 'sightseeing');
+      const isTravelAct = strip.dataset.type === 'travel';
+      if (filter === 'all') strip.classList.remove('hidden');
+      else if (filter === 'travel' && isTravelAct) strip.classList.remove('hidden');
+      else if (filter === 'sightseeing' && !isTravelAct) strip.classList.remove('hidden');
+      else strip.classList.add('hidden');
     });
     // also hide day-nav when filtered
     activitiesEl.querySelectorAll('.day-nav').forEach(nav => nav.classList.toggle('hidden', filter !== 'all'));
   });
+}
+
+// ── Travel act strip (from explicit travel activities) ────────────────────
+function buildTravelActStrip(act) {
+  const modeIcon  = act.mode === 'uber' ? '🚗'
+                  : act.mode === 'walk' ? '🚶'
+                  : act.mode === 'bus'  ? '🚌'
+                  : '🚕';
+  const modeLabel = act.mode === 'uber' ? 'Uber XL'
+                  : act.mode === 'walk' ? 'Walk'
+                  : (act.mode || 'Transfer');
+  const route  = (act.from && act.to) ? `${act.from} → ${act.to}` : modeLabel;
+  const durTxt = act.duration_min ? `~${fmtDuration(act.duration_min)}` : '';
+
+  const strip = el('div', 'commute-strip');
+  strip.dataset.type = 'travel';
+  strip.innerHTML = `
+    <span class="commute-icon">${modeIcon}</span>
+    <span class="commute-label">${route}</span>
+    ${durTxt ? `<span class="commute-dur">${durTxt}</span>` : ''}`;
+  return strip;
 }
 
 // ── Commute strip ──────────────────────────────
