@@ -809,6 +809,184 @@
       "from": "Coach pickup (Hilton area)",
       "to": "Yosemite National Park (coach)",
       "note": "Coach-operated day trip. Follow guide instructions. Keep phone handy for updates."
+    },
+    {
+      "id": "uber_penn_queens_2026_06_02",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-06-02",
+      "time": "13:30",
+      "from": "Penn Station",
+      "to": "Residence Inn New York Queens",
+      "note": "Uber with luggage — approx 30 min. Rest/refresh on arrival."
+    },
+    {
+      "id": "subway_queens_midtown_2026_06_02",
+      "type": "travel",
+      "mode": "subway",
+      "date": "2026-06-02",
+      "time": "15:30",
+      "from": "Residence Inn New York Queens",
+      "to": "SUMMIT One Vanderbilt",
+      "note": "Walk + 7 train into Midtown."
+    },
+    {
+      "id": "dinner_midtown_2026_06_02",
+      "type": "note",
+      "date": "2026-06-02",
+      "time": "18:10",
+      "title": "Midtown Dinner · 6:10 PM",
+      "icon": "🍽️",
+      "body": "Dinner near Bryant Park — relaxed 45‑minute dinner."
+    },
+    {
+      "id": "subway_midtown_queens_2026_06_02",
+      "type": "travel",
+      "mode": "subway",
+      "date": "2026-06-02",
+      "time": "21:45",
+      "from": "Times Square",
+      "to": "Residence Inn New York Queens",
+      "note": "Subway back to Queens (approx 25 min)."
+    },
+    {
+      "id": "walk_queens_hotel_2026_06_02",
+      "type": "travel",
+      "mode": "walk",
+      "date": "2026-06-02",
+      "time": "22:15",
+      "from": "Queens subway station",
+      "to": "Residence Inn New York Queens",
+      "note": "Short walk (5 min) to the hotel."
+    },
+    {
+      "id": "uber_queens_battery_2026_06_03",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-06-03",
+      "time": "08:35",
+      "from": "Residence Inn New York Queens",
+      "to": "Battery Park",
+      "note": "Uber to Battery Park (approx 35 min)."
+    },
+    {
+      "id": "walk_dumbo_hoho_2026_06_03",
+      "type": "travel",
+      "mode": "walk",
+      "date": "2026-06-03",
+      "time": "15:25",
+      "from": "DUMBO",
+      "to": "HOHO pickup point",
+      "note": "Short walk to the HOHO pickup."
+    },
+    {
+      "id": "hoho_dumbo_midtown_2026_06_03",
+      "type": "travel",
+      "mode": "bus",
+      "date": "2026-06-03",
+      "time": "15:30",
+      "from": "DUMBO",
+      "to": "Midtown (HOHO)",
+      "note": "HOHO scenic bus from Brooklyn to Midtown (approx 60 min)."
+    },
+    {
+      "id": "midtown_dinner_2026_06_03",
+      "type": "note",
+      "date": "2026-06-03",
+      "time": "17:00",
+      "title": "Midtown Dinner",
+      "icon": "🍽️",
+      "body": "Dinner in Midtown after HOHO — relaxed 60 minutes."
+    },
+    {
+      "id": "subway_midtown_queens_2026_06_03",
+      "type": "travel",
+      "mode": "subway",
+      "date": "2026-06-03",
+      "time": "20:00",
+      "from": "Times Square",
+      "to": "Residence Inn New York Queens",
+      "note": "Subway back to Queens (approx 25 min)."
+    },
+    {
+      "id": "walk_queens_hotel_2026_06_03",
+      "type": "travel",
+      "mode": "walk",
+      "date": "2026-06-03",
+      "time": "20:30",
+      "from": "Queens subway station",
+      "to": "Residence Inn New York Queens",
+      "note": "Short walk to the hotel."
+    },
+    {
+      "id": "uber_queens_motto_2026_06_04",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-06-04",
+      "time": "09:35",
+      "from": "Residence Inn New York Queens",
+      "to": "Motto by Hilton New York City Times Square",
+      "note": "Uber with luggage — drop luggage briefly."
+    },
+    {
+      "id": "walk_motto_intrepid_2026_06_04",
+      "type": "travel",
+      "mode": "walk",
+      "date": "2026-06-04",
+      "time": "10:05",
+      "from": "Motto by Hilton",
+      "to": "Intrepid Sea, Air & Space Museum",
+      "note": "Walk across town to Intrepid (~18 min)."
+    },
+    {
+      "id": "uber_circleline_hudson_2026_06_04",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-06-04",
+      "time": "13:30",
+      "from": "Circle Line / Intrepid area",
+      "to": "Hudson Yards (lunch)",
+      "note": "Short Uber to Hudson Yards for lunch."
+    },
+    {
+      "id": "uber_return_hotel_2026_06_04",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-06-04",
+      "time": "16:30",
+      "from": "Washington Square Park",
+      "to": "Motto by Hilton New York City Times Square",
+      "note": "Return to hotel by Uber (approx 12 min)."
+    },
+    {
+      "id": "walk_hotel_centralpark_2026_06_05",
+      "type": "travel",
+      "mode": "walk",
+      "date": "2026-06-05",
+      "time": "10:30",
+      "from": "Motto by Hilton New York City Times Square",
+      "to": "Central Park",
+      "note": "Walk to Central Park (approx 12 min)."
+    },
+    {
+      "id": "walk_centralpark_amnh_2026_06_05",
+      "type": "travel",
+      "mode": "walk",
+      "date": "2026-06-05",
+      "time": "12:15",
+      "from": "Central Park",
+      "to": "American Museum of Natural History",
+      "note": "Walk across to AMNH (approx 20 min)."
+    },
+    {
+      "id": "uber_hotel_jfk_2026_06_05",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-06-05",
+      "time": "18:00",
+      "from": "Motto by Hilton New York City Times Square",
+      "to": "JFK Airport",
+      "note": "Uber to JFK — estimate 50–60 min; follow flight schedule."
     }
   ]
 }

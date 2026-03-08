@@ -160,12 +160,17 @@
       "title": "Amtrak to NYC + Midtown Skyline",
       "activities": [
         "amtrak_dc_nyc",
+        "uber_penn_queens_2026_06_02",
         "hotel_ny_queens",
+        "subway_queens_midtown_2026_06_02",
         "summit",
         "grand_central_terminal",
         "bryant_park",
+        "dinner_midtown_2026_06_02",
         "top_of_the_rock",
-        "times_square"
+        "times_square",
+        "subway_midtown_queens_2026_06_02",
+        "walk_queens_hotel_2026_06_02"
       ]
     },
     {
@@ -174,12 +179,19 @@
       "city": "ny",
       "title": "Statue of Liberty and Brooklyn",
       "activities": [
+        "uber_queens_battery_2026_06_03",
         "battery_park",
         "statue_of_liberty",
         "ellis_island",
         "wall_street",
         "brooklyn_bridge",
-        "dumbo"
+        "dumbo",
+        "walk_dumbo_hoho_2026_06_03",
+        "hoho_dumbo_midtown_2026_06_03",
+        "midtown_dinner_2026_06_03",
+        "times_square_2026_06_03",
+        "subway_midtown_queens_2026_06_03",
+        "walk_queens_hotel_2026_06_03"
       ]
     },
     {
@@ -188,13 +200,17 @@
       "city": "ny",
       "title": "West Side Manhattan",
       "activities": [
+        "uber_queens_motto_2026_06_04",
         "hotel_ny_times_square",
+        "walk_motto_intrepid_2026_06_04",
         "intrepid",
         "circle_line_cruise",
-        "high_line",
+        "uber_circleline_hudson_2026_06_04",
         "hudson_yards",
+        "high_line",
         "friends_building",
         "washington_square_park",
+        "uber_return_hotel_2026_06_04",
         "empire_state_building"
       ]
     },
@@ -204,8 +220,11 @@
       "city": "ny",
       "title": "Central Park and Museum",
       "activities": [
+        "walk_hotel_centralpark_2026_06_05",
         "central_park",
+        "walk_centralpark_amnh_2026_06_05",
         "amnh",
+        "uber_hotel_jfk_2026_06_05",
         "flight_jfk_del"
       ]
     }
