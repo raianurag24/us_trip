@@ -1,558 +1,614 @@
 {
- "activities":[
-
-{
-"id":"flight_del_sfo",
-"type":"flight",
-"category":"international",
-"date":"2026-05-23",
-"time":"21:55",
-"arrival_time":"09:10",
-"arrival_note":"arrives 24 May",
-"from":"DEL",
-"to":"SFO",
-"flight_number":"SQ403",
-"airline":"Singapore Airlines",
-"tracker_url":"https://www.flightaware.com/live/flight/SQ403"
-},
-
-{
-"id":"hotel_sfo",
-"type":"hotel",
-"hotel_id":"hotel_sfo_spero",
-"date":"2026-05-24",
-"time":"15:00",
-"hotel":"Hotel Spero, Vignette Collection — an IHG Hotel",
-"city":"sf"
-},
-
-{
-"type":"visit",
-"date":"2026-05-24",
-"time":"13:30",
-"venue_id":"powell_cable_car",
-"duration_min":30
-},
-
-{
-"type":"visit",
-"date":"2026-05-24",
-"time":"14:15",
-"venue_id":"lombard_street",
-"duration_min":20
-},
-
-{
-"type":"visit",
-"date":"2026-05-24",
-"time":"15:00",
-"venue_id":"pier_39",
-"duration_min":60
-},
-
-{
-"type":"visit",
-"date":"2026-05-24",
-"time":"18:30",
-"venue_id":"battery_spencer",
-"duration_min":45
-},
-
-{
-"type":"visit",
-"date":"2026-05-25",
-"time":"07:30",
-"venue_id":"tunnel_view",
-"duration_min":30
-},
-
-{
-"type":"visit",
-"date":"2026-05-25",
-"time":"08:15",
-"venue_id":"yosemite_valley",
-"duration_min":120
-},
-
-{
-"type":"visit",
-"date":"2026-05-25",
-"time":"10:45",
-"venue_id":"yosemite_falls",
-"duration_min":45
-},
-
-{
-"type":"visit",
-"date":"2026-05-25",
-"time":"11:45",
-"venue_id":"bridalveil_fall",
-"duration_min":30
-},
-
-{
-"type":"visit",
-"date":"2026-05-25",
-"time":"12:30",
-"venue_id":"el_capitan",
-"duration_min":30
-},
-
-{
-"id":"flight_sfo_lax",
-"type":"flight",
-"category":"domestic",
-"date":"2026-05-26",
-"time":"09:57",
-"arrival_time":"11:31",
-"from":"SFO",
-"to":"LAX",
-"flight_number":"AS1329",
-"airline":"Alaska Airlines",
-"tracker_url":"https://www.flightaware.com/live/flight/AS1329"
-},
-
-{
-"id":"hotel_la",
-"type":"hotel",
-"hotel_id":"hotel_la_airbnb",
-"date":"2026-05-26",
-"time":"15:00",
-"hotel":"Airbnb — 7111 Santa Monica Blvd, West Hollywood",
-"city":"la"
-},
-
-{
-"type":"visit",
-"date":"2026-05-26",
-"time":"16:00",
-"venue_id":"hollywood_walk_of_fame",
-"duration_min":45
-},
-
-{
-"type":"visit",
-"date":"2026-05-26",
-"time":"17:00",
-"venue_id":"dolby_theatre",
-"duration_min":30
-},
-
-{
-"type":"visit",
-"date":"2026-05-26",
-"time":"18:00",
-"venue_id":"lake_hollywood_park",
-"duration_min":30
-},
-
-{
-"type":"visit",
-"date":"2026-05-26",
-"time":"19:00",
-"venue_id":"griffith_observatory",
-"duration_min":60
-},
-
-{
-"type":"experience",
-"date":"2026-05-27",
-"time":"08:30",
-"venue_id":"disneyland",
-"duration_min":600
-},
-
-{
-"id":"flight_lax_las",
-"type":"flight",
-"category":"domestic",
-"date":"2026-05-28",
-"time":"07:35",
-"arrival_time":"08:45",
-"from":"LAX",
-"to":"LAS",
-"flight_number":"DL2253",
-"airline":"Delta Airlines",
-"tracker_url":"https://www.flightaware.com/live/flight/DL2253"
-},
-
-{
-"id":"hotel_lv",
-"type":"hotel",
-"hotel_id":"hotel_lv_excalibur",
-"date":"2026-05-28",
-"time":"15:00",
-"hotel":"Excalibur Hotel & Casino",
-"city":"lv"
-},
-
-{
-"type":"visit",
-"date":"2026-05-28",
-"time":"11:00",
-"venue_id":"las_vegas_strip",
-"duration_min":90
-},
-
-{
-"type":"visit",
-"date":"2026-05-28",
-"time":"14:30",
-"venue_id":"bellagio_fountains",
-"duration_min":30
-},
-
-{
-"type":"experience",
-"date":"2026-05-28",
-"time":"18:00",
-"venue_id":"high_roller",
-"duration_min":45
-},
-
-{
-"type":"experience",
-"date":"2026-05-28",
-"time":"21:00",
-"venue_id":"vegas_strip_helicopter",
-"duration_min":20
-},
-
-{
-"type":"visit",
-"date":"2026-05-29",
-"time":"11:00",
-"venue_id":"flylinq_zipline",
-"duration_min":30
-},
-
-{
-"type":"visit",
-"date":"2026-05-29",
-"time":"18:30",
-"venue_id":"sphere_las_vegas",
-"duration_min":30
-},
-
-{
-"type":"visit",
-"date":"2026-05-29",
-"time":"20:00",
-"venue_id":"fremont_street",
-"duration_min":90
-},
-
-{
-"id":"flight_las_buf",
-"type":"flight",
-"category":"domestic",
-"date":"2026-05-30",
-"time":"06:00",
-"arrival_time":"15:12",
-"arrival_note":"via connection",
-"from":"LAS",
-"to":"BUF",
-"flight_number":"DL0864",
-"airline":"Delta Airlines",
-"tracker_url":"https://www.flightaware.com/live/flight/DL864"
-},
-
-{
-"id":"hotel_nf",
-"type":"hotel",
-"hotel_id":"hotel_nf",
-"date":"2026-05-30",
-"time":"16:00",
-"hotel":"Airbnb At Niagara",
-"city":"nf"
-},
-
-{
-"type":"visit",
-"date":"2026-05-30",
-"time":"12:00",
-"venue_id":"niagara_falls",
-"duration_min":60
-},
-
-{
-"type":"experience",
-"date":"2026-05-30",
-"time":"13:30",
-"venue_id":"maid_of_the_mist",
-"duration_min":45
-},
-
-{
-"type":"experience",
-"date":"2026-05-30",
-"time":"15:00",
-"venue_id":"cave_of_the_winds",
-"duration_min":45
-},
-
-{
-"id":"flight_buf_dc",
-"type":"flight",
-"category":"domestic",
-"date":"2026-06-01",
-"time":"09:25",
-"arrival_time":"10:35",
-"from":"BUF",
-"to":"DCA",
-"flight_number":"WN0920",
-"airline":"Southwest Airlines",
-"tracker_url":"https://www.flightaware.com/live/flight/SWA920"
-},
-
-{
-"id":"hotel_dc",
-"type":"hotel",
-"hotel_id":"hotel_dc",
-"date":"2026-06-01",
-"time":"16:00",
-"hotel":"Residence Inn by Marriott Washington Downtown/Convention Center",
-"city":"dc"
-},
-
-{
-"type":"visit",
-"date":"2026-05-31",
-"time":"15:30",
-"venue_id":"white_house",
-"duration_min":30
-},
-
-{
-"type":"visit",
-"date":"2026-05-31",
-"time":"16:30",
-"venue_id":"washington_monument",
-"duration_min":30
-},
-
-{
-"type":"visit",
-"date":"2026-05-31",
-"time":"17:30",
-"venue_id":"lincoln_memorial",
-"duration_min":45
-},
-
-{
-"type":"visit",
-"date":"2026-05-31",
-"time":"18:30",
-"venue_id":"capitol_hill",
-"duration_min":45
-},
-
-{
-"id":"amtrak_dc_nyc",
-"type":"train",
-"date":"2026-06-02",
-"time":"10:30",
-"arrival_time":"13:20",
-"from":"Washington D.C.",
-"to":"New York",
-"operator":"Amtrak",
-"train_number":"2108"
-},
-
-{
-"id":"hotel_ny_queens",
-"type":"hotel",
-"hotel_id":"hotel_ny_queens",
-"date":"2026-06-02",
-"time":"15:00",
-"hotel":"Residence Inn By Marriott New York Queens",
-"city":"ny"
-},
-
-{
-"type":"visit",
-"date":"2026-06-02",
-"time":"16:00",
-"venue_id":"summit",
-"duration_min":75
-},
-
-{
-"type":"visit",
-"date":"2026-06-02",
-"time":"17:30",
-"venue_id":"grand_central_terminal",
-"duration_min":15
-},
-
-{
-"type":"visit",
-"date":"2026-06-02",
-"time":"18:00",
-"venue_id":"bryant_park",
-"duration_min":20
-},
-
-{
-"type":"visit",
-"date":"2026-06-02",
-"time":"19:30",
-"venue_id":"top_of_the_rock",
-"duration_min":75
-},
-
-{
-"type":"visit",
-"date":"2026-06-02",
-"time":"21:00",
-"venue_id":"times_square",
-"duration_min":45
-},
-
-{
-"type":"visit",
-"date":"2026-06-03",
-"time":"09:00",
-"venue_id":"battery_park",
-"duration_min":20
-},
-
-{
-"type":"experience",
-"date":"2026-06-03",
-"time":"09:30",
-"venue_id":"statue_of_liberty",
-"duration_min":120
-},
-
-{
-"type":"visit",
-"date":"2026-06-03",
-"time":"12:00",
-"venue_id":"ellis_island",
-"duration_min":90
-},
-
-{
-"type":"visit",
-"date":"2026-06-03",
-"time":"14:30",
-"venue_id":"wall_street",
-"duration_min":30
-},
-
-{
-"type":"visit",
-"date":"2026-06-03",
-"time":"15:30",
-"venue_id":"brooklyn_bridge",
-"duration_min":45
-},
-
-{
-"type":"visit",
-"date":"2026-06-03",
-"time":"16:45",
-"venue_id":"dumbo",
-"duration_min":45
-},
-
-{
-"id":"hotel_ny_times_square",
-"type":"hotel",
-"hotel_id":"hotel_ny_times_square",
-"date":"2026-06-04",
-"time":"15:00",
-"hotel":"Motto by Hilton New York City Times Square",
-"city":"ny"
-},
-
-{
-"type":"visit",
-"date":"2026-06-04",
-"time":"10:00",
-"venue_id":"intrepid",
-"duration_min":90
-},
-
-{
-"type":"experience",
-"date":"2026-06-04",
-"time":"12:00",
-"venue_id":"circle_line_cruise",
-"duration_min":90
-},
-
-{
-"type":"visit",
-"date":"2026-06-04",
-"time":"14:30",
-"venue_id":"high_line",
-"duration_min":60
-},
-
-{
-"type":"visit",
-"date":"2026-06-04",
-"time":"15:45",
-"venue_id":"hudson_yards",
-"duration_min":30
-},
-
-{
-"type":"visit",
-"date":"2026-06-04",
-"time":"16:30",
-"venue_id":"friends_building",
-"duration_min":15
-},
-
-{
-"type":"visit",
-"date":"2026-06-04",
-"time":"17:00",
-"venue_id":"washington_square_park",
-"duration_min":30
-},
-
-{
-"type":"experience",
-"date":"2026-06-04",
-"time":"21:45",
-"venue_id":"empire_state_building",
-"duration_min":60
-},
-
-{
-"type":"visit",
-"date":"2026-06-05",
-"time":"11:30",
-"venue_id":"central_park",
-"duration_min":90
-},
-
-{
-"type":"visit",
-"date":"2026-06-05",
-"time":"13:00",
-"venue_id":"amnh",
-"duration_min":120
-},
-
-{
-"id":"flight_jfk_del",
-"type":"flight",
-"category":"international",
-"date":"2026-06-05",
-"time":"21:50",
-"arrival_time":"01:30",
-"arrival_note":"arrives 7 Jun",
-"from":"JFK",
-"to":"DEL",
-"flight_number":"LH405",
-"airline":"Lufthansa",
-"tracker_url":"https://www.flightaware.com/live/flight/LH405"
-}
-
- ]
+  "activities": [
+    {
+      "id": "flight_del_sfo",
+      "type": "flight",
+      "category": "international",
+      "date": "2026-05-23",
+      "time": "21:55",
+      "arrival_time": "09:10",
+      "arrival_note": "arrives 24 May",
+      "from": "DEL",
+      "to": "SFO",
+      "flight_number": "SQ403",
+      "airline": "Singapore Airlines",
+      "tracker_url": "https://www.flightaware.com/live/flight/SQ403"
+    },
+    {
+      "id": "hotel_sfo",
+      "type": "hotel",
+      "hotel_id": "hotel_sfo_spero",
+      "date": "2026-05-24",
+      "time": "15:00",
+      "hotel": "Hotel Spero, Vignette Collection — an IHG Hotel",
+      "city": "sf"
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-24",
+      "time": "13:30",
+      "venue_id": "powell_cable_car",
+      "duration_min": 30
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-24",
+      "time": "14:15",
+      "venue_id": "lombard_street",
+      "duration_min": 20
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-24",
+      "time": "15:00",
+      "venue_id": "pier_39",
+      "duration_min": 60
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-24",
+      "time": "18:30",
+      "venue_id": "battery_spencer",
+      "duration_min": 45
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-25",
+      "time": "07:30",
+      "venue_id": "tunnel_view",
+      "duration_min": 30
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-25",
+      "time": "08:15",
+      "venue_id": "yosemite_valley",
+      "duration_min": 120
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-25",
+      "time": "10:45",
+      "venue_id": "yosemite_falls",
+      "duration_min": 45
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-25",
+      "time": "11:45",
+      "venue_id": "bridalveil_fall",
+      "duration_min": 30
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-25",
+      "time": "12:30",
+      "venue_id": "el_capitan",
+      "duration_min": 30
+    },
+    {
+      "id": "flight_sfo_lax",
+      "type": "flight",
+      "category": "domestic",
+      "date": "2026-05-26",
+      "time": "09:57",
+      "arrival_time": "11:31",
+      "from": "SFO",
+      "to": "LAX",
+      "flight_number": "AS1329",
+      "airline": "Alaska Airlines",
+      "tracker_url": "https://www.flightaware.com/live/flight/AS1329"
+    },
+    {
+      "id": "hotel_la",
+      "type": "hotel",
+      "hotel_id": "hotel_la_airbnb",
+      "date": "2026-05-26",
+      "time": "15:00",
+      "hotel": "Airbnb — 7111 Santa Monica Blvd, West Hollywood",
+      "city": "la"
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-26",
+      "time": "16:00",
+      "venue_id": "hollywood_walk_of_fame",
+      "duration_min": 45
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-26",
+      "time": "17:00",
+      "venue_id": "dolby_theatre",
+      "duration_min": 30
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-26",
+      "time": "18:00",
+      "venue_id": "lake_hollywood_park",
+      "duration_min": 30
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-26",
+      "time": "19:00",
+      "venue_id": "griffith_observatory",
+      "duration_min": 60
+    },
+    {
+      "id": "flight_lax_las",
+      "type": "flight",
+      "category": "domestic",
+      "date": "2026-05-28",
+      "time": "07:35",
+      "arrival_time": "08:45",
+      "from": "LAX",
+      "to": "LAS",
+      "flight_number": "DL2253",
+      "airline": "Delta Airlines",
+      "tracker_url": "https://www.flightaware.com/live/flight/DL2253"
+    },
+    {
+      "id": "hotel_lv",
+      "type": "hotel",
+      "hotel_id": "hotel_lv_excalibur",
+      "date": "2026-05-28",
+      "time": "15:00",
+      "hotel": "Excalibur Hotel & Casino",
+      "city": "lv"
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-28",
+      "time": "11:00",
+      "venue_id": "las_vegas_strip",
+      "duration_min": 90
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-28",
+      "time": "14:30",
+      "venue_id": "bellagio_fountains",
+      "duration_min": 30
+    },
+    {
+      "type": "experience",
+      "date": "2026-05-28",
+      "time": "18:00",
+      "venue_id": "high_roller",
+      "duration_min": 45
+    },
+    {
+      "type": "experience",
+      "date": "2026-05-28",
+      "time": "21:00",
+      "venue_id": "vegas_strip_helicopter",
+      "duration_min": 20
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-29",
+      "time": "11:00",
+      "venue_id": "flylinq_zipline",
+      "duration_min": 30
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-29",
+      "time": "18:30",
+      "venue_id": "sphere_las_vegas",
+      "duration_min": 30
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-29",
+      "time": "20:00",
+      "venue_id": "fremont_street",
+      "duration_min": 90
+    },
+    {
+      "id": "flight_las_buf",
+      "type": "flight",
+      "category": "domestic",
+      "date": "2026-05-30",
+      "time": "06:00",
+      "arrival_time": "15:12",
+      "arrival_note": "via connection",
+      "from": "LAS",
+      "to": "BUF",
+      "flight_number": "DL0864",
+      "airline": "Delta Airlines",
+      "tracker_url": "https://www.flightaware.com/live/flight/DL864"
+    },
+    {
+      "id": "hotel_nf",
+      "type": "hotel",
+      "hotel_id": "hotel_nf",
+      "date": "2026-05-30",
+      "time": "16:00",
+      "hotel": "Airbnb At Niagara",
+      "city": "nf"
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-30",
+      "time": "12:00",
+      "venue_id": "niagara_falls",
+      "duration_min": 60
+    },
+    {
+      "type": "experience",
+      "date": "2026-05-30",
+      "time": "13:30",
+      "venue_id": "maid_of_the_mist",
+      "duration_min": 45
+    },
+    {
+      "type": "experience",
+      "date": "2026-05-30",
+      "time": "15:00",
+      "venue_id": "cave_of_the_winds",
+      "duration_min": 45
+    },
+    {
+      "id": "flight_buf_dc",
+      "type": "flight",
+      "category": "domestic",
+      "date": "2026-06-01",
+      "time": "09:25",
+      "arrival_time": "10:35",
+      "from": "BUF",
+      "to": "DCA",
+      "flight_number": "WN0920",
+      "airline": "Southwest Airlines",
+      "tracker_url": "https://www.flightaware.com/live/flight/SWA920"
+    },
+    {
+      "id": "hotel_dc",
+      "type": "hotel",
+      "hotel_id": "hotel_dc",
+      "date": "2026-06-01",
+      "time": "16:00",
+      "hotel": "Residence Inn by Marriott Washington Downtown/Convention Center",
+      "city": "dc"
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-31",
+      "time": "15:30",
+      "venue_id": "white_house",
+      "duration_min": 30
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-31",
+      "time": "16:30",
+      "venue_id": "washington_monument",
+      "duration_min": 30
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-31",
+      "time": "17:30",
+      "venue_id": "lincoln_memorial",
+      "duration_min": 45
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-31",
+      "time": "18:30",
+      "venue_id": "capitol_hill",
+      "duration_min": 45
+    },
+    {
+      "id": "amtrak_dc_nyc",
+      "type": "train",
+      "date": "2026-06-02",
+      "time": "10:30",
+      "arrival_time": "13:20",
+      "from": "Washington D.C.",
+      "to": "New York",
+      "operator": "Amtrak",
+      "train_number": "2108"
+    },
+    {
+      "id": "hotel_ny_queens",
+      "type": "hotel",
+      "hotel_id": "hotel_ny_queens",
+      "date": "2026-06-02",
+      "time": "15:00",
+      "hotel": "Residence Inn By Marriott New York Queens",
+      "city": "ny"
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-02",
+      "time": "16:00",
+      "venue_id": "summit",
+      "duration_min": 75
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-02",
+      "time": "17:30",
+      "venue_id": "grand_central_terminal",
+      "duration_min": 15
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-02",
+      "time": "18:00",
+      "venue_id": "bryant_park",
+      "duration_min": 20
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-02",
+      "time": "19:30",
+      "venue_id": "top_of_the_rock",
+      "duration_min": 75
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-02",
+      "time": "21:00",
+      "venue_id": "times_square",
+      "duration_min": 45
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-03",
+      "time": "09:00",
+      "venue_id": "battery_park",
+      "duration_min": 20
+    },
+    {
+      "type": "experience",
+      "date": "2026-06-03",
+      "time": "09:30",
+      "venue_id": "statue_of_liberty",
+      "duration_min": 120
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-03",
+      "time": "12:00",
+      "venue_id": "ellis_island",
+      "duration_min": 90
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-03",
+      "time": "14:30",
+      "venue_id": "wall_street",
+      "duration_min": 30
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-03",
+      "time": "15:30",
+      "venue_id": "brooklyn_bridge",
+      "duration_min": 45
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-03",
+      "time": "16:45",
+      "venue_id": "dumbo",
+      "duration_min": 45
+    },
+    {
+      "id": "hotel_ny_times_square",
+      "type": "hotel",
+      "hotel_id": "hotel_ny_times_square",
+      "date": "2026-06-04",
+      "time": "15:00",
+      "hotel": "Motto by Hilton New York City Times Square",
+      "city": "ny"
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-04",
+      "time": "10:00",
+      "venue_id": "intrepid",
+      "duration_min": 90
+    },
+    {
+      "type": "experience",
+      "date": "2026-06-04",
+      "time": "12:00",
+      "venue_id": "circle_line_cruise",
+      "duration_min": 90
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-04",
+      "time": "14:30",
+      "venue_id": "high_line",
+      "duration_min": 60
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-04",
+      "time": "15:45",
+      "venue_id": "hudson_yards",
+      "duration_min": 30
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-04",
+      "time": "16:30",
+      "venue_id": "friends_building",
+      "duration_min": 15
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-04",
+      "time": "17:00",
+      "venue_id": "washington_square_park",
+      "duration_min": 30
+    },
+    {
+      "type": "experience",
+      "date": "2026-06-04",
+      "time": "21:45",
+      "venue_id": "empire_state_building",
+      "duration_min": 60
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-05",
+      "time": "11:30",
+      "venue_id": "central_park",
+      "duration_min": 90
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-05",
+      "time": "13:00",
+      "venue_id": "amnh",
+      "duration_min": 120
+    },
+    {
+      "id": "flight_jfk_del",
+      "type": "flight",
+      "category": "international",
+      "date": "2026-06-05",
+      "time": "21:50",
+      "arrival_time": "01:30",
+      "arrival_note": "arrives 7 Jun",
+      "from": "JFK",
+      "to": "DEL",
+      "flight_number": "LH405",
+      "airline": "Lufthansa",
+      "tracker_url": "https://www.flightaware.com/live/flight/LH405"
+    },
+    {
+      "id": "disney_uber_to",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-05-27",
+      "time": "08:00",
+      "from": "West Hollywood Airbnb",
+      "to": "Disneyland Park",
+      "duration_min": 55,
+      "note": "Book Uber XL for the family. Allow 50-60 minutes."
+    },
+    {
+      "id": "disney_main_street",
+      "type": "visit",
+      "venue_id": "disney_main_street",
+      "date": "2026-05-27",
+      "time": "09:10",
+      "duration_min": 25
+    },
+    {
+      "id": "disney_peter_pan",
+      "type": "experience",
+      "venue_id": "disney_peter_pan",
+      "date": "2026-05-27",
+      "time": "09:35",
+      "duration_min": 35
+    },
+    {
+      "id": "disney_small_world",
+      "type": "experience",
+      "venue_id": "disney_small_world",
+      "date": "2026-05-27",
+      "time": "10:15",
+      "duration_min": 25
+    },
+    {
+      "id": "disney_carousel",
+      "type": "experience",
+      "venue_id": "disney_carousel",
+      "date": "2026-05-27",
+      "time": "10:45",
+      "duration_min": 10
+    },
+    {
+      "id": "disney_mad_tea",
+      "type": "experience",
+      "venue_id": "disney_mad_tea",
+      "date": "2026-05-27",
+      "time": "11:00",
+      "duration_min": 15
+    },
+    {
+      "id": "disney_jungle_cruise",
+      "type": "experience",
+      "venue_id": "disney_jungle_cruise",
+      "date": "2026-05-27",
+      "time": "12:00",
+      "duration_min": 30
+    },
+    {
+      "id": "disney_pirates",
+      "type": "experience",
+      "venue_id": "disney_pirates",
+      "date": "2026-05-27",
+      "time": "12:35",
+      "duration_min": 35
+    },
+    {
+      "id": "disney_lunch",
+      "type": "visit",
+      "venue_id": "disney_lunch",
+      "date": "2026-05-27",
+      "time": "13:30",
+      "duration_min": 45
+    },
+    {
+      "id": "disney_buzz",
+      "type": "experience",
+      "venue_id": "disney_buzz",
+      "date": "2026-05-27",
+      "time": "14:30",
+      "duration_min": 20
+    },
+    {
+      "id": "disney_ice_cream",
+      "type": "visit",
+      "venue_id": "disney_ice_cream",
+      "date": "2026-05-27",
+      "time": "15:30",
+      "duration_min": 30
+    },
+    {
+      "id": "disney_parade",
+      "type": "experience",
+      "venue_id": "disney_parade",
+      "date": "2026-05-27",
+      "time": "17:30",
+      "duration_min": 25
+    },
+    {
+      "id": "disney_dinner",
+      "type": "visit",
+      "venue_id": "disney_dinner",
+      "date": "2026-05-27",
+      "time": "19:00",
+      "duration_min": 45
+    },
+    {
+      "id": "disney_fireworks",
+      "type": "experience",
+      "venue_id": "disney_fireworks",
+      "date": "2026-05-27",
+      "time": "21:00",
+      "duration_min": 15
+    },
+    {
+      "id": "disney_uber_back",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-05-27",
+      "time": "22:00",
+      "from": "Disneyland Park",
+      "to": "West Hollywood Airbnb",
+      "duration_min": 55,
+      "note": "Kids will likely fall asleep in the car on the way back!"
+    }
+  ]
 }

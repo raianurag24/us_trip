@@ -331,6 +331,21 @@ function buildActivityCard(act, venues, hotels) {
     return card;
   }
 
+  if (act.type === 'travel') {
+    const modeIcon = act.mode === 'uber' ? '🚗' : '🚌';
+    const modeLabel = act.mode === 'uber' ? 'Uber' : (act.mode || 'Transfer');
+    const durTxt = act.duration_min ? ` · ~${fmtDuration(act.duration_min)}` : '';
+    card.classList.add('card-travel');
+    card.innerHTML = `
+      <div class="ac-icon">${modeIcon}</div>
+      <div class="ac-body">
+        <div class="ac-title">${act.from} → ${act.to}</div>
+        <div class="ac-sub">${modeLabel}${durTxt} · Departs ${act.time || ''}</div>
+        ${act.note ? `<div class="ac-desc">${act.note}</div>` : ''}
+      </div>`;
+    return card;
+  }
+
   // Fallback
   card.innerHTML = `<div class="ac-body"><div class="ac-title">${act.id || act.type || JSON.stringify(act)}</div></div>`;
   return card;
@@ -418,6 +433,7 @@ function buildDayNav(prevDay, nextDay) {
 // ── Filter helpers ─────────────────────────────
 function filterType(act) {
   if (act.type === 'visit' || act.type === 'experience') return 'sightseeing';
+  if (act.type === 'travel') return 'travel';
   return act.type;
 }
 
@@ -431,6 +447,7 @@ function buildFilterButtons(types, filtersEl, activitiesEl) {
     train:       { icon: '🚆',  label: 'Trains' },
     hotel:       { icon: '🏨',  label: 'Hotels' },
     sightseeing: { icon: '🗺️', label: 'Sightseeing' },
+    travel:      { icon: '🚗',  label: 'Transport' },
   };
 
   const allBtn = el('button', 'filter-btn active');
@@ -438,7 +455,7 @@ function buildFilterButtons(types, filtersEl, activitiesEl) {
   allBtn.textContent = 'All';
   filtersEl.appendChild(allBtn);
 
-  const preferred = ['flight', 'train', 'hotel', 'sightseeing'];
+  const preferred = ['flight', 'train', 'travel', 'hotel', 'sightseeing'];
   const ordered = preferred.filter(t => types.includes(t)).concat(types.filter(t => !preferred.includes(t)));
   ordered.forEach(type => {
     const info = typeMap[type] || { icon: '•', label: type };

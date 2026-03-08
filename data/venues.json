@@ -559,5 +559,148 @@
     "tip": "The Rose Centre Hayden Planetarium show is included with admission and absolutely brilliant. Give at least 3 hours.",
     "lat": 40.7813,
     "lng": -73.9735
+  },
+  {
+    "id": "disney_main_street",
+    "name": "Main Street U.S.A.",
+    "city": "la",
+    "image_folder": "disney_main_street",
+    "why_special": "The magical gateway to Disneyland — a picture-perfect small-town street that sets the emotional tone for the entire day.",
+    "description": "Step through the gates and into a candy-coloured 1900s American town dripping with nostalgia. Cheerful band music drifts through the air, horse-drawn streetcars clip-clop past caramel-scented sweet shops, and at the very end of the street, Sleeping Beauty Castle gleams in the morning light. Walt Disney designed this street so families see the castle the moment they walk in — and the magic hits immediately. Grab those castle photos before the crowds arrive!",
+    "tip": "Arrive right at opening to walk an almost-empty street and get an unobstructed castle photo. Pure gold.",
+    "lat": 33.8121,
+    "lng": -117.919
+  },
+  {
+    "id": "disney_peter_pan",
+    "name": "Peter Pan's Flight",
+    "city": "la",
+    "image_folder": "disney_peter_pan",
+    "why_special": "One of Disneyland's most beloved rides — you actually fly over a glowing nighttime London in a pirate ship.",
+    "description": "Climb aboard a miniature pirate galleon as it magically lifts off and soars you over the rooftops of a shimmering, nighttime London. Below, the Thames sparkles, Big Ben chimes softly, and Neverland spreads across a twinkling horizon. Just 3 minutes long but genuinely enchanted — Kuhu will want to ride it again immediately. Head here straight from Main Street to beat the queues.",
+    "tip": "Go here first in Fantasyland — queues build fast after 10am and can reach 50 minutes by midday.",
+    "lat": 33.8137,
+    "lng": -117.9187
+  },
+  {
+    "id": "disney_small_world",
+    "name": "It's a Small World",
+    "city": "la",
+    "image_folder": "disney_small_world",
+    "why_special": "An iconic boat ride celebrating every culture on earth — the song will be cheerfully stuck in everyone's head for days.",
+    "description": "Float through a wonderland of over 300 singing and dancing dolls dressed in traditional costumes from over 100 nations — African savannahs, European castles, Himalayan peaks, South American carnivals. Everything is bright, joyful, and exquisitely crafted. By the final stretch, the whole family will be humming along to the world's most infectious song. Completely accessible, fully shaded, and delightfully cool inside — perfect for resting legs.",
+    "tip": "Perfect for grandparents — no height requirement, smooth and slow, wonderfully air-conditioned inside.",
+    "lat": 33.8146,
+    "lng": -117.9188
+  },
+  {
+    "id": "disney_carousel",
+    "name": "King Arthur Carrousel",
+    "city": "la",
+    "image_folder": "disney_carousel",
+    "why_special": "A beautifully preserved 1922 carousel with 68 unique hand-painted horses, right in the heart of Fantasyland.",
+    "description": "Twirl through Fantasyland on one of Disneyland's most enchanting attractions — a dazzling 1922 carousel where every single horse is unique, hand-painted, and intricately decorated with jewels and flowers. Let Kuhu choose her perfect horse, feel the warm breeze, and watch the castle drift past as royal fanfare plays. One of those simple, perfect family moments that photographs absolutely beautifully.",
+    "tip": "Ask a cast member to point out 'Jingles' — the special white horse honoring Disney Legend Julie Andrews.",
+    "lat": 33.8134,
+    "lng": -117.9191
+  },
+  {
+    "id": "disney_mad_tea",
+    "name": "Mad Tea Party",
+    "city": "la",
+    "image_folder": "disney_mad_tea",
+    "why_special": "The classic spinning teacup ride — pure giggly chaos where kids love making parents completely dizzy.",
+    "description": "Climb into an oversized Alice in Wonderland teacup and start spinning! Grab the wheel in the centre and turn it as hard as you can — the faster you spin, the more wildly the cup whirls. Kids universally love cranking that dial to maximum while watching the adults turn various shades of green. Short, sweet, completely hilarious, and a ride where Kuhu absolutely has the upper hand.",
+    "tip": "Spin the centre wheel as fast as possible! Parent survival tip: eat lunch *after* this ride, not before.",
+    "lat": 33.813,
+    "lng": -117.9189
+  },
+  {
+    "id": "disney_jungle_cruise",
+    "name": "Jungle Cruise",
+    "city": "la",
+    "image_folder": "disney_jungle_cruise",
+    "why_special": "A Disneyland original from 1955 — a safari boat through four continents with animatronic animals, ancient temples, and legendary dad jokes.",
+    "description": "Board a weathered jungle riverboat and drift along the Amazon, the Congo, the Nile, and the temples of Southeast Asia. You'll encounter trumpeting elephants, lurking crocodiles, hippos rising from murky water, and a group of very alarmed explorers up a pole. The absolute highlight is your wisecracking skipper's outrageously terrible puns — the worse the joke lands, the more everyone laughs. Running since 1955, this Disneyland classic never gets old.",
+    "tip": "Request a skipper known for extra-corny jokes — cast members love performing to an enthusiastic crowd.",
+    "lat": 33.8112,
+    "lng": -117.9199
+  },
+  {
+    "id": "disney_pirates",
+    "name": "Pirates of the Caribbean",
+    "city": "la",
+    "image_folder": "disney_pirates",
+    "why_special": "The legendary ride that inspired the blockbuster films — an atmospheric masterpiece through glowing caves and a pirate-ransacked town.",
+    "description": "Drift into candlelit caverns glittering with pirate treasure, then sail into a fully-realised Caribbean port under siege. Cannons boom across the water, ships exchange fire, the town blazes — and somewhere amid the chaos, Captain Jack Sparrow is being brilliantly sneaky. The detail is extraordinary, Walt Disney supervised every inch of this himself. At 15 minutes, it's one of the longest and most deeply satisfying rides in any theme park in the world.",
+    "tip": "The gentle drop at the start surprises first-timers — just a fun lurch into the caves, nothing scary at all.",
+    "lat": 33.811,
+    "lng": -117.9196
+  },
+  {
+    "id": "disney_lunch",
+    "name": "Lunch — Plaza Inn",
+    "city": "la",
+    "image_folder": "disney_lunch",
+    "why_special": "Disneyland's most iconic sit-down restaurant, serving legendary fried chicken and comfort food since 1955.",
+    "description": "Sink into a chair at Plaza Inn, Disneyland's beloved Victorian restaurant and the park's oldest eatery, for a genuinely delicious lunch. The famous fried chicken is crispy perfection, the macaroni is deeply comforting, and the setting is grand without feeling stuffy. Alternatively, Red Rose Taverne (inside the Fantasyland castle area) offers Beauty and the Beast-themed meals. Take a full 45 minutes — a proper rest now means the family finishes the day strong.",
+    "tip": "Arrive by 13:15 to beat the peak lunch crush. Plaza Inn serves their famous Mickey-shaped waffles throughout the day.",
+    "lat": 33.8122,
+    "lng": -117.919
+  },
+  {
+    "id": "disney_buzz",
+    "name": "Buzz Lightyear Astro Blasters",
+    "city": "la",
+    "image_folder": "disney_buzz",
+    "why_special": "An interactive laser-shooting space mission where kids inevitably out-score their parents and never let them forget it.",
+    "description": "Suit up, Space Ranger! Board a spinning space cruiser armed with a laser blaster and help Buzz Lightyear defeat the evil Emperor Zurg. Every glowing target you hit scores points on your personal display. Kuhu will be fiercely competitive — and adults will be genuinely surprised at how desperately they're trying to beat her. Your Space Ranger rank is revealed at the end of the mission, and the bragging rights last all day.",
+    "tip": "Target the Z-shapes for maximum points — and the small spinning triangular targets score the highest of all.",
+    "lat": 33.8153,
+    "lng": -117.9177
+  },
+  {
+    "id": "disney_ice_cream",
+    "name": "Ice Cream Break — Main Street Parlor",
+    "city": "la",
+    "image_folder": "disney_ice_cream",
+    "why_special": "The ornate Main Street Ice Cream Parlor — the perfect mid-afternoon pause before the evening magic unfolds.",
+    "description": "Take a well-earned breather at the beautiful Main Street Ice Cream Parlor and let Kuhu pick from a spectacular range of hand-scooped flavours. Enjoy a cool treat, sit in the shade, and let legs rest for half an hour. This pause is genuinely important — a short rest here means the family has the energy to fully enjoy the parade, dinner, and the fireworks finale. Disney knows what it's doing placing an ice cream parlor right at the centre of everything.",
+    "tip": "Try the Mickey Premium Bar — chocolate-dipped Mickey-shaped ice cream on a stick, the park's most iconic snack.",
+    "lat": 33.8122,
+    "lng": -117.9192
+  },
+  {
+    "id": "disney_parade",
+    "name": "Disney Magic Happens Parade",
+    "city": "la",
+    "image_folder": "disney_parade",
+    "why_special": "A breathtaking procession of floats and characters down Main Street — one of the most joyful 25 minutes in all of Disneyland.",
+    "description": "Claim a spot along Main Street and watch the full magic of Disney march past: spectacular floats carrying Mickey and Minnie, Elsa and Anna, Moana, the Toy Story crew, and countless other beloved characters, all performing and waving with genuine delight. Characters often walk alongside the floats and interact directly with children in the front rows. When Kuhu's favourite character looks straight at her and waves — that moment is priceless.",
+    "tip": "Arrive 25 minutes early for a front-row spot. The left (shaded) side is cooler; the right side faces the castle backdrop.",
+    "lat": 33.8124,
+    "lng": -117.9192
+  },
+  {
+    "id": "disney_dinner",
+    "name": "Dinner — Galactic Grill",
+    "city": "la",
+    "image_folder": "disney_dinner",
+    "why_special": "Tomorrowland's lively outdoor restaurant — futuristic burgers and cosmic shakes just minutes from the fireworks viewing spot.",
+    "description": "Recharge before the grand finale at Galactic Grill, where the menu goes full space-age: loaded astro burgers, crispy fries, and intergalactic milkshakes in Tomorrowland's open-air setting. Alternatively, Cafe Orleans in New Orleans Square serves extraordinary beignets, jambalaya, and the legendary Monte Cristo sandwich in a gorgeous gas-lit courtyard. Finish dinner by 20:30 to walk to the castle forecourt and secure a good fireworks spot.",
+    "tip": "Cafe Orleans beignets — hot fried dough dusted in clouds of powdered sugar — are a Disney must-eat. Order extra.",
+    "lat": 33.8153,
+    "lng": -117.9178
+  },
+  {
+    "id": "disney_fireworks",
+    "name": "Wondrous Journeys Fireworks",
+    "city": "la",
+    "image_folder": "disney_fireworks",
+    "why_special": "Disneyland's spectacular nightly fireworks show — 12 minutes of pure magic that is the most unforgettable moment of the entire trip.",
+    "description": "Stand before Sleeping Beauty Castle as the lights dim, the music swells, and the sky ignites with colour. Wondrous Journeys weaves music from every Disney film into a breathtaking 12-minute show, while projections transform the castle into living animated storybook pages and fireworks burst overhead in perfect choreography. The show ends with the full castle lit in gold as the whole park glows beneath the falling sparks. Kuhu's face during this will be worth every mile of the journey.",
+    "tip": "Position yourself on the bridge facing the castle. Arrive 20 minutes early. Clear nights are absolutely spectacular.",
+    "lat": 33.8126,
+    "lng": -117.9188
   }
 ]

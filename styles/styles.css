@@ -468,6 +468,7 @@ img { display: block; }
 
 /* Card accent colours by type */
 .card-flight     { border-left-color: var(--blue); }
+.card-travel     { border-left-color: #f59e0b; }
 .card-train      { border-left-color: var(--purple); }
 .card-hotel      { border-left-color: var(--green); }
 .card-visit      { border-left-color: var(--gold); }
