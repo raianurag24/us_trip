@@ -42,7 +42,7 @@ function load(path) {
 /** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
 function imgPath(type, folder, manifest) {
   const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
-  return `${BASE}images/${type}/${folder}/${file}?v=24`;
+  return `${BASE}images/${type}/${folder}/${file}?v=25`;
 }
 
 // ── CITY NAV (header — all pages) ───────────────
@@ -261,7 +261,6 @@ function buildActivityCard(act, venues, hotels, manifest) {
         bodyHtml += `<div class="ac-sub">📍 ${[hotel.location, hotel.address].filter(Boolean).join(' · ')}</div>`;
       }
       bodyHtml += `<div class="ac-sub">Check-in: ${act.time || hotel.check_in || ''} &nbsp;·&nbsp; Check-out: ${hotel.check_out || ''}</div>`;
-      if (hotel.description) bodyHtml += `<div class="ac-desc">${hotel.description}</div>`;
       const linkUrl = hotel.website_url || hotel.maps_url;
       const linkLabel = hotel.website_url ? '🌐 View hotel →' : '🗺️ View on map →';
       if (linkUrl) bodyHtml += `<a href="${linkUrl}" target="_blank" rel="noopener" class="hotel-link">${linkLabel}</a>`;
@@ -287,6 +286,11 @@ function buildActivityCard(act, venues, hotels, manifest) {
       right.appendChild(thumb);
       card.appendChild(right);
     }
+    if (hotel && hotel.description) {
+      const descEl = el('div', 'ac-desc ac-desc-row');
+      descEl.textContent = hotel.description;
+      card.appendChild(descEl);
+    }
     return card;
   }
 
@@ -300,7 +304,6 @@ function buildActivityCard(act, venues, hotels, manifest) {
     left.innerHTML = `
       <div class="ac-title">${venue.name || act.venue_id}${durTxt}</div>
       <div class="ac-sub">${act.time || ''}</div>
-      ${venue.description ? `<div class="ac-desc">${venue.description}</div>` : ''}
       ${venue.tip ? `<div class="ac-tip">💡 ${venue.tip}</div>` : ''}`;
 
     // Map link inline in body
@@ -335,6 +338,11 @@ function buildActivityCard(act, venues, hotels, manifest) {
     card.appendChild(icon);
     card.appendChild(left);
     card.appendChild(right);
+    if (venue.description) {
+      const descEl = el('div', 'ac-desc ac-desc-row');
+      descEl.textContent = venue.description;
+      card.appendChild(descEl);
+    }
     return card;
   }
 
