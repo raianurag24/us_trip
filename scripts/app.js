@@ -210,29 +210,41 @@ function buildActivityCard(act, venues, hotels) {
 
   if (act.type === 'flight') {
     card.classList.add('card-flight');
+    const times = act.arrival_time
+      ? `${act.time} → ${act.arrival_time}${act.arrival_note ? ' <span style="font-style:italic">('+act.arrival_note+')</span>' : ''}`
+      : `Departs ${act.time}`;
+    const flightInfo = [act.airline, act.flight_number ? `· ${act.flight_number}` : ''].filter(Boolean).join(' ');
+    const category = act.category === 'international' ? '🌍 International' : '✈️ Domestic';
+    const trackerHtml = act.tracker_url
+      ? `<a href="${act.tracker_url}" target="_blank" rel="noopener" class="tracker-link">📡 Track flight →</a>`
+      : '';
     card.innerHTML = `
       <div class="ac-icon">${flightIcon()}</div>
       <div class="ac-body">
         <div class="ac-title">${act.from} → ${act.to}</div>
-        <div class="ac-sub">${act.airline || ''} ${act.flight_number ? '· ' + act.flight_number : ''}</div>
-        <div class="ac-sub">${act.category === 'international' ? '🌍 International' : '✈️ Domestic'} · Departs ${act.time || ''}</div>
+        <div class="ac-sub">${flightInfo} &nbsp;·&nbsp; ${category}</div>
+        <div class="ac-sub">${times}</div>
+        ${trackerHtml}
       </div>`;
     return card;
   }
 
   if (act.type === 'train') {
     card.classList.add('card-train');
+    const times = act.arrival_time ? `${act.time} → ${act.arrival_time}` : `Departs ${act.time}`;
+    const trainInfo = [act.operator, act.train_number ? `Train ${act.train_number}` : ''].filter(Boolean).join(' · ');
     card.innerHTML = `
       <div class="ac-icon">🚆</div>
       <div class="ac-body">
         <div class="ac-title">${act.from} → ${act.to}</div>
-        <div class="ac-sub">${act.operator || ''} · Departs ${act.time || ''}</div>
+        <div class="ac-sub">${trainInfo}</div>
+        <div class="ac-sub">${times}</div>
       </div>`;
     return card;
   }
 
   if (act.type === 'hotel') {
-    const hotel = findHotel(act.hotel, hotels);
+    const hotel = findHotel(act.hotel_id, act.hotel, hotels);
     card.classList.add('card-hotel');
     let inner = `
       <div class="ac-icon">🏨</div>
@@ -240,11 +252,16 @@ function buildActivityCard(act, venues, hotels) {
         <div class="ac-title">${act.hotel}</div>`;
     if (hotel) {
       if (hotel.location || hotel.address) {
-        inner += `<div class="ac-sub">📍 ${[hotel.location, hotel.address].filter(Boolean).join(', ')}</div>`;
+        inner += `<div class="ac-sub">📍 ${[hotel.location, hotel.address].filter(Boolean).join(' · ')}</div>`;
       }
       inner += `<div class="ac-sub">Check-in: ${act.time || hotel.check_in || ''} &nbsp;·&nbsp; Check-out: ${hotel.check_out || ''}</div>`;
       if (hotel.description) {
         inner += `<div class="ac-desc">${hotel.description}</div>`;
+      }
+      const linkUrl = hotel.website_url || hotel.maps_url;
+      const linkLabel = hotel.website_url ? '🌐 View hotel →' : '🗺️ View on map →';
+      if (linkUrl) {
+        inner += `<a href="${linkUrl}" target="_blank" rel="noopener" class="hotel-link">${linkLabel}</a>`;
       }
     } else {
       inner += `<div class="ac-sub">Check-in: ${act.time || ''}</div>`;
@@ -266,6 +283,15 @@ function buildActivityCard(act, venues, hotels) {
       ${venue.description ? `<div class="ac-desc">${venue.description}</div>` : ''}
       ${venue.tip ? `<div class="ac-tip">💡 ${venue.tip}</div>` : ''}`;
 
+    // Map link inline in body
+    if (venue.lat != null && venue.lng != null) {
+      const mapBtn = el('button', 'map-link');
+      mapBtn.setAttribute('aria-label', `Map: ${venue.name}`);
+      mapBtn.innerHTML = `📍 Open on map`;
+      mapBtn.addEventListener('click', () => openMapModal(venue));
+      left.appendChild(mapBtn);
+    }
+
     const right = el('div', 'ac-right');
 
     // Venue photo thumbnail
@@ -283,13 +309,6 @@ function buildActivityCard(act, venues, hotels) {
       const durSpan = el('span', 'ac-duration');
       durSpan.textContent = fmtDuration(act.duration_min);
       right.appendChild(durSpan);
-    }
-    if (venue.lat != null && venue.lng != null) {
-      const mapBtn = el('button', 'map-btn');
-      mapBtn.setAttribute('aria-label', `Map: ${venue.name}`);
-      mapBtn.innerHTML = mapPinSvg();
-      mapBtn.addEventListener('click', () => openMapModal(venue));
-      right.appendChild(mapBtn);
     }
 
     const icon = el('div', 'ac-icon');
@@ -319,10 +338,17 @@ function resolveActivity(ref, date, activities) {
   return a || null;
 }
 
-function findHotel(name, hotels) {
-  if (!name) return null;
-  const n = name.toLowerCase();
-  return hotels.find(h => h.name && h.name.toLowerCase().includes(n)) || null;
+function findHotel(hotelId, hotelName, hotels) {
+  if (!hotels) return null;
+  // Direct ID match first
+  if (hotelId) {
+    const byId = hotels.find(h => h.id === hotelId);
+    if (byId) return byId;
+  }
+  // Name substring fallback
+  if (!hotelName) return null;
+  const n = hotelName.toLowerCase();
+  return hotels.find(h => h.name && h.name.toLowerCase().includes(n.substring(0, 12))) || null;
 }
 
 function fmtDuration(mins) {

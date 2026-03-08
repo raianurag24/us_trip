@@ -17,7 +17,6 @@
 "city":"sf",
 "title":"Arrival in San Francisco",
 "activities":[
-"arrival_sfo",
 "hotel_sfo",
 "powell_cable_car",
 "lombard_street",
@@ -151,6 +150,7 @@
 "city":"ny",
 "title":"Statue of Liberty and Brooklyn",
 "activities":[
+"battery_park",
 "statue_of_liberty",
 "ellis_island",
 "wall_street",

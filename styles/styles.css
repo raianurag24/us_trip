@@ -381,14 +381,14 @@ img { display: block; }
 .ac-desc  { font-size: 13px; color: #444; margin-top: 6px; line-height: 1.45; }
 .ac-tip   { font-size: 12px; color: var(--muted); margin-top: 6px; font-style: italic; }
 
-/* Right column: duration + map btn */
+/* Right column: duration only */
 .ac-right {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
   flex-shrink: 0;
-  min-width: 80px;
+  min-width: 136px;
 }
 .ac-duration {
   font-size: 12px;
@@ -399,8 +399,8 @@ img { display: block; }
 
 /* Venue photo thumbnail in activity card */
 .venue-thumb {
-  width: 72px;
-  height: 72px;
+  width: 130px;
+  height: 130px;
   border-radius: 8px;
   background-size: cover;
   background-position: center;
@@ -410,19 +410,36 @@ img { display: block; }
   transition: transform .15s, box-shadow .15s;
   background-color: #d0d8e4;
 }
-.venue-thumb:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,0,0,.22); }
-.map-btn {
+.venue-thumb:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,.22); }
+
+/* Map link inline in card body */
+.map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--blue);
+  text-decoration: none;
+  cursor: pointer;
   background: none;
   border: none;
-  cursor: pointer;
-  padding: 2px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 2px 0;
+  margin-top: 4px;
+  font-family: inherit;
 }
-.map-btn:hover { background: #f0f2f5; }
-.map-btn svg { display: block; }
+.map-link:hover { text-decoration: underline; }
+
+/* Flight tracker + hotel links */
+.tracker-link, .hotel-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--blue);
+  text-decoration: none;
+  margin-top: 5px;
+}
+.tracker-link:hover, .hotel-link:hover { text-decoration: underline; }
 
 /* Card accent colours by type */
 .card-flight     { border-left-color: var(--blue); }

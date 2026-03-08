@@ -7,18 +7,22 @@
 "category":"international",
 "date":"2026-05-23",
 "time":"21:55",
+"arrival_time":"09:10",
+"arrival_note":"arrives 24 May",
 "from":"DEL",
 "to":"SFO",
 "flight_number":"SQ403",
-"airline":"Singapore Airlines"
+"airline":"Singapore Airlines",
+"tracker_url":"https://www.flightaware.com/live/flight/SQ403"
 },
 
 {
 "id":"hotel_sfo",
 "type":"hotel",
+"hotel_id":"hotel_sfo_spero",
 "date":"2026-05-24",
-"time":"11:30",
-"hotel":"Hotel Spero",
+"time":"15:00",
+"hotel":"Hotel Spero, Vignette Collection — an IHG Hotel",
 "city":"sf"
 },
 
@@ -100,18 +104,21 @@
 "category":"domestic",
 "date":"2026-05-26",
 "time":"09:57",
+"arrival_time":"11:31",
 "from":"SFO",
 "to":"LAX",
 "flight_number":"AS1329",
-"airline":"Alaska Airlines"
+"airline":"Alaska Airlines",
+"tracker_url":"https://www.flightaware.com/live/flight/AS1329"
 },
 
 {
 "id":"hotel_la",
 "type":"hotel",
+"hotel_id":"hotel_la_airbnb",
 "date":"2026-05-26",
-"time":"13:30",
-"hotel":"LA Airbnb",
+"time":"15:00",
+"hotel":"Airbnb — 7111 Santa Monica Blvd, West Hollywood",
 "city":"la"
 },
 
@@ -160,16 +167,21 @@
 "type":"flight",
 "category":"domestic",
 "date":"2026-05-28",
-"time":"08:45",
+"time":"07:35",
+"arrival_time":"08:45",
 "from":"LAX",
-"to":"LAS"
+"to":"LAS",
+"flight_number":"DL2253",
+"airline":"Delta Airlines",
+"tracker_url":"https://www.flightaware.com/live/flight/DL2253"
 },
 
 {
 "id":"hotel_lv",
 "type":"hotel",
+"hotel_id":"hotel_lv_excalibur",
 "date":"2026-05-28",
-"time":"10:00",
+"time":"15:00",
 "hotel":"Excalibur Hotel & Casino",
 "city":"lv"
 },
@@ -235,17 +247,23 @@
 "type":"flight",
 "category":"domestic",
 "date":"2026-05-30",
-"time":"07:00",
+"time":"06:00",
+"arrival_time":"15:12",
+"arrival_note":"via connection",
 "from":"LAS",
-"to":"BUF"
+"to":"BUF",
+"flight_number":"DL0864",
+"airline":"Delta Airlines",
+"tracker_url":"https://www.flightaware.com/live/flight/DL864"
 },
 
 {
 "id":"hotel_nf",
 "type":"hotel",
+"hotel_id":"hotel_nf",
 "date":"2026-05-30",
-"time":"11:00",
-"hotel":"Niagara Falls Hotel",
+"time":"16:00",
+"hotel":"Airbnb At Niagara",
 "city":"nf"
 },
 
@@ -274,21 +292,26 @@
 },
 
 {
-"id":"amtrak_nf_dc",
-"type":"train",
-"date":"2026-05-31",
-"time":"08:30",
-"from":"Niagara Falls",
-"to":"Washington DC",
-"operator":"Amtrak"
+"id":"flight_buf_dc",
+"type":"flight",
+"category":"domestic",
+"date":"2026-06-01",
+"time":"09:25",
+"arrival_time":"10:35",
+"from":"BUF",
+"to":"DCA",
+"flight_number":"WN0920",
+"airline":"Southwest Airlines",
+"tracker_url":"https://www.flightaware.com/live/flight/SWA920"
 },
 
 {
 "id":"hotel_dc",
 "type":"hotel",
-"date":"2026-05-31",
-"time":"14:00",
-"hotel":"Washington DC Hotel",
+"hotel_id":"hotel_dc",
+"date":"2026-06-01",
+"time":"16:00",
+"hotel":"Residence Inn by Marriott Washington Downtown/Convention Center",
 "city":"dc"
 },
 
@@ -325,21 +348,24 @@
 },
 
 {
-"id":"flight_dc_nyc",
-"type":"flight",
-"category":"domestic",
+"id":"amtrak_dc_nyc",
+"type":"train",
 "date":"2026-06-02",
-"time":"10:00",
-"from":"Washington DC",
-"to":"New York"
+"time":"10:30",
+"arrival_time":"13:20",
+"from":"Washington D.C.",
+"to":"New York",
+"operator":"Amtrak",
+"train_number":"2108"
 },
 
 {
 "id":"hotel_ny_queens",
 "type":"hotel",
+"hotel_id":"hotel_ny_queens",
 "date":"2026-06-02",
-"time":"14:15",
-"hotel":"Residence Inn Queens",
+"time":"15:00",
+"hotel":"Residence Inn By Marriott New York Queens",
 "city":"ny"
 },
 
@@ -384,11 +410,60 @@
 },
 
 {
+"type":"visit",
+"date":"2026-06-03",
+"time":"09:00",
+"venue_id":"battery_park",
+"duration_min":20
+},
+
+{
+"type":"experience",
+"date":"2026-06-03",
+"time":"09:30",
+"venue_id":"statue_of_liberty",
+"duration_min":120
+},
+
+{
+"type":"visit",
+"date":"2026-06-03",
+"time":"12:00",
+"venue_id":"ellis_island",
+"duration_min":90
+},
+
+{
+"type":"visit",
+"date":"2026-06-03",
+"time":"14:30",
+"venue_id":"wall_street",
+"duration_min":30
+},
+
+{
+"type":"visit",
+"date":"2026-06-03",
+"time":"15:30",
+"venue_id":"brooklyn_bridge",
+"duration_min":45
+},
+
+{
+"type":"visit",
+"date":"2026-06-03",
+"time":"16:45",
+"venue_id":"dumbo",
+"duration_min":45
+},
+
+{
 "id":"hotel_ny_times_square",
 "type":"hotel",
+"hotel_id":"hotel_ny_times_square",
 "date":"2026-06-04",
-"time":"09:30",
-"hotel":"Motto by Hilton Times Square",
+"time":"15:00",
+"hotel":"Motto by Hilton New York City Times Square",
 "city":"ny"
 },
 
@@ -465,15 +540,18 @@
 },
 
 {
-"id":"flight_nyc_del",
+"id":"flight_jfk_del",
 "type":"flight",
 "category":"international",
 "date":"2026-06-05",
 "time":"21:50",
+"arrival_time":"01:30",
+"arrival_note":"arrives 7 Jun",
 "from":"JFK",
 "to":"DEL",
 "flight_number":"LH405",
-"airline":"Lufthansa"
+"airline":"Lufthansa",
+"tracker_url":"https://www.flightaware.com/live/flight/LH405"
 }
 
  ]
