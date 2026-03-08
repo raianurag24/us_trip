@@ -35,7 +35,7 @@ async function boot() {
 }
 
 function load(path) {
-  return fetch(BASE + path).then(r => { if (!r.ok) throw new Error(r.url); return r.json(); });
+  return fetch(BASE + path, { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error(r.url); return r.json(); });
 }
 
 // ── CITY NAV (header — all pages) ───────────────
