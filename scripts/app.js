@@ -42,7 +42,7 @@ function load(path) {
 /** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
 function imgPath(type, folder, manifest) {
   const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
-  return `${BASE}images/${type}/${folder}/${file}?v=29`;
+  return `${BASE}images/${type}/${folder}/${file}?v=30`;
 }
 
 // ── CITY NAV (header — all pages) ───────────────

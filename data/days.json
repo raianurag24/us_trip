@@ -33,6 +33,9 @@
       "city": "sf",
       "title": "Yosemite National Park Day Trip",
       "activities": [
+        "walk_hilton_bus_2026_05_25",
+        "note_bus_pickup_2026_05_25",
+        "bus_sf_yosemite_2026_05_25",
         "tunnel_view",
         "yosemite_valley",
         "yosemite_falls",

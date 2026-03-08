@@ -780,6 +780,35 @@
       "to": "Battery Spencer",
       "duration_min": 30,
       "note": "Uber XL up to the Marin Headlands for the Golden Gate sunset view. ~$35-50."
+    },
+    {
+      "id": "walk_hilton_bus_2026_05_25",
+      "type": "travel",
+      "mode": "walk",
+      "date": "2026-05-25",
+      "time": "06:20",
+      "from": "Hilton San Francisco Union Square — 333 O'Farrell St, San Francisco, CA 94102",
+      "to": "Coach pickup point (Hilton area)",
+      "note": "Short walk from the hotel to the coach pickup point."
+    },
+    {
+      "id": "note_bus_pickup_2026_05_25",
+      "type": "note",
+      "date": "2026-05-25",
+      "time": "06:30",
+      "title": "Bus Pickup · 6:50 AM (report by 6:30 AM)",
+      "icon": "🚌",
+      "body": "Hilton San Francisco Union Square — 333 O'Farrell St, San Francisco, CA 94102.<br><b>Pickup at 6:50 AM</b> — please be at the pickup point by <b>6:30 AM</b>. Keep an eye on your phone for any last-minute changes."
+    },
+    {
+      "id": "bus_sf_yosemite_2026_05_25",
+      "type": "travel",
+      "mode": "bus",
+      "date": "2026-05-25",
+      "time": "06:50",
+      "from": "Coach pickup (Hilton area)",
+      "to": "Yosemite National Park (coach)",
+      "note": "Coach-operated day trip. Follow guide instructions. Keep phone handy for updates."
     }
   ]
 }
