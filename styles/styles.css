@@ -388,7 +388,7 @@ img { display: block; }
   align-items: center;
   gap: 6px;
   flex-shrink: 0;
-  min-width: 200px;
+  min-width: 300px;
 }
 .ac-duration { display: none; } /* now inline in title */
 .ac-dur-inline {
@@ -400,8 +400,8 @@ img { display: block; }
 
 /* Venue photo thumbnail in activity card */
 .venue-thumb {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   border-radius: 10px;
   background-size: cover;
   background-position: center;
