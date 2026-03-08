@@ -42,7 +42,7 @@ function load(path) {
 /** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
 function imgPath(type, folder, manifest) {
   const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
-  return `${BASE}images/${type}/${folder}/${file}?v=38`;
+  return `${BASE}images/${type}/${folder}/${file}?v=39`;
 }
 
 // ── CITY NAV (header — all pages) ───────────────
@@ -154,8 +154,16 @@ function renderDay({ cities, days, activities, venues, hotels, manifest }) {
   // Determine flights relevant to this day. We use the day's explicit
   // `activities` ordering to decide whether a flight should appear at
   // the top (incoming/arrival) or the bottom (outgoing/departure).
+  // Select flights relevant to this day. Prefer strict date match; only
+  // include previous-day flights that explicitly arrive into this
+  // day's city airport (e.g., a DEL->SIN flight arriving into SIN should
+  // not be shown on the SFO day). This prevents showing DEL→SIN on 24 May.
   const flightsOnDate = activities.filter(a => a.type === 'flight' && (
-    a.date === day.date || (a.arrival_note && a.arrival_note.includes(formatShortDate(day.date)))
+    a.date === day.date || (
+      a.arrival_note && a.arrival_note.includes(formatShortDate(day.date)) &&
+      // only include arrival-note matches when they arrive into SFO for SF day
+      (day.city === 'sf' && a.to === 'SFO')
+    )
   ));
 
   // Preserve any flight references that appear in `day.activities` in order
