@@ -384,6 +384,15 @@ function formatLongDate(str) {
 
 function buildDayNav(prevDay, nextDay) {
   const nav = el('div', 'day-nav');
+
+  // Full Itinerary button — centred above prev/next
+  const homeBtn = el('a', 'day-nav-home');
+  homeBtn.href = HOME_URL;
+  homeBtn.textContent = '⊞ Full Itinerary';
+  nav.appendChild(homeBtn);
+
+  // Prev / Next row
+  const row = el('div', 'day-nav-row');
   const prevLink = el('a', 'day-nav-btn day-nav-prev');
   const nextLink = el('a', 'day-nav-btn day-nav-next');
   if (prevDay) {
@@ -400,8 +409,9 @@ function buildDayNav(prevDay, nextDay) {
     nextLink.classList.add('disabled');
     nextLink.innerHTML = `<span>Last day</span> ›`;
   }
-  nav.appendChild(prevLink);
-  nav.appendChild(nextLink);
+  row.appendChild(prevLink);
+  row.appendChild(nextLink);
+  nav.appendChild(row);
   return nav;
 }
 
