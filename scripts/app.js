@@ -179,10 +179,13 @@ function renderDay({ cities, days, activities, venues, hotels, manifest }) {
   const bottomFlights = [];
   flightsOnDate.forEach(f => {
     const pos = orderedFlightIds.indexOf(f.id);
-    if (pos === 0) {
-      topFlights.push(f);
-    } else if (pos === orderedFlightIds.length - 1 && orderedFlightIds.length > 0) {
+    // Prefer placing flights that appear at the end of `day.activities`
+    // into `bottomFlights`. This ensures single-flight days (pos===0
+    // and pos===last) are treated as departures at the page bottom.
+    if (pos === orderedFlightIds.length - 1 && orderedFlightIds.length > 0) {
       bottomFlights.push(f);
+    } else if (pos === 0) {
+      topFlights.push(f);
     } else if (pos > 0 && pos < orderedFlightIds.length - 1) {
       // If a flight is referenced in the middle of the day's list, treat
       // it as part of the main flow (render at top near other arrival info).
