@@ -159,46 +159,74 @@
       "city": "lv"
     },
     {
-      "type": "visit",
+      "type": "experience",
       "date": "2026-05-28",
       "time": "11:00",
-      "venue_id": "las_vegas_strip",
-      "duration_min": 90
+      "venue_id": "excalibur_theater",
+      "duration_min": 20
     },
     {
       "type": "visit",
       "date": "2026-05-28",
-      "time": "14:30",
-      "venue_id": "bellagio_fountains",
-      "duration_min": 30
+      "time": "11:45",
+      "venue_id": "nyny_las_vegas",
+      "duration_min": 35
+    },
+    {
+      "type": "experience",
+      "date": "2026-05-28",
+      "time": "13:30",
+      "venue_id": "hoho_bus_lv",
+      "duration_min": 120
     },
     {
       "type": "experience",
       "date": "2026-05-28",
       "time": "18:00",
       "venue_id": "high_roller",
-      "duration_min": 45
+      "duration_min": 30
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-28",
+      "time": "19:30",
+      "venue_id": "bellagio_fountains",
+      "duration_min": 30
     },
     {
       "type": "experience",
       "date": "2026-05-28",
-      "time": "21:00",
+      "time": "21:30",
       "venue_id": "vegas_strip_helicopter",
       "duration_min": 20
     },
     {
       "type": "visit",
       "date": "2026-05-29",
-      "time": "11:00",
-      "venue_id": "flylinq_zipline",
-      "duration_min": 30
+      "time": "10:30",
+      "venue_id": "hollywood_cars_museum",
+      "duration_min": 40
     },
     {
       "type": "visit",
       "date": "2026-05-29",
-      "time": "18:30",
-      "venue_id": "sphere_las_vegas",
-      "duration_min": 30
+      "time": "11:30",
+      "venue_id": "real_bodies",
+      "duration_min": 45
+    },
+    {
+      "type": "visit",
+      "date": "2026-05-29",
+      "time": "12:30",
+      "venue_id": "venetian_las_vegas",
+      "duration_min": 90
+    },
+    {
+      "type": "experience",
+      "date": "2026-05-29",
+      "time": "14:00",
+      "venue_id": "illuminarium_lv",
+      "duration_min": 60
     },
     {
       "type": "visit",

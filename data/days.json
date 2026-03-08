@@ -76,23 +76,28 @@
       "id": "day6",
       "date": "2026-05-28",
       "city": "lv",
-      "title": "Arrival in Las Vegas",
+      "title": "The Magic of the Strip",
       "activities": [
         "flight_lax_las",
         "hotel_lv",
-        "las_vegas_strip",
+        "excalibur_theater",
+        "nyny_las_vegas",
+        "hoho_bus_lv",
+        "high_roller",
         "bellagio_fountains",
-        "high_roller"
+        "vegas_strip_helicopter"
       ]
     },
     {
       "id": "day7",
       "date": "2026-05-29",
       "city": "lv",
-      "title": "Vegas Experiences",
+      "title": "Museums, Venice & Old Vegas",
       "activities": [
-        "vegas_strip_helicopter",
-        "sphere_las_vegas",
+        "hollywood_cars_museum",
+        "real_bodies",
+        "venetian_las_vegas",
+        "illuminarium_lv",
         "fremont_street"
       ]
     },

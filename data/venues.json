@@ -702,5 +702,82 @@
     "tip": "Position yourself on the bridge facing the castle. Arrive 20 minutes early. Clear nights are absolutely spectacular.",
     "lat": 33.8126,
     "lng": -117.9188
+  },
+  {
+    "id": "excalibur_theater",
+    "name": "Excalibur 4D Theater",
+    "city": "lv",
+    "image_folder": "excalibur_theater",
+    "why_special": "Seats move, wind blows and water sprays — the perfect family warm-up while waiting for hotel check-in.",
+    "description": "Inside the Excalibur castle, this 4D theater puts you right inside the movie — seats tilt and rumble, jets of cool air blast past, and a fine water mist catches you off guard in the dark! A 20-minute wild ride that's perfect for the kids while the grown-ups wait for rooms to be ready.",
+    "tip": "Located inside Excalibur Hotel — no need to go outside. Covered by the Go City Pass.",
+    "lat": 36.0989,
+    "lng": -115.1746
+  },
+  {
+    "id": "nyny_las_vegas",
+    "name": "New York-New York Hotel & Casino",
+    "city": "lv",
+    "image_folder": "nyny_las_vegas",
+    "why_special": "A full Manhattan skyline in miniature — Brooklyn Bridge entrance, indoor Greenwich Village streets and the Statue of Liberty outside.",
+    "description": "Cross the pedestrian bridge from Excalibur and step straight into a Vegas-sized replica of New York City. The hotel's facade bristles with miniature skyscrapers including the Empire State Building and Chrysler Building, a working roller coaster loops the outside, and inside you'll find re-created Manhattan neighborhoods complete with yellow taxis and brownstone facades. The Statue of Liberty out front is a genuine photo moment.",
+    "tip": "Great photo spot: stand across the street to get the whole Manhattan skyline and Statue of Liberty in one frame.",
+    "lat": 36.1021,
+    "lng": -115.1737
+  },
+  {
+    "id": "hoho_bus_lv",
+    "name": "Big Bus Las Vegas Hop-On Hop-Off",
+    "city": "lv",
+    "image_folder": "hoho_bus_lv",
+    "why_special": "The most effortless way to see the entire Strip — sit on the top deck and let the city come to you.",
+    "description": "Climb to the open top deck of the Big Bus and glide the length of the Las Vegas Strip in pure style. The route hits every major landmark — Bellagio fountains, the Venetian canals, Caesars Palace, the Welcome to Las Vegas sign — and you can hop off at any stop to explore, then jump back on the next bus. A full loop takes about two hours. Included in the Go City Pass.",
+    "tip": "Sit on the top deck, front row. Best experienced from around 1:30–4 PM before the heat peaks — or evening for the lights.",
+    "lat": 36.1147,
+    "lng": -115.1728
+  },
+  {
+    "id": "hollywood_cars_museum",
+    "name": "Hollywood Cars Museum",
+    "city": "lv",
+    "image_folder": "hollywood_cars_museum",
+    "why_special": "The Batmobile, the DeLorean, KITT from Knight Rider — iconic movie vehicles up close in Las Vegas.",
+    "description": "A treasure trove of legendary movie and TV vehicles displayed in a fun, well-lit museum on the Strip. The Batmobile from the 1989 Batman film, the DeLorean time machine from Back to the Future, KITT from Knight Rider, the Ghostbusters Ecto-1, and dozens more. Every car has a story and a film scene to match. The kids will love it and so will the grown-ups.",
+    "tip": "Covered by the Go City Pass. Allow 40 minutes. Great air-conditioned midday stop during peak heat.",
+    "lat": 36.1156,
+    "lng": -115.1721
+  },
+  {
+    "id": "real_bodies",
+    "name": "Real Bodies Exhibition",
+    "city": "lv",
+    "image_folder": "real_bodies",
+    "why_special": "Actual preserved human anatomy on display — fascinating and educational for the whole family.",
+    "description": "Launched in partnership with medical institutions, Real Bodies displays over 20 real human specimens preserved through plastination, showing muscles, bones and organs in extraordinary detail. The exhibits take you through every system of the human body — the skeleton, nervous system, circulatory system and more — presented in a thoughtful, accessible way. Educational and genuinely mesmerising.",
+    "tip": "Suitable for all ages. Covered by the Go City Pass. Located at Bally's — easy to reach from the HOHO bus.",
+    "lat": 36.1131,
+    "lng": -115.1711
+  },
+  {
+    "id": "venetian_las_vegas",
+    "name": "The Venetian Las Vegas",
+    "city": "lv",
+    "image_folder": "venetian_las_vegas",
+    "why_special": "Venice recreated in the Nevada desert — canals, gondolas, St Mark's Square and Renaissance frescoes all under one roof.",
+    "description": "The most extravagant hotel on the Strip brings Venice to Las Vegas in extraordinary detail. Real canals wind through the building under a painted sky ceiling, gondoliers in striped shirts sing as they pole past Rialto Bridge replicas, and the Grand Canal Shoppes replicates St Mark's Square complete with street performers and artists. Even without the gondola ride, just walking through is one of the most surreal experiences on the Strip.",
+    "tip": "The gondola ride costs ~$39/person but is worth it for the experience. Walk through the Grand Canal Shoppes even if you skip the ride — it's extraordinary and free.",
+    "lat": 36.1212,
+    "lng": -115.1696
+  },
+  {
+    "id": "illuminarium_lv",
+    "name": "Illuminarium Las Vegas",
+    "city": "lv",
+    "image_folder": "illuminarium_lv",
+    "why_special": "A room where floors, walls and ceilings become an entire world — African safari, outer space, or ocean depths all around you.",
+    "description": "Step inside a vast room where every surface — floor, walls, four-story ceiling — becomes a seamless digital immersive environment. You might find yourself standing in the middle of an African savanna at sunset as lions pad past, then transported to deep space watching galaxies swirl overhead, then plunged into a bioluminescent ocean. The technology is genuinely breathtaking and the kids will run from corner to corner trying to touch the animals.",
+    "tip": "Covered by the Go City Pass. Allow 60 minutes. The African Safari and Space experiences are the most popular.",
+    "lat": 36.1083,
+    "lng": -115.1725
   }
 ]
