@@ -42,7 +42,7 @@ function load(path) {
 /** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
 function imgPath(type, folder, manifest) {
   const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
-  return `${BASE}images/${type}/${folder}/${file}?v=27`;
+  return `${BASE}images/${type}/${folder}/${file}?v=28`;
 }
 
 // ── CITY NAV (header — all pages) ───────────────
@@ -365,6 +365,17 @@ function buildActivityCard(act, venues, hotels, manifest) {
     return card;
   }
 
+  if (act.type === 'note') {
+    card.classList.add('card-note');
+    card.innerHTML = `
+      <div class="ac-icon">${act.icon || 'ℹ️'}</div>
+      <div class="ac-body">
+        <div class="ac-title">${act.title || ''}</div>
+        ${act.body ? `<div class="ac-desc">${act.body}</div>` : ''}
+      </div>`;
+    return card;
+  }
+
   // Fallback
   card.innerHTML = `<div class="ac-body"><div class="ac-title">${act.id || act.type || JSON.stringify(act)}</div></div>`;
   return card;
@@ -467,6 +478,7 @@ function buildFilterButtons(types, filtersEl, activitiesEl) {
     hotel:       { icon: '🏨',  label: 'Hotels' },
     sightseeing: { icon: '🗺️', label: 'Sightseeing' },
     travel:      { icon: '🚗',  label: 'Transport' },
+    note:        { icon: '🛌',  label: 'Notes' },
   };
 
   const allBtn = el('button', 'filter-btn active');

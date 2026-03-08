@@ -15,7 +15,9 @@
       "city": "sf",
       "title": "Arrival in San Francisco",
       "activities": [
+        "uber_sfo_hotel",
         "hotel_sfo",
+        "rest_sfo",
         "powell_cable_car",
         "lombard_street",
         "pier_39",

@@ -727,6 +727,26 @@
       "to": "West Hollywood Airbnb",
       "duration_min": 20,
       "note": "Uber XL back to Airbnb — dinner at home."
+    },
+    {
+      "id": "uber_sfo_hotel",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-05-24",
+      "time": "09:35",
+      "from": "SFO",
+      "to": "Hotel Spero",
+      "duration_min": 28,
+      "note": "Uber XL for the family. ~25–30 min. Estimated cost $45–60."
+    },
+    {
+      "id": "rest_sfo",
+      "type": "note",
+      "date": "2026-05-24",
+      "time": "11:30",
+      "title": "Rest Window · 11:30 AM – 2:00 PM",
+      "body": "<b>Early check-in</b> is arranged — drop luggage and freshen up immediately on arrival. A short rest here makes a big difference for <b>jet lag & sleep</b> on your first night. 13+ hour overnight flight means everyone will need it, especially the kids.",
+      "icon": "🛌"
     }
   ]
 }
