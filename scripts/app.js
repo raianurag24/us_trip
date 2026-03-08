@@ -42,7 +42,7 @@ function load(path) {
 /** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
 function imgPath(type, folder, manifest) {
   const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
-  return `${BASE}images/${type}/${folder}/${file}?v=37`;
+  return `${BASE}images/${type}/${folder}/${file}?v=38`;
 }
 
 // ── CITY NAV (header — all pages) ───────────────
@@ -151,74 +151,100 @@ function renderDay({ cities, days, activities, venues, hotels, manifest }) {
   const container = document.getElementById('activities');
   container.appendChild(buildDayNav(prevDay, nextDay));
 
-  // Show an arrival / flight widget at the top of the day if a flight
-  // is scheduled to arrive on this date (use arrival_note or destination).
-  const incomingFlight = activities.find(a => a.type === 'flight' && (
-    (a.arrival_note && a.arrival_note.includes(formatShortDate(day.date))) ||
-    (a.to === 'SFO' && new Date(a.date + 'T00:00:00') < new Date(day.date + 'T00:00:00'))
+  // Determine flights relevant to this day. We use the day's explicit
+  // `activities` ordering to decide whether a flight should appear at
+  // the top (incoming/arrival) or the bottom (outgoing/departure).
+  const flightsOnDate = activities.filter(a => a.type === 'flight' && (
+    a.date === day.date || (a.arrival_note && a.arrival_note.includes(formatShortDate(day.date)))
   ));
-  if (incomingFlight) {
+
+  // Preserve any flight references that appear in `day.activities` in order
+  // so we can infer placement (start vs end of the list).
+  const orderedFlightIds = day.activities
+    .map(ref => {
+      const ra = resolveActivity(ref, day.date, activities);
+      return ra && ra.type === 'flight' && ra.id ? ra.id : null;
+    })
+    .filter(Boolean);
+
+  const topFlights = [];
+  const bottomFlights = [];
+  flightsOnDate.forEach(f => {
+    const pos = orderedFlightIds.indexOf(f.id);
+    if (pos === 0) {
+      topFlights.push(f);
+    } else if (pos === orderedFlightIds.length - 1 && orderedFlightIds.length > 0) {
+      bottomFlights.push(f);
+    } else if (pos > 0 && pos < orderedFlightIds.length - 1) {
+      // If a flight is referenced in the middle of the day's list, treat
+      // it as part of the main flow (render at top near other arrival info).
+      topFlights.push(f);
+    } else {
+      // Fallback: if the flight has an explicit arrival note for this day,
+      // show it at the top, otherwise add to top by default.
+      if (f.arrival_note && f.arrival_note.includes(formatShortDate(day.date))) topFlights.push(f);
+      else topFlights.push(f);
+    }
+  });
+
+  // For exclusion from the activity list below we use the combined set.
+  const dayFlights = topFlights.concat(bottomFlights);
+
+  // Render top-of-day flight widgets (incoming flights)
+  if (topFlights.length > 0) {
     const topWidget = el('div');
-    topWidget.innerHTML = `
-      <!-- Leg 1: DEL → SIN (SQ403) -->
-      <div class="flight-card">
-        <div class="flight-title">✈ Singapore Airlines SQ403</div>
-        <div class="flight-subtitle">Delhi → Singapore</div>
-        <div class="route-map">
-          <div class="airport">
-            <div class="code">DEL</div>
-            <div class="time">21:55</div>
+    const parts = topFlights.map(f => {
+      const title = `✈ ${f.airline || ''} ${f.flight_number || ''}`.trim();
+      const subtitle = `${f.from || ''} → ${f.to || ''}`;
+      const depCode = f.from || '';
+      const depTime = f.time || '';
+      const arrCode = f.to || '';
+      const arrTime = f.arrival_time || '';
+      const tracker = f.tracker_url || (f.flight_number ? `https://flightaware.com/live/flight/${f.flight_number}` : '#');
+      return `
+        <div class="flight-card">
+          <div class="flight-title">${title}</div>
+          <div class="flight-subtitle">${subtitle}</div>
+          <div class="route-map">
+            <div class="airport">
+              <div class="code">${depCode}</div>
+              <div class="time">${depTime}</div>
+            </div>
+            <div class="route-line"><div class="plane">✈</div></div>
+            <div class="airport">
+              <div class="code">${arrCode}</div>
+              <div class="time">${arrTime}</div>
+            </div>
           </div>
-          <div class="route-line"><div class="plane">✈</div></div>
-          <div class="airport">
-            <div class="code">SIN</div>
-            <div class="time">06:15</div>
+          <div class="flight-meta">Aircraft: ${f.aircraft || ''}<br>Airline: ${f.airline || ''}</div>
+          <div class="flight-buttons">
+            <a href="${tracker}" target="_blank" rel="noopener">Live Flight Tracker</a>
+            <a href="https://www.google.com/search?q=${encodeURIComponent((f.flight_number || '') + ' flight')}" target="_blank" rel="noopener">Google Flight Info</a>
           </div>
-        </div>
-        <div class="flight-meta">Aircraft: Airbus A350-900<br>Airline: Singapore Airlines</div>
-        <div class="flight-buttons">
-          <a href="https://flightaware.com/live/flight/SQ403" target="_blank" rel="noopener">Live Flight Tracker</a>
-          <a href="https://www.google.com/search?q=SQ403+flight" target="_blank" rel="noopener">Google Flight Info</a>
-        </div>
-      </div>
-
-      <!-- Leg 2: SIN → SFO (SQ32) -->
-      <div class="flight-card">
-        <div class="flight-title">✈ Singapore Airlines SQ32</div>
-        <div class="flight-subtitle">Singapore → San Francisco</div>
-        <div class="route-map">
-          <div class="airport">
-            <div class="code">SIN</div>
-            <div class="time">20:45</div>
-          </div>
-          <div class="route-line"><div class="plane">✈</div></div>
-          <div class="airport">
-            <div class="code">SFO</div>
-            <div class="time">08:50</div>
-          </div>
-        </div>
-        <div class="flight-meta">Aircraft: Airbus A350-900<br>Airline: Singapore Airlines</div>
-        <div class="flight-buttons">
-          <a href="https://flightaware.com/live/flight/SQ32" target="_blank" rel="noopener">Live Flight Tracker</a>
-          <a href="https://www.google.com/search?q=SQ32+flight" target="_blank" rel="noopener">Google Flight Info</a>
-        </div>
-      </div>
-
-      <!-- Trackers (stacked; may be blocked by X-Frame-Options on some sites) -->
-      <div class="flight-tracker">
-        <iframe src="https://flightaware.com/live/flight/SQ403" width="100%" height="220" frameborder="0"></iframe>
-      </div>
-      <div class="flight-tracker">
-        <iframe src="https://flightaware.com/live/flight/SQ32" width="100%" height="220" frameborder="0"></iframe>
-      </div>
-    `;
+        </div>`;
+    });
+    const trackerLinks = topFlights.map(f => {
+      const t = f.tracker_url || (f.flight_number ? `https://flightaware.com/live/flight/${f.flight_number}` : '#');
+      return `<a href="${t}" target="_blank" rel="noopener">Open ${f.flight_number || f.airline} Tracker</a>`;
+    }).join(' ');
+    topWidget.innerHTML = parts.join('\n') + `<div class="flight-tracker" style="max-width:640px;margin:20px auto;padding:16px;text-align:center;">${trackerLinks}</div>`;
     container.appendChild(topWidget);
   }
 
-  // Resolve all activities (filter nulls)
+  // Resolve all activities (filter nulls). Exclude any `flight` activities
+  // that we already rendered as top-of-day widgets (so they don't show
+  // twice on the same day page).
   const resolved = day.activities
     .map(ref => resolveActivity(ref, day.date, activities))
-    .filter(Boolean);
+    .filter(Boolean)
+    .filter(a => {
+      if (a.type !== 'flight') return true;
+      // `dayFlights` is computed above and contains flights for this day.
+      if (Array.isArray(dayFlights) && dayFlights.length) {
+        return !dayFlights.some(df => df.id && a.id && df.id === a.id);
+      }
+      return true;
+    });
 
   // Filter buttons
   const filtersDiv = document.getElementById('activityFilters');
@@ -240,6 +266,49 @@ function renderDay({ cities, days, activities, venues, hotels, manifest }) {
       container.appendChild(buildCommuteStrip(act, next, day.city));
     }
   });
+
+  // Render any departing flights that were intentionally placed at the
+  // end of the day's activity list (e.g., return flights). These are
+  // rendered after activities so they appear at the bottom of the page.
+  if (typeof bottomFlights !== 'undefined' && bottomFlights.length > 0) {
+    const bottomWidget = el('div');
+    const parts = bottomFlights.map(f => {
+      const title = `✈ ${f.airline || ''} ${f.flight_number || ''}`.trim();
+      const subtitle = `${f.from || ''} → ${f.to || ''}`;
+      const depCode = f.from || '';
+      const depTime = f.time || '';
+      const arrCode = f.to || '';
+      const arrTime = f.arrival_time || '';
+      const tracker = f.tracker_url || (f.flight_number ? `https://flightaware.com/live/flight/${f.flight_number}` : '#');
+      return `
+        <div class="flight-card">
+          <div class="flight-title">${title}</div>
+          <div class="flight-subtitle">${subtitle}</div>
+          <div class="route-map">
+            <div class="airport">
+              <div class="code">${depCode}</div>
+              <div class="time">${depTime}</div>
+            </div>
+            <div class="route-line"><div class="plane">✈</div></div>
+            <div class="airport">
+              <div class="code">${arrCode}</div>
+              <div class="time">${arrTime}</div>
+            </div>
+          </div>
+          <div class="flight-meta">Aircraft: ${f.aircraft || ''}<br>Airline: ${f.airline || ''}</div>
+          <div class="flight-buttons">
+            <a href="${tracker}" target="_blank" rel="noopener">Live Flight Tracker</a>
+            <a href="https://www.google.com/search?q=${encodeURIComponent((f.flight_number || '') + ' flight')}" target="_blank" rel="noopener">Google Flight Info</a>
+          </div>
+        </div>`;
+    });
+    const trackerLinks = bottomFlights.map(f => {
+      const t = f.tracker_url || (f.flight_number ? `https://flightaware.com/live/flight/${f.flight_number}` : '#');
+      return `<a href="${t}" target="_blank" rel="noopener">Open ${f.flight_number || f.airline} Tracker</a>`;
+    }).join(' ');
+    bottomWidget.innerHTML = parts.join('\n') + `<div class="flight-tracker" style="max-width:640px;margin:20px auto;padding:16px;text-align:center;">${trackerLinks}</div>`;
+    container.appendChild(bottomWidget);
+  }
 
   // Day navigation (bottom)
   container.appendChild(buildDayNav(prevDay, nextDay));
@@ -284,56 +353,6 @@ function buildActivityCard(act, venues, hotels, manifest) {
   card.dataset.type = filterType(act);
 
   if (act.type === 'flight') {
-    // If this is the Delhi -> SFO routing (multi-leg via Singapore), render
-    // the Apple-style multi-leg flight widget with dedicated links.
-    const isDelToSfo = (act.id && act.id === 'flight_del_sfo') || (act.from === 'DEL' && act.to === 'SFO') || act.flight_number === 'SQ403';
-    if (isDelToSfo) {
-      card.classList.add('card-flight');
-      // Times shown as per plan: DEL 21:55 → SIN 06:15, SIN 20:45 → SFO 08:50
-      card.innerHTML = `
-        <div class="flight-card">
-          <div class="flight-header">✈ ${act.airline || 'Singapore Airlines'} SQ32</div>
-
-          <div class="flight-route">
-            <div class="airport">
-              <div class="code">DEL</div>
-              <div class="time">21:55</div>
-            </div>
-
-            <div class="flight-line">─────────✈─────────</div>
-
-            <div class="airport">
-              <div class="code">SIN</div>
-              <div class="time">06:15</div>
-            </div>
-          </div>
-
-          <div class="flight-route">
-            <div class="airport">
-              <div class="code">SIN</div>
-              <div class="time">20:45</div>
-            </div>
-
-            <div class="flight-line">─────────✈─────────</div>
-
-            <div class="airport">
-              <div class="code">SFO</div>
-              <div class="time">08:50</div>
-            </div>
-          </div>
-
-          <div class="aircraft">Aircraft: Airbus A350-900</div>
-
-          <div class="flight-actions">
-            <a href="https://flightaware.com/live/flight/SQ32" target="_blank" rel="noopener">Live Flight Tracker</a>
-            <a href="https://www.google.com/search?q=SQ32+flight" target="_blank" rel="noopener">Google Details (SQ32)</a>
-            <a href="https://www.google.com/search?q=SQ403+flight" target="_blank" rel="noopener">Google Details (SQ403)</a>
-          </div>
-        </div>`;
-      return card;
-    }
-
-    // Fallback to the standard single-leg flight card
     card.classList.add('card-flight');
     const times = act.arrival_time
       ? `${act.time} → ${act.arrival_time}${act.arrival_note ? ' <span style="font-style:italic">('+act.arrival_note+')</span>' : ''}`

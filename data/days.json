@@ -6,7 +6,7 @@
       "city": "travel",
       "title": "Departure from Delhi",
       "activities": [
-        "flight_del_sfo"
+        "flight_del_sin"
       ]
     },
     {
@@ -15,6 +15,7 @@
       "city": "sf",
       "title": "Arrival in San Francisco",
       "activities": [
+        "flight_sin_sfo",
         "uber_sfo_hotel",
         "hotel_sfo",
         "rest_sfo",

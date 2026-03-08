@@ -1,18 +1,32 @@
 {
   "activities": [
     {
-      "id": "flight_del_sfo",
+      "id": "flight_del_sin",
       "type": "flight",
       "category": "international",
       "date": "2026-05-23",
       "time": "21:55",
-      "arrival_time": "09:10",
+      "arrival_time": "06:15",
       "arrival_note": "arrives 24 May",
       "from": "DEL",
-      "to": "SFO",
+      "to": "SIN",
       "flight_number": "SQ403",
       "airline": "Singapore Airlines",
-      "tracker_url": "https://www.flightaware.com/live/flight/SQ403"
+      "tracker_url": "https://flightaware.com/live/flight/SQ403"
+    },
+    {
+      "id": "flight_sin_sfo",
+      "type": "flight",
+      "category": "international",
+      "date": "2026-05-24",
+      "time": "20:45",
+      "arrival_time": "08:50",
+      "arrival_note": "arrives 24 May",
+      "from": "SIN",
+      "to": "SFO",
+      "flight_number": "SQ32",
+      "airline": "Singapore Airlines",
+      "tracker_url": "https://flightaware.com/live/flight/SQ32"
     },
     {
       "id": "hotel_sfo",
