@@ -42,7 +42,7 @@ function load(path) {
 /** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
 function imgPath(type, folder, manifest) {
   const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
-  return `${BASE}images/${type}/${folder}/${file}?v=33`;
+  return `${BASE}images/${type}/${folder}/${file}?v=34`;
 }
 
 // ── CITY NAV (header — all pages) ───────────────
@@ -305,8 +305,10 @@ function buildActivityCard(act, venues, hotels, manifest) {
 
     const left = el('div', 'ac-body');
     const durTxt = act.duration_min ? ` <span class="ac-dur-inline">(${fmtDuration(act.duration_min)})</span>` : '';
+    const query = encodeURIComponent(venue.name || act.venue_id);
+    const ytUrl = `https://www.youtube.com/results?search_query=${query}`;
     left.innerHTML = `
-      <div class="ac-title">${venue.name || act.venue_id}${durTxt}</div>
+      <div class="ac-title"><a href="${ytUrl}" target="_blank" rel="noopener noreferrer">${venue.name || act.venue_id}</a>${durTxt}</div>
       <div class="ac-sub">${act.time || ''}</div>
       ${venue.tip ? `<div class="ac-tip">💡 ${venue.tip}</div>` : ''}`;
 
