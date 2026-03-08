@@ -16,15 +16,16 @@ let leafletMarker = null;
 
 // ── Boot ─────────────────────────────────────
 async function boot() {
-  const [cities, days, activities, venues, hotels] = await Promise.all([
+  const [cities, days, activities, venues, hotels, manifest] = await Promise.all([
     load('data/cities.json').then(d => d.cities || []),
     load('data/days.json').then(d => d.days || []),
     load('data/activities.json').then(d => d.activities || []),
     load('data/venues.json').then(d => Array.isArray(d) ? d : []),
     load('data/hotels.json').then(d => d.hotels || []),
+    load('images/manifest.json').catch(() => ({})),
   ]);
 
-  const data = { cities, days, activities, venues, hotels };
+  const data = { cities, days, activities, venues, hotels, manifest };
 
   renderCityNav(cities, days);
 
@@ -36,6 +37,12 @@ async function boot() {
 
 function load(path) {
   return fetch(BASE + path, { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error(r.url); return r.json(); });
+}
+
+/** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
+function imgPath(type, folder, manifest) {
+  const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
+  return `${BASE}images/${type}/${folder}/${file}`;
 }
 
 // ── CITY NAV (header — all pages) ───────────────
@@ -60,7 +67,7 @@ function renderCityNav(cities, days) {
   nav.appendChild(itinPill);}
 
 // ── INDEX PAGE ────────────────────────────────
-function renderIndex({ cities, days, venues, activities, hotels }) {
+function renderIndex({ cities, days, venues, activities, hotels, manifest }) {
   renderOverview({ cities, days });
 }
 
@@ -105,7 +112,7 @@ function renderOverview({ cities, days }) {
       if (group.days.length === 1) tile.classList.add('day-tile--full');
 
       // Per-day hero image, with city image as CSS fallback
-      const dayImg  = `${BASE}images/days/${day.id}/hero.jpg`;
+      const dayImg  = imgPath('days', day.id, manifest);
       const cityImg = heroPath ? `, url('${heroPath}')` : '';
       tile.style.backgroundImage = `url('${dayImg}')${cityImg}`;
 
@@ -121,7 +128,7 @@ function renderOverview({ cities, days }) {
 }
 
 // ── DAY PAGE ──────────────────────────────────
-function renderDay({ cities, days, activities, venues, hotels }) {
+function renderDay({ cities, days, activities, venues, hotels, manifest }) {
   const params  = new URLSearchParams(location.search);
   const dayId   = params.get('id');
   const dayIdx  = days.findIndex(d => d.id === dayId);
@@ -158,7 +165,7 @@ function renderDay({ cities, days, activities, venues, hotels }) {
 
   // Activities + commute strips
   resolved.forEach((act, i) => {
-    const card = buildActivityCard(act, venues, hotels);
+    const card = buildActivityCard(act, venues, hotels, manifest);
     container.appendChild(card);
     const next = resolved[i + 1];
     if (next && isVenueAct(act) && isVenueAct(next)) {
@@ -172,7 +179,7 @@ function renderDay({ cities, days, activities, venues, hotels }) {
 
 function renderDayHero(city, day) {
   const hero     = document.getElementById('cityHero');
-  const dayImgSrc = `${BASE}images/days/${day.id}/hero.jpg`;
+  const dayImgSrc = imgPath('days', day.id, manifest);
   // Fallback to city image if available
   const fallbackSrc = city ? BASE + city.hero_image : null;
 
@@ -204,7 +211,7 @@ function renderDayHero(city, day) {
 }
 
 // ── Activity card builder ─────────────────────
-function buildActivityCard(act, venues, hotels) {
+function buildActivityCard(act, venues, hotels, manifest) {
   const card = el('div', 'activity-card');
   card.dataset.type = filterType(act);
 
@@ -270,7 +277,7 @@ function buildActivityCard(act, venues, hotels) {
 
     // Hotel photo thumbnail
     if (hotel && hotel.image_folder) {
-      const imgSrc = `${BASE}images/hotels/${hotel.image_folder}/hero.jpg`;
+      const imgSrc = imgPath('hotels', hotel.image_folder, manifest);
       const right = el('div', 'ac-right');
       const thumb = el('div', 'venue-thumb');
       thumb.style.backgroundImage = `url('${imgSrc}')`;
@@ -309,7 +316,7 @@ function buildActivityCard(act, venues, hotels) {
 
     // Venue photo thumbnail
     if (venue.image_folder) {
-      const imgSrc = `${BASE}images/venues/${venue.image_folder}/hero.jpg`;
+      const imgSrc = imgPath('venues', venue.image_folder, manifest);
       const thumb  = el('div', 'venue-thumb');
       thumb.style.backgroundImage = `url('${imgSrc}')`;
       thumb.setAttribute('role', 'button');
