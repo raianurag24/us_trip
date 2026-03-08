@@ -42,7 +42,7 @@ function load(path) {
 /** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
 function imgPath(type, folder, manifest) {
   const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
-  return `${BASE}images/${type}/${folder}/${file}?v=32`;
+  return `${BASE}images/${type}/${folder}/${file}?v=33`;
 }
 
 // ── CITY NAV (header — all pages) ───────────────
@@ -519,22 +519,37 @@ function buildFilterButtons(types, filtersEl, activitiesEl) {
 }
 
 // ── Travel act strip (from explicit travel activities) ────────────────────
+function inferMode(act) {
+  const src = `${act.id || ''} ${act.note || ''} ${act.from || ''} ${act.to || ''} ${act.title || ''}`.toLowerCase();
+  if (/\buber\b|\btaxi\b|\blyft\b/.test(src)) return 'uber';
+  if (/\bhoho\b|hop on hop off|hop-on/.test(src)) return 'hoho';
+  if (/\bsubway\b|\bmetro\b|\btrain\b|\b7 train\b|\bmta\b/.test(src)) return 'subway';
+  if (/\bbus\b|\bcoach\b/.test(src)) return 'bus';
+  if (/\bwalk\b|\bshort walk\b|\bwalk to\b/.test(src) || (act.id || '').startsWith('walk_')) return 'walk';
+  if (/(sfo|lax|las|buf|jfk|dca|ord|mia|den|sea|ewr|phl|iad)/.test(src)) return 'uber';
+  if (act.duration_min && act.duration_min <= 15) return 'walk';
+  return 'uber';
+}
+
 function buildTravelActStrip(act) {
-  const modeIcon  = act.mode === 'uber'   ? '🚗'
-                  : act.mode === 'walk'   ? '🚶'
-                  : act.mode === 'bus'    ? '🚌'
-                  : act.mode === 'subway' ? '🚇'
-                  : act.mode === 'hoho'   ? '🚌'
-                  : act.mode === 'train'  ? '🚆'
+  // Infer mode if the activity doesn't explicitly provide one.
+  const mode = act.mode || inferMode(act);
+
+  const modeIcon  = mode === 'uber'   ? '🚗'
+                  : mode === 'walk'   ? '🚶'
+                  : mode === 'bus'    ? '🚌'
+                  : mode === 'subway' ? '🚇'
+                  : mode === 'hoho'   ? '🚌'
+                  : mode === 'train'  ? '🚆'
                   : '🚕';
 
-  const modeLabel = act.mode === 'uber'   ? 'Uber'
-                  : act.mode === 'walk'   ? 'Walk'
-                  : act.mode === 'bus'    ? 'Bus'
-                  : act.mode === 'subway' ? 'Subway'
-                  : act.mode === 'hoho'   ? 'HOHO / Tour Bus'
-                  : act.mode === 'train'  ? 'Train'
-                  : (act.mode || 'Transfer');
+  const modeLabel = mode === 'uber'   ? 'Uber'
+                  : mode === 'walk'   ? 'Walk'
+                  : mode === 'bus'    ? 'Bus'
+                  : mode === 'subway' ? 'Subway'
+                  : mode === 'hoho'   ? 'HOHO / Tour Bus'
+                  : mode === 'train'  ? 'Train'
+                  : (mode || 'Transfer');
 
   const route  = (act.from && act.to) ? `${act.from} → ${act.to}` : modeLabel;
   const durTxt = act.duration_min ? `~${fmtDuration(act.duration_min)}` : '';
@@ -552,14 +567,14 @@ function buildTravelActStrip(act) {
 // ── Commute strip ──────────────────────────────
 function commuteInfo(cityId) {
   const map = {
-    sf:   { icon: '🚡', label: 'Cable car / Walk' },
-    la:   { icon: '🚗', label: 'Drive / Uber' },
-    lv:   { icon: '🚶', label: 'Walk along the Strip' },
-    nf:   { icon: '🚶', label: 'Walk' },
-    dc:   { icon: '🚶', label: 'Walk / Metro' },
-    ny:   { icon: '🚇', label: 'Subway / Walk' },
+    sf:   { icon: '🚡', label: 'Cable car / Walk', mode: 'walk' },
+    la:   { icon: '🚗', label: 'Drive / Uber', mode: 'uber' },
+    lv:   { icon: '🚶', label: 'Walk along the Strip', mode: 'walk' },
+    nf:   { icon: '🚶', label: 'Walk', mode: 'walk' },
+    dc:   { icon: '🚶', label: 'Walk / Metro', mode: 'subway' },
+    ny:   { icon: '🚇', label: 'Subway / Walk', mode: 'subway' },
   };
-  return map[cityId] || { icon: '🚕', label: 'Uber' };
+  return map[cityId] || { icon: '🚕', label: 'Uber', mode: 'uber' };
 }
 
 function timeToMins(t) {
@@ -578,9 +593,26 @@ function buildCommuteStrip(actA, actB, cityId) {
   const gap    = endA != null && startB != null ? startB - endA : null;
   const travelTxt = (gap != null && gap > 0) ? `~${gap}m travel` : '~15m travel';
 
+  const mode = info.mode || inferMode(actA) || inferMode(actB) || 'uber';
+  const modeIcon  = mode === 'uber'   ? '🚗'
+                  : mode === 'walk'   ? '🚶'
+                  : mode === 'bus'    ? '🚌'
+                  : mode === 'subway' ? '🚇'
+                  : mode === 'hoho'   ? '🚌'
+                  : mode === 'train'  ? '🚆'
+                  : '🚕';
+  const modeLabel = mode === 'uber'   ? 'Uber'
+                  : mode === 'walk'   ? 'Walk'
+                  : mode === 'bus'    ? 'Bus'
+                  : mode === 'subway' ? 'Subway'
+                  : mode === 'hoho'   ? 'HOHO / Tour Bus'
+                  : mode === 'train'  ? 'Train'
+                  : (mode || 'Transfer');
+
   strip.innerHTML = `
     <span class="commute-icon">${info.icon}</span>
     <span class="commute-label">${info.label}</span>
+    <span class="commute-mode">${modeLabel}</span>
     <span class="commute-dur">${travelTxt}</span>`;
   return strip;
 }
