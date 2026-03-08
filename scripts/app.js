@@ -68,11 +68,11 @@ function renderCityNav(cities, days) {
 
 // ── INDEX PAGE ────────────────────────────────
 function renderIndex({ cities, days, venues, activities, hotels, manifest }) {
-  renderOverview({ cities, days });
+  renderOverview({ cities, days, manifest });
 }
 
 // ── OVERVIEW GRID (city-grouped tiles) ─────────────────────────
-function renderOverview({ cities, days }) {
+function renderOverview({ cities, days, manifest }) {
   const grid = document.getElementById('overview-grid');
   if (!grid) return;
 
@@ -140,7 +140,7 @@ function renderDay({ cities, days, activities, venues, hotels, manifest }) {
 
   // Day hero (per-day image, city data for overlay text)
   const city = cities.find(c => c.id === day.city);
-  renderDayHero(city, day);
+  renderDayHero(city, day, manifest);
 
   // Day header
   document.title = `${day.title} — US Trip`;
@@ -177,7 +177,7 @@ function renderDay({ cities, days, activities, venues, hotels, manifest }) {
   container.appendChild(buildDayNav(prevDay, nextDay));
 }
 
-function renderDayHero(city, day) {
+function renderDayHero(city, day, manifest) {
   const hero     = document.getElementById('cityHero');
   const dayImgSrc = imgPath('days', day.id, manifest);
   // Fallback to city image if available
