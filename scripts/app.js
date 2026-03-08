@@ -246,28 +246,40 @@ function buildActivityCard(act, venues, hotels) {
   if (act.type === 'hotel') {
     const hotel = findHotel(act.hotel_id, act.hotel, hotels);
     card.classList.add('card-hotel');
-    let inner = `
-      <div class="ac-icon">🏨</div>
-      <div class="ac-body">
-        <div class="ac-title">${act.hotel}</div>`;
+
+    const body = el('div', 'ac-body');
+    let bodyHtml = `<div class="ac-title">${act.hotel}</div>`;
     if (hotel) {
       if (hotel.location || hotel.address) {
-        inner += `<div class="ac-sub">📍 ${[hotel.location, hotel.address].filter(Boolean).join(' · ')}</div>`;
+        bodyHtml += `<div class="ac-sub">📍 ${[hotel.location, hotel.address].filter(Boolean).join(' · ')}</div>`;
       }
-      inner += `<div class="ac-sub">Check-in: ${act.time || hotel.check_in || ''} &nbsp;·&nbsp; Check-out: ${hotel.check_out || ''}</div>`;
-      if (hotel.description) {
-        inner += `<div class="ac-desc">${hotel.description}</div>`;
-      }
+      bodyHtml += `<div class="ac-sub">Check-in: ${act.time || hotel.check_in || ''} &nbsp;·&nbsp; Check-out: ${hotel.check_out || ''}</div>`;
+      if (hotel.description) bodyHtml += `<div class="ac-desc">${hotel.description}</div>`;
       const linkUrl = hotel.website_url || hotel.maps_url;
       const linkLabel = hotel.website_url ? '🌐 View hotel →' : '🗺️ View on map →';
-      if (linkUrl) {
-        inner += `<a href="${linkUrl}" target="_blank" rel="noopener" class="hotel-link">${linkLabel}</a>`;
-      }
+      if (linkUrl) bodyHtml += `<a href="${linkUrl}" target="_blank" rel="noopener" class="hotel-link">${linkLabel}</a>`;
     } else {
-      inner += `<div class="ac-sub">Check-in: ${act.time || ''}</div>`;
+      bodyHtml += `<div class="ac-sub">Check-in: ${act.time || ''}</div>`;
     }
-    inner += `</div>`;
-    card.innerHTML = inner;
+    body.innerHTML = bodyHtml;
+
+    const icon = el('div', 'ac-icon');
+    icon.textContent = '🏨';
+    card.appendChild(icon);
+    card.appendChild(body);
+
+    // Hotel photo thumbnail
+    if (hotel && hotel.image_folder) {
+      const imgSrc = `${BASE}images/hotels/${hotel.image_folder}/hero.jpg`;
+      const right = el('div', 'ac-right');
+      const thumb = el('div', 'venue-thumb');
+      thumb.style.backgroundImage = `url('${imgSrc}')`;
+      thumb.setAttribute('role', 'button');
+      thumb.setAttribute('aria-label', `View photo: ${act.hotel}`);
+      thumb.addEventListener('click', () => openImageModal(imgSrc, act.hotel));
+      right.appendChild(thumb);
+      card.appendChild(right);
+    }
     return card;
   }
 
