@@ -42,7 +42,7 @@ function load(path) {
 /** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
 function imgPath(type, folder, manifest) {
   const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
-  return `${BASE}images/${type}/${folder}/${file}?v=34`;
+  return `${BASE}images/${type}/${folder}/${file}?v=35`;
 }
 
 // ── CITY NAV (header — all pages) ───────────────
@@ -220,6 +220,56 @@ function buildActivityCard(act, venues, hotels, manifest) {
   card.dataset.type = filterType(act);
 
   if (act.type === 'flight') {
+    // If this is the Delhi -> SFO routing (multi-leg via Singapore), render
+    // the Apple-style multi-leg flight widget with dedicated links.
+    const isDelToSfo = (act.id && act.id === 'flight_del_sfo') || (act.from === 'DEL' && act.to === 'SFO') || act.flight_number === 'SQ403';
+    if (isDelToSfo) {
+      card.classList.add('card-flight');
+      // Times shown as per plan: DEL 21:55 → SIN 06:15, SIN 20:45 → SFO 08:50
+      card.innerHTML = `
+        <div class="flight-card">
+          <div class="flight-header">✈ ${act.airline || 'Singapore Airlines'} SQ32</div>
+
+          <div class="flight-route">
+            <div class="airport">
+              <div class="code">DEL</div>
+              <div class="time">21:55</div>
+            </div>
+
+            <div class="flight-line">─────────✈─────────</div>
+
+            <div class="airport">
+              <div class="code">SIN</div>
+              <div class="time">06:15</div>
+            </div>
+          </div>
+
+          <div class="flight-route">
+            <div class="airport">
+              <div class="code">SIN</div>
+              <div class="time">20:45</div>
+            </div>
+
+            <div class="flight-line">─────────✈─────────</div>
+
+            <div class="airport">
+              <div class="code">SFO</div>
+              <div class="time">08:50</div>
+            </div>
+          </div>
+
+          <div class="aircraft">Aircraft: Airbus A350-900</div>
+
+          <div class="flight-actions">
+            <a href="https://flightaware.com/live/flight/SQ32" target="_blank" rel="noopener">Live Flight Tracker</a>
+            <a href="https://www.google.com/search?q=SQ32+flight" target="_blank" rel="noopener">Google Details (SQ32)</a>
+            <a href="https://www.google.com/search?q=SQ403+flight" target="_blank" rel="noopener">Google Details (SQ403)</a>
+          </div>
+        </div>`;
+      return card;
+    }
+
+    // Fallback to the standard single-leg flight card
     card.classList.add('card-flight');
     const times = act.arrival_time
       ? `${act.time} → ${act.arrival_time}${act.arrival_note ? ' <span style="font-style:italic">('+act.arrival_note+')</span>' : ''}`

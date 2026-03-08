@@ -484,6 +484,41 @@ img { display: block; }
 .card-experience { border-left-color: var(--accent); }
 .card-note       { border-left-color: #f59e0b; background: #fffdf5; }
 
+/* Apple-style flight tracker card */
+.flight-card {
+  max-width: 500px;
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif;
+}
+.flight-header {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.flight-route {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.airport { text-align: center; }
+.code { font-size: 20px; font-weight: 600; }
+.time { font-size: 14px; color: #666; }
+.flight-line { flex: 1; text-align: center; color: #999; }
+.aircraft { margin-top: 12px; color: #555; }
+.flight-actions { margin-top: 18px; display: flex; gap: 10px; }
+.flight-actions a {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #007aff;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
 /* ══════════════════════════════════════════════
    COMMUTE STRIPS
 ══════════════════════════════════════════════ */
