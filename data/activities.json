@@ -434,6 +434,15 @@
       "duration_min": 120
     },
     {
+      "id": "note_relaxed_2026_06_03",
+      "type": "note",
+      "date": "2026-06-03",
+      "time": "12:00",
+      "title": "Relaxed Day · Flexible Afternoon",
+      "body": "Ellis Island removed from the plan. This afternoon is intentionally left light — stroll, grab lunch, or swap in an easy activity later.",
+      "icon": "😌"
+    },
+    {
       "type": "visit",
       "date": "2026-06-03",
       "time": "12:00",
