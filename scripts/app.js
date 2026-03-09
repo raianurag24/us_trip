@@ -50,12 +50,38 @@ function imgPath(type, folder, manifest) {
 // from the flight number (uppercased, leading zeros removed).
 function trackerUrlFor(flight) {
   if (!flight) return '#';
+  // Known mappings from IATA (2-letter) / other prefixes to FlightAware's
+  // expected airline prefixes (usually ICAO 3-letter codes).
+  const prefixMap = {
+    'SQ': 'SIA', // Singapore Airlines
+    'LH': 'DLH', // Lufthansa
+    'AS': 'ASA', // Alaska Airlines
+    'DL': 'DAL', // Delta Airlines
+    'UA': 'UAL', // United
+    'AA': 'AAL', // American
+    'WN': 'SWA', // Southwest
+    // add more mappings as needed
+  };
+
   if (flight.tracker_url) {
     let url = String(flight.tracker_url || '').trim();
     if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
     try {
       const u = new URL(url);
       if (u.hostname && u.hostname.includes('flightaware.com')) {
+        // If the path contains a flight id, rewrite its airline prefix
+        // using our mapping table (e.g., SQ32 -> SIA32).
+        const m = u.pathname.match(/\/live\/flight\/([^\/\?#]+)/i);
+        if (m && m[1]) {
+          const fid = String(m[1] || '').toUpperCase();
+          const f2 = fid.match(/^([A-Z]{2,3})0*(\d+)$/);
+          if (f2) {
+            const code = f2[1];
+            const num = String(parseInt(f2[2], 10));
+            const mapped = prefixMap[code] || code;
+            return `https://www.flightaware.com/live/flight/${mapped}${num}`;
+          }
+        }
         u.hostname = 'www.flightaware.com';
         return u.toString();
       }
@@ -64,13 +90,15 @@ function trackerUrlFor(flight) {
       return url;
     }
   }
+
   const fn = String(flight.flight_number || '').toUpperCase().replace(/\s+/g, '');
   if (!fn) return '#';
-  const m = fn.match(/^([A-Z]+)0*(\d+)$/);
-  if (m) {
-    const code = m[1];
-    const num = String(parseInt(m[2], 10));
-    return `https://www.flightaware.com/live/flight/${code}${num}`;
+  const mm = fn.match(/^([A-Z]{2,3})0*(\d+)$/);
+  if (mm) {
+    const code = mm[1];
+    const num = String(parseInt(mm[2], 10));
+    const mapped = prefixMap[code] || code;
+    return `https://www.flightaware.com/live/flight/${mapped}${num}`;
   }
   return `https://www.flightaware.com/live/flight/${encodeURIComponent(fn)}`;
 }
