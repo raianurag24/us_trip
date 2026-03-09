@@ -212,7 +212,7 @@ function renderDay({ cities, days, activities, venues, hotels, manifest }) {
               <div class="time">${arrTime}</div>
             </div>
           </div>
-          <div class="flight-meta">Aircraft: ${f.aircraft || ''}<br>Airline: ${f.airline || ''}</div>
+          <div class="flight-meta">${f.aircraft ? `Aircraft: ${f.aircraft}` : ''}</div>
           <div class="flight-buttons">
             <a href="${tracker}" target="_blank" rel="noopener">Live Flight Tracker</a>
             <a href="https://www.google.com/search?q=${encodeURIComponent((f.flight_number || '') + ' flight')}" target="_blank" rel="noopener">Google Flight Info</a>
@@ -291,7 +291,7 @@ function renderDay({ cities, days, activities, venues, hotels, manifest }) {
               <div class="time">${arrTime}</div>
             </div>
           </div>
-          <div class="flight-meta">Aircraft: ${f.aircraft || ''}<br>Airline: ${f.airline || ''}</div>
+          <div class="flight-meta">${f.aircraft ? `Aircraft: ${f.aircraft}` : ''}</div>
           <div class="flight-buttons">
             <a href="${tracker}" target="_blank" rel="noopener">Live Flight Tracker</a>
             <a href="https://www.google.com/search?q=${encodeURIComponent((f.flight_number || '') + ' flight')}" target="_blank" rel="noopener">Google Flight Info</a>

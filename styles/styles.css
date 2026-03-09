@@ -535,8 +535,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif; }
 .code{ font-size:16px; font-weight:700; }
 .time{ font-size:12px; color:#777; }
 .route-line{ flex:1; height:2px; background:#eee; position:relative; margin:0 8px; }
-.plane{ position:absolute; top:-6px; left:0; font-size:14px; animation: fly 6s linear infinite; will-change: left, transform; }
-@keyframes fly{ 0%{ left:0; } 100%{ left:100%; } }
+.plane{ position:absolute; top:50%; left:0; font-size:14px; transform: translateY(-50%); animation: fly 6s linear infinite; will-change: transform; }
+@keyframes fly{ 0%{ transform: translateX(0) translateY(-50%); } 100%{ transform: translateX(calc(100% - 1em)) translateY(-50%); } }
 .flight-meta{ color:#555; margin-top:6px; font-size:12px }
 .flight-buttons{ margin-top:8px; display:flex; gap:8px; }
 .flight-buttons a{ background:#007aff; color:white; padding:6px 10px; border-radius:8px; text-decoration:none; font-size:12px; }

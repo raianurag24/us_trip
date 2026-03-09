@@ -325,7 +325,7 @@
       "flight_number": "WN0920",
       "airline": "Southwest Airlines",
       "aircraft": "Boeing 737 MAX 8",
-      "tracker_url": "https://www.flightaware.com/live/flight/SWA920"
+      "tracker_url": "https://flightaware.com/live/flight/WN920"
     },
     {
       "id": "hotel_dc",
