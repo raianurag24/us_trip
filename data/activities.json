@@ -7,7 +7,7 @@
       "date": "2026-05-23",
       "time": "21:55",
       "arrival_time": "06:15",
-      "arrival_note": "arrives 24 May",
+      "arrival_note": "",
       "from": "DEL",
       "to": "SIN",
       "flight_number": "SQ403",
@@ -111,6 +111,7 @@
       "to": "LAX",
       "flight_number": "AS1329",
       "airline": "Alaska Airlines",
+      "aircraft": "Boeing 737-800",
       "tracker_url": "https://www.flightaware.com/live/flight/AS1329"
     },
     {
@@ -161,6 +162,7 @@
       "to": "LAS",
       "flight_number": "DL2253",
       "airline": "Delta Airlines",
+      "aircraft": "Boeing 737-900",
       "tracker_url": "https://www.flightaware.com/live/flight/DL2253"
     },
     {
@@ -322,6 +324,7 @@
       "to": "DCA",
       "flight_number": "WN0920",
       "airline": "Southwest Airlines",
+      "aircraft": "Boeing 737 MAX 8",
       "tracker_url": "https://www.flightaware.com/live/flight/SWA920"
     },
     {
