@@ -45,6 +45,36 @@ function imgPath(type, folder, manifest) {
   return `${BASE}images/${type}/${folder}/${file}?v=42`;
 }
 
+// Build a canonical Live Flight Tracker URL for a flight activity.
+// Uses `tracker_url` if provided, otherwise constructs a FlightAware URL
+// from the flight number (uppercased, leading zeros removed).
+function trackerUrlFor(flight) {
+  if (!flight) return '#';
+  if (flight.tracker_url) {
+    let url = String(flight.tracker_url || '').trim();
+    if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+    try {
+      const u = new URL(url);
+      if (u.hostname && u.hostname.includes('flightaware.com')) {
+        u.hostname = 'www.flightaware.com';
+        return u.toString();
+      }
+      return u.toString();
+    } catch (e) {
+      return url;
+    }
+  }
+  const fn = String(flight.flight_number || '').toUpperCase().replace(/\s+/g, '');
+  if (!fn) return '#';
+  const m = fn.match(/^([A-Z]+)0*(\d+)$/);
+  if (m) {
+    const code = m[1];
+    const num = String(parseInt(m[2], 10));
+    return `https://www.flightaware.com/live/flight/${code}${num}`;
+  }
+  return `https://www.flightaware.com/live/flight/${encodeURIComponent(fn)}`;
+}
+
 // ── CITY NAV (header — all pages) ───────────────
 function renderCityNav(cities, days) {
   const nav = document.getElementById('cityNav');
@@ -190,37 +220,37 @@ function renderDay({ cities, days, activities, venues, hotels, manifest }) {
   if (topFlights.length > 0) {
     const topWidget = el('div');
     const parts = topFlights.map(f => {
-      const title = `✈ ${f.airline || ''} ${f.flight_number || ''}`.trim();
-      const subtitle = `${f.from || ''} → ${f.to || ''}`;
-      const depCode = f.from || '';
-      const depTime = f.time || '';
-      const arrCode = f.to || '';
-      const arrTime = f.arrival_time || '';
-      const tracker = f.tracker_url || (f.flight_number ? `https://flightaware.com/live/flight/${f.flight_number}` : '#');
-      return `
-        <div class="flight-card">
-          <div class="flight-title">${title}</div>
-          <div class="flight-subtitle">${subtitle}</div>
-          <div class="route-map">
-            <div class="airport">
-              <div class="code">${depCode}</div>
-              <div class="time">${depTime}</div>
+        const title = `✈ ${f.airline || ''} ${f.flight_number || ''}`.trim();
+        const subtitle = `${f.from || ''} → ${f.to || ''}`;
+        const depCode = f.from || '';
+        const depTime = f.time || '';
+        const arrCode = f.to || '';
+        const arrTime = f.arrival_time || '';
+        const tracker = trackerUrlFor(f);
+        return `
+          <div class="flight-card">
+            <div class="flight-title">${title}</div>
+            <div class="flight-subtitle">${subtitle}</div>
+            <div class="route-map">
+              <div class="airport">
+                <div class="code">${depCode}</div>
+                <div class="time">${depTime}</div>
+              </div>
+              <div class="route-line"><div class="plane">✈</div></div>
+              <div class="airport">
+                <div class="code">${arrCode}</div>
+                <div class="time">${arrTime}</div>
+              </div>
             </div>
-            <div class="route-line"><div class="plane">✈</div></div>
-            <div class="airport">
-              <div class="code">${arrCode}</div>
-              <div class="time">${arrTime}</div>
+            <div class="flight-meta">${f.aircraft ? `Aircraft: ${f.aircraft}` : ''}</div>
+            <div class="flight-buttons">
+              <a href="${tracker}" target="_blank" rel="noopener">Live Flight Tracker</a>
+              <a href="https://www.google.com/search?q=${encodeURIComponent((f.flight_number || '') + ' flight')}" target="_blank" rel="noopener">Google Flight Info</a>
             </div>
-          </div>
-          <div class="flight-meta">${f.aircraft ? `Aircraft: ${f.aircraft}` : ''}</div>
-          <div class="flight-buttons">
-            <a href="${tracker}" target="_blank" rel="noopener">Live Flight Tracker</a>
-            <a href="https://www.google.com/search?q=${encodeURIComponent((f.flight_number || '') + ' flight')}" target="_blank" rel="noopener">Google Flight Info</a>
-          </div>
-        </div>`;
-    });
+          </div>`;
+      });
     const trackerLinks = topFlights.map(f => {
-      const t = f.tracker_url || (f.flight_number ? `https://flightaware.com/live/flight/${f.flight_number}` : '#');
+      const t = trackerUrlFor(f);
       return `<a href="${t}" target="_blank" rel="noopener">Open ${f.flight_number || f.airline} Tracker</a>`;
     }).join(' ');
     topWidget.innerHTML = parts.join('\n') + `<div class="flight-tracker" style="max-width:640px;margin:20px auto;padding:16px;text-align:center;">${trackerLinks}</div>`;
@@ -275,7 +305,7 @@ function renderDay({ cities, days, activities, venues, hotels, manifest }) {
       const depTime = f.time || '';
       const arrCode = f.to || '';
       const arrTime = f.arrival_time || '';
-      const tracker = f.tracker_url || (f.flight_number ? `https://flightaware.com/live/flight/${f.flight_number}` : '#');
+      const tracker = trackerUrlFor(f);
       return `
         <div class="flight-card">
           <div class="flight-title">${title}</div>
@@ -299,7 +329,7 @@ function renderDay({ cities, days, activities, venues, hotels, manifest }) {
         </div>`;
     });
     const trackerLinks = bottomFlights.map(f => {
-      const t = f.tracker_url || (f.flight_number ? `https://flightaware.com/live/flight/${f.flight_number}` : '#');
+      const t = trackerUrlFor(f);
       return `<a href="${t}" target="_blank" rel="noopener">Open ${f.flight_number || f.airline} Tracker</a>`;
     }).join(' ');
     bottomWidget.innerHTML = parts.join('\n') + `<div class="flight-tracker" style="max-width:640px;margin:20px auto;padding:16px;text-align:center;">${trackerLinks}</div>`;
@@ -356,7 +386,7 @@ function buildActivityCard(act, venues, hotels, manifest) {
     const arrTime = act.arrival_time || '';
     const aircraft = act.aircraft || '';
     const baggage = act.baggage || act.baggage_allowance || '';
-    const tracker = act.tracker_url || (act.flight_number ? `https://flightaware.com/live/flight/${(act.flight_number || '').replace(/^0+/, '')}` : '#');
+    const tracker = trackerUrlFor(act);
     const meta = [aircraft ? `Aircraft: ${aircraft}` : '', baggage ? `Baggage: ${baggage}` : '', act.category ? (act.category === 'international' ? '🌍 International' : '✈️ Domestic') : ''].filter(Boolean).join('<br>');
 
     card.innerHTML = `
