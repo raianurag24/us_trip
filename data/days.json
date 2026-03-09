@@ -125,7 +125,8 @@
       "city": "nf",
       "title": "Arrival in Niagara Falls",
       "activities": [
-        "flight_las_buf",
+        "flight_las_dtw",
+        "flight_dtw_buf",
         "hotel_nf",
         "niagara_falls"
       ]

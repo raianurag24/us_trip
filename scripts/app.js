@@ -42,7 +42,7 @@ function load(path) {
 /** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
 function imgPath(type, folder, manifest) {
   const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
-  return `${BASE}images/${type}/${folder}/${file}?v=40`;
+  return `${BASE}images/${type}/${folder}/${file}?v=41`;
 }
 
 // ── CITY NAV (header — all pages) ───────────────
@@ -350,21 +350,35 @@ function buildActivityCard(act, venues, hotels, manifest) {
 
   if (act.type === 'flight') {
     card.classList.add('card-flight');
-    const times = act.arrival_time
-      ? `${act.time} → ${act.arrival_time}${act.arrival_note ? ' <span style="font-style:italic">('+act.arrival_note+')</span>' : ''}`
-      : `Departs ${act.time}`;
-    const flightInfo = [act.airline, act.flight_number ? `· ${act.flight_number}` : ''].filter(Boolean).join(' ');
-    const category = act.category === 'international' ? '🌍 International' : '✈️ Domestic';
-    const trackerHtml = act.tracker_url
-      ? `<a href="${act.tracker_url}" target="_blank" rel="noopener" class="tracker-link">📡 Track flight →</a>`
-      : '';
+    const title = `✈ ${act.airline || ''} ${act.flight_number || ''}`.trim();
+    const subtitle = `${act.from || ''} → ${act.to || ''}`;
+    const depTime = act.time || '';
+    const arrTime = act.arrival_time || '';
+    const aircraft = act.aircraft || '';
+    const baggage = act.baggage || act.baggage_allowance || '';
+    const tracker = act.tracker_url || (act.flight_number ? `https://flightaware.com/live/flight/${(act.flight_number || '').replace(/^0+/, '')}` : '#');
+    const meta = [aircraft ? `Aircraft: ${aircraft}` : '', baggage ? `Baggage: ${baggage}` : '', act.category ? (act.category === 'international' ? '🌍 International' : '✈️ Domestic') : ''].filter(Boolean).join('<br>');
+
     card.innerHTML = `
-      <div class="ac-icon">${flightIcon()}</div>
-      <div class="ac-body">
-        <div class="ac-title">${act.from} → ${act.to}</div>
-        <div class="ac-sub">${flightInfo} &nbsp;·&nbsp; ${category}</div>
-        <div class="ac-sub">${times}</div>
-        ${trackerHtml}
+      <div class="flight-card">
+        <div class="flight-title">${title}</div>
+        <div class="flight-subtitle">${subtitle}</div>
+        <div class="route-map">
+          <div class="airport">
+            <div class="code">${act.from || ''}</div>
+            <div class="time">${depTime}</div>
+          </div>
+          <div class="route-line"><div class="plane">✈</div></div>
+          <div class="airport">
+            <div class="code">${act.to || ''}</div>
+            <div class="time">${arrTime}</div>
+          </div>
+        </div>
+        <div class="flight-meta">${meta}</div>
+        <div class="flight-buttons">
+          <a href="${tracker}" target="_blank" rel="noopener">Live Flight Tracker</a>
+          <a href="https://www.google.com/search?q=${encodeURIComponent((act.flight_number || '') + ' flight')}" target="_blank" rel="noopener">Google Flight Info</a>
+        </div>
       </div>`;
     return card;
   }

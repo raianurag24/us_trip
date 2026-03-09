@@ -484,13 +484,12 @@ img { display: block; }
 .card-experience { border-left-color: var(--accent); }
 .card-note       { border-left-color: #f59e0b; background: #fffdf5; }
 
-/* Apple-style flight tracker card */
 .flight-card {
-  max-width: 500px;
+  max-width: 520px;
   background: white;
-  border-radius: 18px;
-  padding: 24px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.07);
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif;
 }
 .flight-header {
@@ -522,26 +521,26 @@ img { display: block; }
 /* Alternate flight card requested — larger top-of-day widget */
 body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif; }
 .flight-card{
-  max-width:640px;
-  margin:40px auto;
-  padding:28px;
+  max-width:520px;
+  margin:20px auto;
+  padding:18px;
   background:white;
-  border-radius:20px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  border-radius:14px;
+  box-shadow:0 8px 18px rgba(0,0,0,0.06);
 }
-.flight-title{ font-size:22px; font-weight:600; margin-bottom:4px; }
-.flight-subtitle{ color:#666; margin-bottom:20px; }
-.route-map{ display:flex; align-items:center; justify-content:space-between; margin:30px 0; }
+.flight-title{ font-size:18px; font-weight:600; margin-bottom:6px; }
+.flight-subtitle{ color:#666; margin-bottom:12px; }
+.route-map{ display:flex; align-items:center; justify-content:space-between; margin:18px 0; }
 .airport{ text-align:center; }
-.code{ font-size:22px; font-weight:600; }
-.time{ font-size:14px; color:#777; }
-.route-line{ flex:1; height:2px; background:#ddd; position:relative; margin:0 20px; }
-.plane{ position:absolute; top:-10px; left:0; font-size:18px; animation:fly 6s infinite linear; }
+.code{ font-size:18px; font-weight:700; }
+.time{ font-size:13px; color:#777; }
+.route-line{ flex:1; height:2px; background:#eee; position:relative; margin:0 12px; }
+.plane{ position:absolute; top:-10px; left:0; font-size:16px; }
 @keyframes fly{ 0%{ left:0; } 100%{ left:100%; } }
-.flight-meta{ color:#555; margin-top:10px; }
-.flight-buttons{ margin-top:20px; display:flex; gap:12px; }
-.flight-buttons a{ background:#007aff; color:white; padding:10px 16px; border-radius:12px; text-decoration:none; font-size:14px; }
-.flight-tracker{ max-width:640px; margin:20px auto; border-radius:20px; overflow:hidden; box-shadow:0 10px 20px rgba(0,0,0,0.08); }
+.flight-meta{ color:#555; margin-top:8px; font-size:13px }
+.flight-buttons{ margin-top:12px; display:flex; gap:8px; }
+.flight-buttons a{ background:#007aff; color:white; padding:8px 12px; border-radius:10px; text-decoration:none; font-size:13px; }
+.flight-tracker{ max-width:520px; margin:16px auto; border-radius:14px; overflow:hidden; box-shadow:0 8px 18px rgba(0,0,0,0.06); }
 
 /* ══════════════════════════════════════════════
    COMMUTE STRIPS
