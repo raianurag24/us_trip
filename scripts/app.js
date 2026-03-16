@@ -6,10 +6,12 @@
    accordingly using pure fetch + DOM.
 ────────────────────────────────────────────── */
 
-const isIndex  = !!document.getElementById('overview-grid');
-const BASE     = isIndex ? '' : '../';
-const DAY_PATH = isIndex ? 'pages/day.html' : 'day.html';
-const HOME_URL = isIndex ? '#'              : '../index.html';
+const isIndex   = !!document.getElementById('overview-grid');
+const isWeather = !!document.getElementById('weather-detail');
+const BASE      = isIndex ? '' : '../';
+const DAY_PATH  = isIndex ? 'pages/day.html' : 'day.html';
+const WEATHER_PATH = isIndex ? 'pages/weather.html' : 'weather.html';
+const HOME_URL  = isIndex ? '#'              : '../index.html';
 
 let leafletMap = null;
 let leafletMarker = null;
@@ -30,7 +32,8 @@ async function boot() {
   renderCityNav(cities, days);
 
   if (document.getElementById('overview-grid')) renderIndex(data);
-  if (document.getElementById('activities'))   renderDay(data);
+  if (document.getElementById('activities'))    renderDay(data);
+  if (document.getElementById('weather-detail')) renderWeatherDetail(data);
 
   initModals();
 }
@@ -42,7 +45,11 @@ function load(path) {
 /** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
 function imgPath(type, folder, manifest) {
   const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
-  return `${BASE}images/${type}/${folder}/${file}?v=42`;
+  return `${BASE}images/${type}/${folder}/${file}?v=43`;
+}
+
+function weatherDetailUrl(dayId) {
+  return `${WEATHER_PATH}?id=${encodeURIComponent(dayId || '')}`;
 }
 
 // Build a canonical Live Flight Tracker URL for a flight activity.
@@ -368,6 +375,250 @@ function renderDay({ cities, days, activities, venues, hotels, manifest }) {
   container.appendChild(buildDayNav(prevDay, nextDay));
 }
 
+function renderWeatherDetail({ cities, days, activities, venues }) {
+  const titleEl = document.getElementById('weatherTitle');
+  const dateEl = document.getElementById('weatherDate');
+  const host = document.getElementById('weather-detail');
+  if (!host) return;
+
+  const params = new URLSearchParams(location.search);
+  const dayId = params.get('id') || (days[0] && days[0].id);
+  const day = days.find(d => d.id === dayId);
+
+  if (!day) {
+    if (titleEl) titleEl.textContent = 'Weather details not found';
+    host.innerHTML = `<div class="weather-summary-card"><p class="weather-muted">No day selected. Please open this page from a day itinerary.</p></div>`;
+    return;
+  }
+
+  const city = cities.find(c => c.id === day.city);
+  const dayActs = day.activities
+    .map(ref => resolveActivity(ref, day.date, activities))
+    .filter(Boolean);
+  const venueMap = new Map((venues || []).map(v => [v.id, v]));
+  const venueActs = dayActs
+    .filter(a => a.venue_id)
+    .map(a => ({ ...a, venue: venueMap.get(a.venue_id) }))
+    .filter(a => a.venue);
+
+  document.title = `${day.title} — Weather & Outfit Guide`;
+  if (titleEl) titleEl.textContent = `${day.title} · Weather + Outfit Planner`;
+  if (dateEl) dateEl.textContent = formatLongDate(day.date);
+
+  if (!city) {
+    host.innerHTML = `<div class="weather-summary-card"><p class="weather-muted">This day is a travel day without a specific city forecast.</p></div>`;
+    return;
+  }
+
+  const forecast = buildDayPartForecast(city, day.date);
+  const outfit = buildOutfitDetails(city, day, venueActs, forecast);
+
+  const dayPartHtml = forecast.map(p => `
+    <div class="daypart-card">
+      <div class="daypart-head">
+        <span class="daypart-icon">${p.icon}</span>
+        <div>
+          <div class="daypart-name">${p.slot}</div>
+          <div class="daypart-temp">${p.range}</div>
+        </div>
+      </div>
+      <p>${p.detail}</p>
+    </div>
+  `).join('');
+
+  const dayVenueNames = venueActs.map(a => a.venue && a.venue.name).filter(Boolean);
+  const venuePreview = dayVenueNames.slice(0, 6).map(n => `<span class="venue-chip">${n}</span>`).join('');
+
+  host.innerHTML = `
+    <section class="weather-summary-card">
+      <div class="weather-summary-top">
+        <div>
+          <h3>📍 ${city.name} · ${formatShortDate(day.date)}</h3>
+          <p class="weather-muted">${city.weather.conditions}</p>
+        </div>
+        <a class="day-nav-home" href="${DAY_PATH}?id=${day.id}">← Back to itinerary</a>
+      </div>
+      ${venuePreview ? `<div class="venue-chip-row">${venuePreview}</div>` : ''}
+    </section>
+
+    <section class="weather-layout">
+      <article class="weather-forecast-card">
+        <h3>🌤 Weather by day-part</h3>
+        <p class="weather-muted">A quick practical view for morning, afternoon, evening and night.</p>
+        <div class="daypart-grid">${dayPartHtml}</div>
+      </article>
+
+      <article class="clothing-deep-card">
+        <h3>🧥 Detailed outfit strategy (priority)</h3>
+        <p class="weather-muted">${outfit.summary}</p>
+
+        <div class="clothing-columns">
+          <div class="clothing-block">
+            <h4>👔 Men · Day</h4>
+            ${renderBulletList(outfit.menDay)}
+          </div>
+          <div class="clothing-block">
+            <h4>👠 Women · Day</h4>
+            ${renderBulletList(outfit.womenDay)}
+          </div>
+          <div class="clothing-block">
+            <h4>🌆 Men · Evening/Night</h4>
+            ${renderBulletList(outfit.menEve)}
+          </div>
+          <div class="clothing-block">
+            <h4>✨ Women · Evening/Night</h4>
+            ${renderBulletList(outfit.womenEve)}
+          </div>
+        </div>
+
+        <div class="clothing-block">
+          <h4>👟 Footwear + essentials</h4>
+          ${renderBulletList(outfit.essentials)}
+        </div>
+        <div class="clothing-block">
+          <h4>🎯 Vibe upgrades for today's places</h4>
+          ${renderBulletList(outfit.vibeUpgrades)}
+        </div>
+      </article>
+    </section>
+  `;
+}
+
+function renderBulletList(items) {
+  const safe = Array.isArray(items) ? items.filter(Boolean) : [];
+  if (!safe.length) return '';
+  return `<ul class="weather-bullets">${safe.map(i => `<li>${i}</li>`).join('')}</ul>`;
+}
+
+function buildDayPartForecast(city, dateStr) {
+  const baseDay = Number((city && city.weather && city.weather.expected_temp_day_c) || 22);
+  const baseEve = Number((city && city.weather && city.weather.expected_temp_evening_c) || (baseDay - 5));
+  const d = new Date(`${dateStr}T00:00:00`);
+  const shift = (d.getDate() % 3) - 1;
+
+  let morning = [Math.round(baseEve - 2 + shift), Math.round(baseEve + shift)];
+  let afternoon = [Math.round(baseDay - 1 + shift), Math.round(baseDay + 2 + shift)];
+  let evening = [Math.round(baseEve - 1 + shift), Math.round(baseDay - 2 + shift)];
+  let night = [Math.round(baseEve - 4 + shift), Math.round(baseEve - 1 + shift)];
+
+  if (city.id === 'lv') {
+    afternoon = [afternoon[0] + 2, afternoon[1] + 4];
+    night = [night[0] - 2, night[1] - 1];
+  }
+  if (city.id === 'sf') {
+    morning = [morning[0] - 1, morning[1] - 1];
+    evening = [evening[0] - 1, evening[1] - 1];
+  }
+  if (city.id === 'nf') {
+    morning = [morning[0] - 1, morning[1] - 1];
+    evening = [evening[0] - 1, evening[1] - 1];
+  }
+
+  const textByCity = {
+    sf: {
+      morning: 'Cool marine-layer start; a mild windbreaker helps right away.',
+      afternoon: 'Pleasant sunshine appears, but bay breezes can still feel crisp in shade.',
+      evening: 'Wind picks up around waterfront viewpoints; layer up before sunset.',
+      night: 'Chilly pockets between hills and waterfront corridors.'
+    },
+    la: {
+      morning: 'Comfortable and bright; easy start for outdoor sightseeing.',
+      afternoon: 'Warm and sunny; strongest UV window of the day.',
+      evening: 'Golden-hour comfort, then a light cool-down after dark.',
+      night: 'Mostly mild with occasional coastal breeze.'
+    },
+    lv: {
+      morning: 'Dry desert warmth starts early and climbs quickly.',
+      afternoon: 'Peak heat window; direct sun feels much hotter than the thermometer.',
+      evening: 'Still warm outside, with strong A/C contrast indoors.',
+      night: 'Comfortable night air for Strip walks and viewpoints.'
+    },
+    nf: {
+      morning: 'Mild morning near town, cooler near the falls spray.',
+      afternoon: 'Comfortable temperatures, but mist keeps surfaces damp.',
+      evening: 'Cooler around gorge viewpoints and boat docks.',
+      night: 'Fresh and damp; wind can pick up near open water.'
+    },
+    dc: {
+      morning: 'Pleasant start, good for monument walks before crowds.',
+      afternoon: 'Warm and slightly humid; hydrate during long outdoor stretches.',
+      evening: 'Comfortable sunset weather around the memorials.',
+      night: 'Mild with occasional breeze on open plazas.'
+    },
+    ny: {
+      morning: 'Comfortable city-walk weather; light layers are ideal.',
+      afternoon: 'Warmest part of the day; concrete and sunlight amplify heat.',
+      evening: 'Great outdoor vibe for skyline walks and rooftop views.',
+      night: 'Pleasant overall, but breezier around riverfront spots.'
+    }
+  };
+
+  const tx = textByCity[city.id] || textByCity.ny;
+  const range = ([a, b]) => `${a}–${b}°C`;
+
+  return [
+    { slot: 'Morning', icon: '🌅', range: range(morning), detail: tx.morning },
+    { slot: 'Afternoon', icon: '☀️', range: range(afternoon), detail: tx.afternoon },
+    { slot: 'Evening', icon: '🌇', range: range(evening), detail: tx.evening },
+    { slot: 'Night', icon: '🌙', range: range(night), detail: tx.night },
+  ];
+}
+
+function buildOutfitDetails(city, day, venueActs, forecast) {
+  const names = venueActs.map(a => (a.venue && a.venue.name) || '').filter(Boolean);
+  const joined = names.join(' | ').toLowerCase();
+  const warmest = Math.max(...forecast.map(f => Number(String(f.range).split('–')[1].replace('°C', ''))));
+  const coolest = Math.min(...forecast.map(f => Number(String(f.range).split('–')[0])));
+
+  const needsWaterproof = /(falls|mist|cruise|pier|battery|liberty|island|dumbo)/i.test(joined);
+  const longWalkDay = names.length >= 4 || /(park|bridge|line|street|square|valley|museum)/i.test(joined);
+  const windyStops = /(bridge|battery|top|rock|summit|observatory|helicopter|waterfront)/i.test(joined) || city.id === 'sf';
+  const photoNight = /(times square|strip|empire|rock|summit|fremont|observatory)/i.test(joined);
+
+  const summary = `Temps swing from about ${coolest}°C to ${warmest}°C, so styling this day is all about flexible layering. Keep the base breathable, then level up with a light outer layer and footwear that can handle long walking blocks.`;
+
+  const menDay = [
+    `Breathable tee or polo + lightweight overshirt so you can adapt quickly as temperature shifts through the day.`,
+    `Stretch chinos or technical travel pants for comfort during transit + sightseeing photos.`,
+    longWalkDay ? `Cushioned sneakers (all-day pair) are a must — this itinerary has sustained walking.` : `Clean sneakers are ideal for comfort and a polished city look.`,
+    `Packable cap + sunglasses for midday glare and open viewpoints.`
+  ];
+
+  const womenDay = [
+    `Breathable top (cotton/linen blend) with a light layer (shirt-jacket or cropped jacket) for quick temperature changes.`,
+    `Comfortable bottoms (flowy trousers, relaxed jeans, or active dress with shorts) that stay photo-ready and movement-friendly.`,
+    longWalkDay ? `Supportive sneakers/sporty flats are strongly recommended — this is a high-step day.` : `Comfort-focused stylish sneakers or flats will carry well through the day.`,
+    `Light scarf or shawl works as both style accent and breeze shield.`
+  ];
+
+  const menEve = [
+    windyStops ? `Add a windproof shell or structured lightweight jacket for waterfront/height viewpoints.` : `Swap to a cleaner overshirt or lightweight jacket to sharpen the evening look.`,
+    photoNight ? `Choose darker neutrals for stronger night photos and skyline backgrounds.` : `Keep tones layered (charcoal/navy/olive) for an easy day-to-evening transition.`,
+    `Carry one dry tee/socks pair in your day bag to reset after long walks.`
+  ];
+
+  const womenEve = [
+    windyStops ? `Bring a slightly warmer topper (knit blazer/light trench) so sunset wind does not cut the evening short.` : `Move to a dressier layer (soft blazer/light knit) for a polished evening vibe.`,
+    photoNight ? `Metallic or textured accent (bag/jewelry/lip color) pops beautifully in night city lighting.` : `Choose one statement accessory to lift the look without extra bulk.`,
+    `Keep a compact foldable layer in your tote for indoor A/C and late-night cool-down.`
+  ];
+
+  const essentials = [
+    `SPF + sunglasses + reusable water bottle (especially critical in midday windows).`,
+    needsWaterproof ? `Water-resistant layer/poncho + quick-dry phone pouch for mist/spray-heavy stops.` : `Small umbrella or shell is enough for occasional wind/chill.`,
+    `Blister-prevention strips + comfortable socks: this saves the evening plan on long walking days.`,
+    `Crossbody/daypack with room for one extra layer and hydration.`
+  ];
+
+  const vibeUpgrades = [
+    `Day mood: explorer-chic — practical comfort first, then one style accent for photos.`,
+    names.length ? `Today's highlights (${names.slice(0, 4).join(', ')}) are best enjoyed in movement-friendly outfits.` : `Keep it flexible: this day mixes transit, views, and neighborhood walking.`,
+    `Evening mood: slightly elevated but still walkable — aim for “smart travel” not formalwear.`
+  ];
+
+  return { summary, menDay, womenDay, menEve, womenEve, essentials, vibeUpgrades };
+}
+
 function renderDayHero(city, day, manifest) {
   const hero     = document.getElementById('cityHero');
   const dayImgSrc = imgPath('days', day.id, manifest);
@@ -387,15 +638,19 @@ function renderDayHero(city, day, manifest) {
   const clothing = city
     ? `👕 ${city.clothing.day} &nbsp;·&nbsp; 🧥 ${city.clothing.evening}`
     : '';
+  const weatherHref = weatherDetailUrl(day.id);
 
   hero.innerHTML = `
     <div class="city-hero-overlay">
       <div class="city-hero-content">
         <h1 class="city-hero-name">${name}</h1>
         ${why ? `<p class="city-hero-why">${why}</p>` : ''}
-        ${meta ? `<div class="city-hero-meta">${meta}</div>` : ''}
-        ${clothing ? `<div class="city-hero-clothing">${clothing}</div>` : ''}
-        <button class="hero-zoom-btn" aria-label="View full image">🔍 View photo</button>
+        ${meta ? `<a class="city-hero-meta hero-detail-link" href="${weatherHref}" aria-label="Open detailed weather and clothing plan">${meta}</a>` : ''}
+        ${clothing ? `<a class="city-hero-clothing hero-detail-link" href="${weatherHref}" aria-label="Open detailed weather and clothing plan">${clothing}</a>` : ''}
+        <div class="hero-actions">
+          <a class="hero-weather-btn" href="${weatherHref}" aria-label="Open detailed weather and clothing plan">🌦 Detailed Weather + Outfit Plan</a>
+          <button class="hero-zoom-btn" aria-label="View full image">🔍 View photo</button>
+        </div>
       </div>
     </div>`;
   hero.querySelector('.hero-zoom-btn').addEventListener('click', () => openImageModal(dayImgSrc, day.title));
