@@ -45,7 +45,7 @@ function load(path) {
 /** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
 function imgPath(type, folder, manifest) {
   const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
-  return `${BASE}images/${type}/${folder}/${file}?v=43`;
+  return `${BASE}images/${type}/${folder}/${file}?v=44`;
 }
 
 function weatherDetailUrl(cityId) {
@@ -824,11 +824,12 @@ function renderDayHero(city, day, manifest) {
         ${clothing ? `<a class="city-hero-clothing hero-detail-link" href="${weatherHref}" aria-label="Open detailed weather and clothing plan">${clothing}</a>` : ''}
         <div class="hero-actions">
           <a class="hero-weather-btn" href="${weatherHref}" aria-label="Open detailed weather and clothing plan">🌦 Detailed Weather + Outfit Plan</a>
-          <button class="hero-zoom-btn" aria-label="View full image">🔍 View photo</button>
         </div>
       </div>
     </div>`;
-  hero.querySelector('.hero-zoom-btn').addEventListener('click', () => openImageModal(dayImgSrc, day.title));
+  hero.addEventListener('click', (e) => {
+    if (!e.target.closest('.city-hero-overlay')) openImageModal(dayImgSrc, day.title);
+  });
 }
 
 // ── Activity card builder ─────────────────────
@@ -1066,7 +1067,7 @@ function buildDayNav(prevDay, nextDay) {
   // Full Itinerary button — centred above prev/next
   const homeBtn = el('a', 'day-nav-home');
   homeBtn.href = HOME_URL;
-  homeBtn.textContent = '⊞ Full Itinerary';
+  homeBtn.textContent = '📅 Full Itinerary';
   nav.appendChild(homeBtn);
 
   // Prev / Next row

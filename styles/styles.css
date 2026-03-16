@@ -187,18 +187,8 @@ img { display: block; }
 .city-hero-name { font-size: 32px; font-weight: 800; margin-bottom: 4px; text-shadow: 0 1px 6px rgba(0,0,0,.5); }
 .city-hero-why  { font-size: 14px; opacity: .88; margin-bottom: 8px; }
 .city-hero-meta, .city-hero-clothing { font-size: 13px; opacity: .78; margin-bottom: 4px; }
-.hero-zoom-btn {
-  margin-top: 10px;
-  background: rgba(255,255,255,.18);
-  border: 1px solid rgba(255,255,255,.35);
-  color: #fff;
-  font-size: 12px;
-  padding: 5px 14px;
-  border-radius: 20px;
-  cursor: pointer;
-  backdrop-filter: blur(4px);
-}
-.hero-zoom-btn:hover { background: rgba(255,255,255,.28); }
+.hero-zoom-btn { display: none; } /* removed — clicking the photo opens modal */
+.hero-zoom-btn:hover {}
 
 .hero-actions {
   margin-top: 10px;
@@ -208,16 +198,19 @@ img { display: block; }
 }
 
 .hero-weather-btn {
-  background: #fff;
-  color: #1a3c5e;
-  border: 1px solid rgba(255,255,255,.5);
+  display: inline-block;
+  text-decoration: none;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.35);
+  color: #fff;
   font-size: 12px;
-  font-weight: 700;
-  padding: 6px 14px;
+  font-weight: 600;
+  padding: 5px 14px;
   border-radius: 20px;
   cursor: pointer;
+  backdrop-filter: blur(4px);
 }
-.hero-weather-btn:hover { background: #f0f6ff; }
+.hero-weather-btn:hover { background: rgba(255,255,255,.28); color: #fff; }
 
 .hero-detail-link {
   display: inline-block;
@@ -827,7 +820,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif; }
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 640px) {
   .hero-actions { width: 100%; }
-  .hero-weather-btn, .hero-zoom-btn { width: 100%; text-align: center; justify-content: center; }
+  .hero-weather-btn { width: 100%; text-align: center; justify-content: center; }
   .weather-tile { grid-template-columns: 1fr 1fr; }
   .wp-slot:nth-child(2) { border-right: none; }
   .wp-slot:nth-child(3),
