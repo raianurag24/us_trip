@@ -436,13 +436,13 @@ function renderWeatherDetail({ cities, days, activities, venues }) {
               <h4 class="ct-heading">👗 Women · Day</h4>
               ${renderBulletList(cloth.womenDay)}
             </div>
-            <div class="ct-col ct-men-day">
-              <h4 class="ct-heading">👔 Men · Day</h4>
-              ${renderBulletList(cloth.menDay)}
-            </div>
             <div class="ct-col ct-women-eve">
               <h4 class="ct-heading">✨ Women · Evening</h4>
               ${renderBulletList(cloth.womenEve)}
+            </div>
+            <div class="ct-col ct-men-day">
+              <h4 class="ct-heading">👔 Men · Day</h4>
+              ${renderBulletList(cloth.menDay)}
             </div>
             <div class="ct-col ct-men-eve">
               <h4 class="ct-heading">🌆 Men · Evening</h4>

@@ -769,14 +769,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif; }
 }
 .ct-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr 1fr;
+  grid-template-columns: 3fr 2fr;
 }
 .ct-col {
   padding: 11px 13px;
   border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
-.ct-col:last-child { border-right: none; }
+/* Even cols (right column): no right border */
+.ct-col:nth-child(even) { border-right: none; }
+/* Last row (items 3 + 4): no bottom border */
+.ct-col:nth-child(n+3) { border-bottom: none; }
 .ct-essentials {
   padding: 9px 13px;
   background: #fbfcfe;
@@ -827,10 +830,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif; }
   .wp-slot:nth-child(4) { border-top: 1px solid var(--border); }
   .wp-slot:nth-child(4) { border-right: none; }
   .ct-grid { grid-template-columns: 1fr 1fr; }
-  .ct-col:nth-child(2) { border-right: none; }
-  .ct-col:nth-child(3),
-  .ct-col:nth-child(4) { border-top: 1px solid var(--border); }
-  .ct-col:nth-child(4) { border-right: none; }
   .ct-essentials .weather-bullets li { white-space: normal; }
   .cwb-conditions { width: 100%; }
 }
@@ -839,5 +838,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif; }
   .ct-grid { grid-template-columns: 1fr; }
   .wp-slot { border-right: none; border-bottom: 1px solid var(--border); }
   .wp-slot:last-child { border-bottom: none; }
-  .ct-col { border-right: none; }
+  .ct-col { border-right: none; border-bottom: 1px solid var(--border); }
+  .ct-col:last-child { border-bottom: none; }
 }
