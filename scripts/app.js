@@ -48,8 +48,8 @@ function imgPath(type, folder, manifest) {
   return `${BASE}images/${type}/${folder}/${file}?v=43`;
 }
 
-function weatherDetailUrl(dayId) {
-  return `${WEATHER_PATH}?id=${encodeURIComponent(dayId || '')}`;
+function weatherDetailUrl(cityId) {
+  return `${WEATHER_PATH}#city-${cityId || ''}`;
 }
 
 // Build a canonical Live Flight Tracker URL for a flight activity.
@@ -376,112 +376,99 @@ function renderDay({ cities, days, activities, venues, hotels, manifest }) {
 }
 
 function renderWeatherDetail({ cities, days, activities, venues }) {
-  const titleEl = document.getElementById('weatherTitle');
-  const dateEl = document.getElementById('weatherDate');
   const host = document.getElementById('weather-detail');
   if (!host) return;
 
-  const params = new URLSearchParams(location.search);
-  const dayId = params.get('id') || (days[0] && days[0].id);
-  const day = days.find(d => d.id === dayId);
-
-  if (!day) {
-    if (titleEl) titleEl.textContent = 'Weather details not found';
-    host.innerHTML = `<div class="weather-summary-card"><p class="weather-muted">No day selected. Please open this page from a day itinerary.</p></div>`;
-    return;
-  }
-
-  const city = cities.find(c => c.id === day.city);
-  const dayActs = day.activities
-    .map(ref => resolveActivity(ref, day.date, activities))
-    .filter(Boolean);
+  document.title = 'Weather & Clothing Guide — US Trip 2026';
   const venueMap = new Map((venues || []).map(v => [v.id, v]));
-  const venueActs = dayActs
-    .filter(a => a.venue_id)
-    .map(a => ({ ...a, venue: venueMap.get(a.venue_id) }))
-    .filter(a => a.venue);
 
-  document.title = `${day.title} — Weather & Outfit Guide`;
-  if (titleEl) titleEl.textContent = `${day.title} · Weather + Outfit Planner`;
-  if (dateEl) dateEl.textContent = formatLongDate(day.date);
+  const blocks = cities.map(city => {
+    const cDays = days.filter(d => d.city === city.id);
+    if (!cDays.length) return '';
+    const dateRange = buildDateRange(cDays);
+    const midDay = cDays[Math.floor(cDays.length / 2)];
+    const forecast = buildDayPartForecast(city, midDay.date);
+    const cloth = buildCityClothing(city);
 
-  if (!city) {
-    host.innerHTML = `<div class="weather-summary-card"><p class="weather-muted">This day is a travel day without a specific city forecast.</p></div>`;
-    return;
-  }
-
-  const forecast = buildDayPartForecast(city, day.date);
-  const outfit = buildOutfitDetails(city, day, venueActs, forecast);
-
-  const dayPartHtml = forecast.map(p => `
-    <div class="daypart-card">
-      <div class="daypart-head">
-        <span class="daypart-icon">${p.icon}</span>
-        <div>
-          <div class="daypart-name">${p.slot}</div>
-          <div class="daypart-temp">${p.range}</div>
+    const weatherTileHtml = forecast.map(p => `
+      <div class="wp-slot">
+        <div class="wp-slot-head">
+          <span class="wp-icon">${p.icon}</span>
+          <span class="wp-slot-name">${p.slot}</span>
+          <span class="wp-slot-temp">${p.range}</span>
         </div>
-      </div>
-      <p>${p.detail}</p>
-    </div>
-  `).join('');
+        <p class="wp-slot-desc">${p.detail}</p>
+      </div>`).join('');
 
-  const dayVenueNames = venueActs.map(a => a.venue && a.venue.name).filter(Boolean);
-  const venuePreview = dayVenueNames.slice(0, 6).map(n => `<span class="venue-chip">${n}</span>`).join('');
+    const vibeDaysHtml = cDays.map(d => {
+      const dayActs = d.activities
+        .map(ref => resolveActivity(ref, d.date, activities))
+        .filter(Boolean);
+      const venueNames = dayActs
+        .filter(a => a.venue_id)
+        .map(a => { const v = venueMap.get(a.venue_id); return v ? v.name : null; })
+        .filter(Boolean);
+      const vibeText = venueNames.length
+        ? venueNames.slice(0, 4).join(' → ')
+        : d.title;
+      return `<div class="vibe-day-chip">
+        <span class="vibe-chip-date">${formatShortDate(d.date)}</span>
+        <span class="vibe-chip-arrow">→</span>
+        <span class="vibe-chip-text">${vibeText}</span>
+      </div>`;
+    }).join('');
+
+    return `
+      <section class="city-weather-block" id="city-${city.id}">
+        <div class="cwb-header">
+          <div class="cwb-header-left">
+            <h2 class="cwb-city-name">📍 ${city.name}</h2>
+            <span class="cwb-date-range">${dateRange}</span>
+          </div>
+          <p class="cwb-conditions">${city.weather.conditions}</p>
+        </div>
+
+        <div class="weather-tile">${weatherTileHtml}</div>
+
+        <div class="clothing-tile">
+          <div class="ct-grid">
+            <div class="ct-col ct-women-day">
+              <h4 class="ct-heading">👗 Women · Day</h4>
+              ${renderBulletList(cloth.womenDay)}
+            </div>
+            <div class="ct-col ct-men-day">
+              <h4 class="ct-heading">👔 Men · Day</h4>
+              ${renderBulletList(cloth.menDay)}
+            </div>
+            <div class="ct-col ct-women-eve">
+              <h4 class="ct-heading">✨ Women · Evening</h4>
+              ${renderBulletList(cloth.womenEve)}
+            </div>
+            <div class="ct-col ct-men-eve">
+              <h4 class="ct-heading">🌆 Men · Evening</h4>
+              ${renderBulletList(cloth.menEve)}
+            </div>
+          </div>
+          <div class="ct-essentials">
+            <h4 class="ct-heading">👟 Essentials</h4>
+            ${renderBulletList(cloth.essentials)}
+          </div>
+        </div>
+
+        <div class="vibe-tile">
+          <h4 class="ct-heading">🎯 Day Vibes</h4>
+          <div class="vibe-days-row">${vibeDaysHtml}</div>
+        </div>
+      </section>`;
+  }).filter(Boolean).join('<div class="city-divider"></div>');
 
   host.innerHTML = `
-    <section class="weather-summary-card">
-      <div class="weather-summary-top">
-        <div>
-          <h3>📍 ${city.name} · ${formatShortDate(day.date)}</h3>
-          <p class="weather-muted">${city.weather.conditions}</p>
-        </div>
-        <a class="day-nav-home" href="${DAY_PATH}?id=${day.id}">← Back to itinerary</a>
-      </div>
-      ${venuePreview ? `<div class="venue-chip-row">${venuePreview}</div>` : ''}
-    </section>
-
-    <section class="weather-layout">
-      <article class="weather-forecast-card">
-        <h3>🌤 Weather by day-part</h3>
-        <p class="weather-muted">A quick practical view for morning, afternoon, evening and night.</p>
-        <div class="daypart-grid">${dayPartHtml}</div>
-      </article>
-
-      <article class="clothing-deep-card">
-        <h3>🧥 Detailed outfit strategy (priority)</h3>
-        <p class="weather-muted">${outfit.summary}</p>
-
-        <div class="clothing-columns">
-          <div class="clothing-block">
-            <h4>👔 Men · Day</h4>
-            ${renderBulletList(outfit.menDay)}
-          </div>
-          <div class="clothing-block">
-            <h4>👠 Women · Day</h4>
-            ${renderBulletList(outfit.womenDay)}
-          </div>
-          <div class="clothing-block">
-            <h4>🌆 Men · Evening/Night</h4>
-            ${renderBulletList(outfit.menEve)}
-          </div>
-          <div class="clothing-block">
-            <h4>✨ Women · Evening/Night</h4>
-            ${renderBulletList(outfit.womenEve)}
-          </div>
-        </div>
-
-        <div class="clothing-block">
-          <h4>👟 Footwear + essentials</h4>
-          ${renderBulletList(outfit.essentials)}
-        </div>
-        <div class="clothing-block">
-          <h4>🎯 Vibe upgrades for today's places</h4>
-          ${renderBulletList(outfit.vibeUpgrades)}
-        </div>
-      </article>
-    </section>
-  `;
+    <div class="weather-page-header">
+      <a class="day-nav-home" href="${HOME_URL}">← Back to trip plan</a>
+      <h1 class="weather-page-title">🌤 Weather &amp; Clothing Guide</h1>
+      <p class="weather-page-sub">City-by-city guide &middot; US trip &middot; May – June 2026</p>
+    </div>
+    ${blocks}`;
 }
 
 function renderBulletList(items) {
@@ -619,6 +606,194 @@ function buildOutfitDetails(city, day, venueActs, forecast) {
   return { summary, menDay, womenDay, menEve, womenEve, essentials, vibeUpgrades };
 }
 
+// ── Build date range label for a set of days ─────────────────────────────────
+function buildDateRange(days) {
+  if (!days || !days.length) return '';
+  const sorted = [...days].sort((a, b) => a.date.localeCompare(b.date));
+  const first = formatShortDate(sorted[0].date);
+  const last  = formatShortDate(sorted[sorted.length - 1].date);
+  return first === last ? first : `${first} – ${last}`;
+}
+
+// ── City-level clothing recommendations (women more detailed than men) ────────
+function buildCityClothing(city) {
+  const id = city.id;
+  const data = {
+    sf: {
+      womenDay: [
+        'Linen or cotton tee layered under a relaxed overshirt or shirt-jacket — fog burns off by 10am but breezes stay all day',
+        'Straight-leg jeans or lightweight chinos; avoid restrictive silhouettes on steep hilly streets',
+        'Supportive sneakers or grip-soled flats — Lombard Street and cable-car stops need traction',
+        'Light scarf doubles as wind buffer near the Embarcadero and bay viewpoints',
+      ],
+      menDay: [
+        'T-shirt + light zip jacket or denim layer — SF fog makes layering non-negotiable',
+        'Jeans or tech pants with comfortable walking sneakers',
+      ],
+      womenEve: [
+        'Structured blazer or knit peacoat — evening marine layer drops temps fast',
+        'Closed-toe flats or ankle boots over sandals; waterfront cobblestones can be slippery',
+        'One statement piece (bold earrings, patterned scarf) pops in Fisherman\'s Wharf warm lighting',
+        'Compact crossbody frees hands for Ghirardelli hot chocolate and photos',
+      ],
+      menEve: [
+        'Add a lightweight windproof jacket for waterfront dinners and bridge viewpoints',
+        'Dark jeans + clean sneakers cover most dinner venues comfortably',
+      ],
+      essentials: [
+        'SPF + sunglasses even on cloudy days (UV still penetrates fog)',
+        'Waterproof phone pouch for bay spray near Pier 39 and ferry docks',
+        'Reusable bag for Fisherman\'s Wharf and Ferry Building market finds',
+      ],
+    },
+    la: {
+      womenDay: [
+        'Flowy sundress or high-waist shorts with a breezy off-shoulder top — LA energy suits this perfectly',
+        'Light linen trousers for Hollywood Walk of Fame + Getty Museum: polished but cool',
+        'Trendy sneakers or strappy flat sandals — great for canyon walks and beachside promenades',
+        'Oversized sunglasses + wide-brim SPF hat are non-negotiable for midday LA sun',
+        'Mini crossbody or fanny pack keeps hands free and looks on-brand for the city',
+      ],
+      menDay: [
+        'Board shorts or relaxed chinos with a breathable polo or linen shirt',
+        'Clean sneakers or slip-ons suit beach blocks and studio streets equally',
+      ],
+      womenEve: [
+        'Wrap dress or flowy midi skirt transitions seamlessly from beach to rooftop bar',
+        'Strappy heeled sandals elevate the look without sacrificing comfort on long walks',
+        'Light cardigan or denim jacket for Malibu and Santa Monica evening breezes',
+        'Bold lip or metallic accessory — LA evenings reward the effort',
+      ],
+      menEve: [
+        'Resort-casual button-down or linen shirt for dinner dressed-up enough for most venues',
+        'Clean dark chinos or slim jeans complete the look',
+      ],
+      essentials: [
+        'SPF 50+ mandatory — LA sidewalk glare is intense even in shade',
+        'Hydration bottle + lip balm; dry city air dehydrates quickly',
+        'Portable battery pack for long photography days',
+      ],
+    },
+    lv: {
+      womenDay: [
+        'Lightweight breathable dress (linen or rayon) — stays cool while looking polished on casino floors',
+        'Wide-leg palazzo pants with a tucked-in crop top: heat-appropriate and very photo-ready',
+        'Comfortable walking sandals or light sneakers — the Strip is deceptively long on foot',
+        'Bucket hat or cap + cooling mist spray for any outdoor sections between hotels',
+        'Oversized sunglasses shield your eyes from intense desert glare and look great doing it',
+      ],
+      menDay: [
+        'Tech-fabric shorts or lightweight chinos with a moisture-wicking tee',
+        'Breathable sneakers — the Strip requires serious walking in dry heat',
+      ],
+      womenEve: [
+        'Statement going-out dress or a silk slip dress — Vegas nights reward bold fashion choices',
+        'Strappy heeled sandals or chunky-heel boots carry well on Strip photo walks',
+        'Small glam clutch + bold lip + one striking accessory for the neon backdrop',
+        'Bring a light wrap or scarf: casinos A/C is arctic vs the warm outdoor Strip',
+      ],
+      menEve: [
+        'Dark chinos + a pressed smart-casual shirt — upscale venues enforce this standard',
+        'Clean leather sneakers or loafers bridge the casual-smart divide on the Strip',
+      ],
+      essentials: [
+        'Portable phone charger — long neon-lit nights drain batteries fast',
+        'Cooling towel or mist fan for peak afternoon heat outdoors',
+        'Light jacket in your bag for extreme casino A/C contrast',
+      ],
+    },
+    nf: {
+      womenDay: [
+        'Quick-dry active leggings or moisture-wicking shorts under a layer for Maid of the Mist',
+        'Water-resistant or waterproof outer shell — expect significant mist saturation near the falls',
+        'Waterproof trail shoes with grip: wet boardwalks and spray zones are slippery underfoot',
+        'Pack a dry change of top in your daypack for comfortable post-falls sightseeing',
+        'Light windbreaker for gorge viewpoints where updrafts are surprisingly strong',
+      ],
+      menDay: [
+        'Water-resistant shorts + moisture-wicking tee — mist is relentless near the falls',
+        'Waterproof shell jacket and grip-soled sneakers or trail shoes',
+      ],
+      womenEve: [
+        'Light knit or zip fleece for cooler evenings near the gorge and waterfront',
+        'Comfortable sneakers or casual flats for evening walks along the illuminated falls',
+        'One warm accessory (beanie or neck wrap) if visiting the night light show',
+      ],
+      menEve: [
+        'Zip fleece or light hoodie — evening temps near the water drop noticeably',
+        'Comfortable dry shoes after the daytime spray',
+      ],
+      essentials: [
+        'Waterproof phone pouch — absolutely critical at Maid of the Mist and walkways',
+        'Dry bags for camera, passport, and cards near any spray zone',
+        'Extra socks: wet feet will ruin the afternoon plan',
+      ],
+    },
+    dc: {
+      womenDay: [
+        'Comfortable cotton midi dress or chinos with a breathable blouse — DC humidity makes synthetics stuffy',
+        'Supportive sneakers or walking flats: the National Mall is 3 miles end to end',
+        'Light cardigan or linen blazer for Smithsonian museum A/C, which runs cold',
+        'Simple tote bag for museum maps, water, and a small layer',
+      ],
+      menDay: [
+        'Breathable linen shirt or polo + chinos — smart-casual suitable for memorials and museums',
+        'Cushioned walking sneakers; the Mall requires serious step counts',
+      ],
+      womenEve: [
+        'Flowy dress or smart trousers + blouse for Georgetown dinners and evening memorial walks',
+        'Light blazer or linen jacket if dining at upscale spots near the Mall',
+        'Block-heel sandals or dressy flats balance comfort with a polished evening finish',
+        'Compact umbrella: DC pop-up showers are common in late May',
+      ],
+      menEve: [
+        'Oxford shirt or casual button-down for dinner and monument evening circuit',
+        'Light jacket for breezy open plazas after dark',
+      ],
+      essentials: [
+        'Hydration bottle + electrolytes — DC humidity in late May is draining on long walks',
+        'Compact umbrella for afternoon showers',
+        'Sunscreen + hat for exposed National Mall stretches',
+      ],
+    },
+    ny: {
+      womenDay: [
+        'Relaxed trousers or light jeans + tucked-in blouse or tee — classic NYC off-duty aesthetic',
+        'Fresh white sneakers are the NYC uniform: stylish, practical, and universally acceptable',
+        'Light jacket or overshirt for subway A/C which drops dramatically even in warm weather',
+        'Crossbody bag for hands-free navigation, phone, MetroCard, and coffee',
+      ],
+      menDay: [
+        'Clean NYC-casual: minimal tee or fitted polo + jogger-style trousers or jeans',
+        'White sneakers or clean trainers — NYC streets reward good footwear choices',
+      ],
+      womenEve: [
+        'Tailored blazer over a cami or fitted top for dinner + rooftop bars or observation decks',
+        'Heeled boots or strappy heels for a polished skyline-night look worth photographing',
+        'Statement earrings or a bold clutch: NYC evenings genuinely appreciate the extra effort',
+        'Keep a foldable layer in your tote for late riverside walks when wind picks up',
+      ],
+      menEve: [
+        'Dark jeans + button-shirt for restaurants, rooftop bars, and evening skyline viewpoints',
+        'Clean trainers or smart loafers both work for NYC evening dress codes',
+      ],
+      essentials: [
+        'MetroCard or contactless pay set up on your phone before Day 1',
+        'Compact umbrella: city weather shifts fast and unpredictably',
+        'Power bank: full photography days + maps + messaging drain phones completely',
+      ],
+    },
+  };
+
+  return data[id] || {
+    womenDay: ['Breathable comfortable clothing for warm weather', 'Supportive walking shoes'],
+    menDay: ['Casual comfortable clothing', 'Comfortable sneakers'],
+    womenEve: ['Light jacket for cooler evenings', 'Comfortable evening shoes'],
+    menEve: ['Light jacket for evenings'],
+    essentials: ['Sunscreen', 'Water bottle', 'Comfortable footwear'],
+  };
+}
+
 function renderDayHero(city, day, manifest) {
   const hero     = document.getElementById('cityHero');
   const dayImgSrc = imgPath('days', day.id, manifest);
@@ -638,7 +813,7 @@ function renderDayHero(city, day, manifest) {
   const clothing = city
     ? `👕 ${city.clothing.day} &nbsp;·&nbsp; 🧥 ${city.clothing.evening}`
     : '';
-  const weatherHref = weatherDetailUrl(day.id);
+  const weatherHref = weatherDetailUrl(day.city || '');
 
   hero.innerHTML = `
     <div class="city-hero-overlay">
