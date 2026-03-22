@@ -418,6 +418,16 @@
     "lng": -74.0396
   },
   {
+    "id": "nine_eleven_memorial_museum",
+    "name": "9/11 Memorial & Museum",
+    "city": "ny",
+    "why_special": "One of New York's most powerful and meaningful sites, blending remembrance, history, and resilience.",
+    "description": "Located at the former World Trade Center site, the 9/11 Memorial & Museum honors those who were lost in the attacks of September 11, 2001. The twin reflecting pools mark the towers' footprints, while the museum's exhibits and recovered artifacts tell the story of the day and the city's extraordinary response.",
+    "tip": "Book a timed entry in advance and allow at least 90-120 minutes. Photography is allowed in most spaces but keep phones on silent out of respect.",
+    "lat": 40.7115,
+    "lng": -74.0134
+  },
+  {
     "id": "wall_street",
     "name": "Wall Street",
     "city": "ny",

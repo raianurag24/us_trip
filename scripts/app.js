@@ -12,6 +12,7 @@ const BASE      = isIndex ? '' : '../';
 const DAY_PATH  = isIndex ? 'pages/day.html' : 'day.html';
 const WEATHER_PATH = isIndex ? 'pages/weather.html' : 'weather.html';
 const HOME_URL  = isIndex ? '#'              : '../index.html';
+const ASSET_VERSION = '45';
 
 let leafletMap = null;
 let leafletMarker = null;
@@ -39,13 +40,14 @@ async function boot() {
 }
 
 function load(path) {
-  return fetch(BASE + path, { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error(r.url); return r.json(); });
+  const sep = path.includes('?') ? '&' : '?';
+  return fetch(`${BASE}${path}${sep}v=${ASSET_VERSION}`, { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error(r.url); return r.json(); });
 }
 
 /** Return the image src for a venue/hotel/day/city folder, using manifest to find the actual filename. */
 function imgPath(type, folder, manifest) {
   const file = (manifest && manifest[type] && manifest[type][folder]) || 'hero.jpg';
-  return `${BASE}images/${type}/${folder}/${file}?v=44`;
+  return `${BASE}images/${type}/${folder}/${file}?v=${ASSET_VERSION}`;
 }
 
 function weatherDetailUrl(cityId) {

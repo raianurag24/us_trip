@@ -387,13 +387,6 @@
     {
       "type": "visit",
       "date": "2026-06-02",
-      "time": "16:00",
-      "venue_id": "summit",
-      "duration_min": 75
-    },
-    {
-      "type": "visit",
-      "date": "2026-06-02",
       "time": "17:30",
       "venue_id": "grand_central_terminal",
       "duration_min": 15
@@ -422,53 +415,53 @@
     {
       "type": "visit",
       "date": "2026-06-03",
-      "time": "09:00",
+      "time": "08:50",
       "venue_id": "battery_park",
-      "duration_min": 20
+      "duration_min": 10
     },
     {
       "type": "experience",
       "date": "2026-06-03",
-      "time": "09:30",
+      "time": "09:00",
       "venue_id": "statue_of_liberty",
-      "duration_min": 120
+      "duration_min": 135
     },
     {
       "id": "note_relaxed_2026_06_03",
       "type": "note",
       "date": "2026-06-03",
-      "time": "12:00",
-      "title": "Relaxed Day · Flexible Afternoon",
-      "body": "Ellis Island removed from the plan. This afternoon is intentionally left light — stroll, grab lunch, or swap in an easy activity later.",
+      "time": "11:45",
+      "title": "Ellis Island Skipped",
+      "body": "You are skipping Ellis Island to protect the first-ferry flow and keep enough time for 9/11 Museum, Brooklyn, and the Circle Line evening cruise.",
       "icon": "😌"
     },
     {
       "type": "visit",
       "date": "2026-06-03",
       "time": "12:00",
-      "venue_id": "ellis_island",
-      "duration_min": 90
+      "venue_id": "nine_eleven_memorial_museum",
+      "duration_min": 120
     },
     {
       "type": "visit",
       "date": "2026-06-03",
-      "time": "14:30",
+      "time": "14:20",
       "venue_id": "wall_street",
-      "duration_min": 30
+      "duration_min": 20
     },
     {
       "type": "visit",
       "date": "2026-06-03",
-      "time": "15:30",
+      "time": "15:00",
       "venue_id": "brooklyn_bridge",
       "duration_min": 45
     },
     {
       "type": "visit",
       "date": "2026-06-03",
-      "time": "16:45",
+      "time": "15:50",
       "venue_id": "dumbo",
-      "duration_min": 45
+      "duration_min": 55
     },
     {
       "id": "hotel_ny_times_square",
@@ -482,44 +475,51 @@
     {
       "type": "visit",
       "date": "2026-06-04",
-      "time": "10:00",
+      "time": "12:00",
       "venue_id": "intrepid",
       "duration_min": 90
     },
     {
       "type": "experience",
-      "date": "2026-06-04",
-      "time": "12:00",
+      "date": "2026-06-03",
+      "time": "19:00",
       "venue_id": "circle_line_cruise",
+      "duration_min": 120
+    },
+    {
+      "type": "visit",
+      "date": "2026-06-04",
+      "time": "09:45",
+      "venue_id": "summit",
       "duration_min": 90
     },
     {
       "type": "visit",
       "date": "2026-06-04",
-      "time": "14:30",
+      "time": "14:15",
       "venue_id": "high_line",
       "duration_min": 60
     },
     {
       "type": "visit",
       "date": "2026-06-04",
-      "time": "15:45",
+      "time": "15:20",
       "venue_id": "hudson_yards",
       "duration_min": 30
     },
     {
       "type": "visit",
       "date": "2026-06-04",
-      "time": "16:30",
+      "time": "16:20",
       "venue_id": "friends_building",
-      "duration_min": 15
+      "duration_min": 20
     },
     {
       "type": "visit",
       "date": "2026-06-04",
-      "time": "17:00",
+      "time": "16:50",
       "venue_id": "washington_square_park",
-      "duration_min": 30
+      "duration_min": 40
     },
     {
       "type": "experience",
@@ -924,10 +924,10 @@
       "type": "travel",
       "mode": "uber",
       "date": "2026-06-03",
-      "time": "08:35",
+      "time": "07:20",
       "from": "Residence Inn New York Queens",
       "to": "Battery Park",
-      "note": "Uber to Battery Park (approx 35 min)."
+      "note": "Early transfer for the first Statue ferry departure."
     },
     {
       "id": "walk_dumbo_hoho_2026_06_03",
@@ -953,27 +953,27 @@
       "id": "midtown_dinner_2026_06_03",
       "type": "note",
       "date": "2026-06-03",
-      "time": "17:00",
-      "title": "Midtown Dinner",
+      "time": "16:50",
+      "title": "Early Dinner / Snack Break",
       "icon": "🍽️",
-      "body": "Dinner in Midtown after HOHO — relaxed 60 minutes."
+      "body": "Quick break before heading to Pier 83 for the 7:00 PM Harbor Lights cruise."
     },
     {
       "id": "subway_midtown_queens_2026_06_03",
       "type": "travel",
       "mode": "subway",
       "date": "2026-06-03",
-      "time": "20:00",
-      "from": "Times Square",
+      "time": "21:15",
+      "from": "Pier 83 / Midtown West",
       "to": "Residence Inn New York Queens",
-      "note": "Subway back to Queens (approx 25 min)."
+      "note": "Subway back to Queens after Circle Line cruise."
     },
     {
       "id": "walk_queens_hotel_2026_06_03",
       "type": "travel",
       "mode": "walk",
       "date": "2026-06-03",
-      "time": "20:30",
+      "time": "21:45",
       "from": "Queens subway station",
       "to": "Residence Inn New York Queens",
       "note": "Short walk to the hotel."
@@ -983,37 +983,37 @@
       "type": "travel",
       "mode": "uber",
       "date": "2026-06-04",
-      "time": "09:35",
+      "time": "08:30",
       "from": "Residence Inn New York Queens",
       "to": "Motto by Hilton New York City Times Square",
-      "note": "Uber with luggage — drop luggage briefly."
+      "note": "Uber with luggage for early bag drop before SUMMIT."
     },
     {
       "id": "walk_motto_intrepid_2026_06_04",
       "type": "travel",
       "mode": "walk",
       "date": "2026-06-04",
-      "time": "10:05",
+      "time": "09:25",
       "from": "Motto by Hilton",
-      "to": "Intrepid Sea, Air & Space Museum",
-      "note": "Walk across town to Intrepid (~18 min)."
+      "to": "SUMMIT One Vanderbilt",
+      "note": "Transfer to SUMMIT for the morning timed entry."
     },
     {
       "id": "uber_circleline_hudson_2026_06_04",
       "type": "travel",
       "mode": "uber",
       "date": "2026-06-04",
-      "time": "13:30",
-      "from": "Circle Line / Intrepid area",
-      "to": "Hudson Yards (lunch)",
-      "note": "Short Uber to Hudson Yards for lunch."
+      "time": "11:30",
+      "from": "SUMMIT One Vanderbilt",
+      "to": "Intrepid Sea, Air & Space Museum",
+      "note": "Transfer from SUMMIT to Intrepid before midday entry."
     },
     {
       "id": "uber_return_hotel_2026_06_04",
       "type": "travel",
       "mode": "uber",
       "date": "2026-06-04",
-      "time": "16:30",
+      "time": "17:30",
       "from": "Washington Square Park",
       "to": "Motto by Hilton New York City Times Square",
       "note": "Return to hotel by Uber (approx 12 min)."
