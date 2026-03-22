@@ -326,6 +326,7 @@
     "why_special": "New York's newest and most spectacular high-rise experience — part observation deck, part immersive art installation.",
     "description": "The newest and arguably most spectacular observation experience in New York. SUMMIT One Vanderbilt sits you atop a 93rd-floor glass terrace 1,200 feet over Midtown Manhattan — but also wraps you in mirrored infinity rooms, glass floors, and the Levitation pods that extend over the street far below. Close your eyes before you step out, then open them. Jaw-dropping is an understatement.",
     "tip": "BOOKING REQUIRED (timed slot): reserve in advance. Premium times sell out quickly. The Levitation terrace is the highlight: glass floor over 1,200ft of Manhattan.",
+    "booking_required": true,
     "lat": 40.7527,
     "lng": -73.9772
   },
@@ -359,6 +360,7 @@
     "why_special": "The only NYC viewpoint where you see the Empire State Building AND Central Park in one perfect panorama.",
     "description": "Rockefeller Center's legendary 70th-floor viewing decks — and the only spot in Manhattan where you get an unobstructed view of the Empire State Building AND Central Park in the same breath-taking panorama. Three levels of open terraces with no caging, just the wind and the entire extraordinary skyline spread before you. Book ahead: sunset here is one of New York's transcendent moments.",
     "tip": "BOOKING REQUIRED (timed entry): reserve your slot in advance, especially for sunset. The Top-Level (70th floor) has no caging.",
+    "booking_required": true,
     "lat": 40.7591,
     "lng": -73.9794
   },
@@ -403,6 +405,7 @@
     "why_special": "One of history's most powerful symbols — and seeing her from the water for the first time is a genuine shiver moment.",
     "description": "Lady Liberty stands 305 feet tall at the entrance to New York Harbor, her torch raised to the world — and seeing her from the approaching ferry for the first time sends an actual shiver down the spine. Step ashore on Liberty Island, look back at the Manhattan skyline behind you, and understand in your bones what this image has meant to the world for 140 years. One of history's great sights.",
     "tip": "BOOKING REQUIRED (ferry reservation): reserve the earliest slot in advance. Crown and pedestal access need separate reserved tickets.",
+    "booking_required": true,
     "lat": 40.6892,
     "lng": -74.0445
   },
@@ -424,6 +427,7 @@
     "why_special": "One of New York's most powerful and meaningful sites, blending remembrance, history, and resilience.",
     "description": "Located at the former World Trade Center site, the 9/11 Memorial & Museum honors those who were lost in the attacks of September 11, 2001. The twin reflecting pools mark the towers' footprints, while the museum's exhibits and recovered artifacts tell the story of the day and the city's extraordinary response.",
     "tip": "BOOKING REQUIRED (timed entry): reserve in advance and allow at least 90-120 minutes. Keep phones on silent out of respect.",
+    "booking_required": true,
     "lat": 40.7115,
     "lng": -74.0134
   },
@@ -490,6 +494,7 @@
     "why_special": "The only way to see the whole island of Manhattan at once — the geography of the city finally makes sense.",
     "description": "The definitive New York experience — circumnavigate the entire island of Manhattan by boat and watch the whole geography of the city finally make sense. The Statue of Liberty glides past to port, the Brooklyn Bridge spans overhead, the Midtown towers line up magnificently, the George Washington Bridge opens up the Hudson. Grab the upper deck, don't go inside, and don't put your camera down.",
     "tip": "BOOKING REQUIRED for fixed-time sailings (especially Harbor Lights 7:00 PM): reserve/validate your slot with your pass before arrival.",
+    "booking_required": true,
     "lat": 40.7643,
     "lng": -73.999
   },
@@ -545,6 +550,7 @@
     "why_special": "102 floors of Art Deco magnificence and the most iconic tower on the world's most famous skyline.",
     "description": "102 floors, 1,454 feet, and the most recognisable tower on the most famous skyline in the world. The Art Deco lobby alone makes the visit worth it. Ride to the 86th floor open-air observatory, step into the wind, and look out at all of New York glittering in every direction below you. Book the night visit — seeing the city lit up under the spire's glow is one of those moments you'll carry for life.",
     "tip": "BOOKING REQUIRED (timed entry): reserve your preferred slot in advance. The 86th floor open-air deck is better than the enclosed 102nd.",
+    "booking_required": true,
     "lat": 40.7484,
     "lng": -73.9857
   },

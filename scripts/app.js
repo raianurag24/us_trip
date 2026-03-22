@@ -939,11 +939,13 @@ function buildActivityCard(act, venues, hotels, manifest) {
 
     const left = el('div', 'ac-body');
     const durTxt = act.duration_min ? ` <span class="ac-dur-inline">(${fmtDuration(act.duration_min)})</span>` : '';
+    const bookingBadge = venue.booking_required ? `<div class="ac-booking">📅 Booking Required</div>` : '';
     const query = encodeURIComponent(venue.name || act.venue_id);
     const ytUrl = `https://www.youtube.com/results?search_query=${query}`;
     left.innerHTML = `
       <div class="ac-title"><a href="${ytUrl}" target="_blank" rel="noopener noreferrer">${venue.name || act.venue_id}</a>${durTxt}</div>
       <div class="ac-sub">${act.time || ''}</div>
+      ${bookingBadge}
       ${venue.tip ? `<div class="ac-tip">💡 ${venue.tip}</div>` : ''}`;
 
     // Map link inline in body
