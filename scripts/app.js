@@ -12,7 +12,7 @@ const BASE      = isIndex ? '' : '../';
 const DAY_PATH  = isIndex ? 'pages/day.html' : 'day.html';
 const WEATHER_PATH = isIndex ? 'pages/weather.html' : 'weather.html';
 const HOME_URL  = isIndex ? '#'              : '../index.html';
-const ASSET_VERSION = '45';
+const ASSET_VERSION = '46';
 
 let leafletMap = null;
 let leafletMarker = null;

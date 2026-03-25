@@ -175,6 +175,85 @@
       "city": "lv"
     },
     {
+      "id": "nyny_walk_2026_05_28",
+      "type": "visit",
+      "date": "2026-05-28",
+      "time": "11:45",
+      "venue_id": "nyny_las_vegas",
+      "duration_min": 40
+    },
+    {
+      "id": "mgm_grand_visit_2026_05_28",
+      "type": "visit",
+      "date": "2026-05-28",
+      "time": "12:30",
+      "venue_id": "mgm_grand_las_vegas",
+      "duration_min": 35
+    },
+    {
+      "id": "free_time_lv_2026_05_28",
+      "type": "note",
+      "date": "2026-05-28",
+      "time": "14:00",
+      "title": "Free Time · 2:00 PM – 5:30 PM",
+      "body": "Stay close to <b>Excalibur</b> for check-in, freshening up, and a proper reset before the evening run to Paris, Bellagio, LINQ, and Fremont. Keeping this block hotel-based avoids wasting energy on unnecessary backtracking.",
+      "icon": "☕"
+    },
+    {
+      "id": "eiffel_tower_paris_lv_2026_05_28",
+      "type": "experience",
+      "date": "2026-05-28",
+      "time": "18:15",
+      "venue_id": "eiffel_tower_paris_lv",
+      "duration_min": 30
+    },
+    {
+      "id": "bellagio_fountains_2026_05_28",
+      "type": "visit",
+      "date": "2026-05-28",
+      "time": "19:00",
+      "venue_id": "bellagio_fountains",
+      "duration_min": 15
+    },
+    {
+      "id": "high_roller_2026_05_28",
+      "type": "experience",
+      "date": "2026-05-28",
+      "time": "19:45",
+      "venue_id": "high_roller",
+      "duration_min": 30
+    },
+    {
+      "id": "uber_strip_fremont_2026_05_28",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-05-28",
+      "time": "21:00",
+      "from": "LINQ / High Roller area",
+      "to": "Fremont Street Experience",
+      "duration_min": 20,
+      "note": "Uber to Downtown after the central Strip cluster. This is the one Vegas transfer that is worth not walking."
+    },
+    {
+      "id": "fremont_street_2026_05_28",
+      "type": "visit",
+      "date": "2026-05-28",
+      "time": "21:30",
+      "venue_id": "fremont_street",
+      "duration_min": 75
+    },
+    {
+      "id": "uber_fremont_excalibur_2026_05_28",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-05-28",
+      "time": "22:45",
+      "from": "Fremont Street Experience",
+      "to": "Excalibur Hotel & Casino",
+      "duration_min": 20,
+      "note": "Uber back to Excalibur after Downtown Vegas."
+    },
+    {
       "type": "experience",
       "date": "2026-05-28",
       "time": "11:00",
@@ -215,6 +294,55 @@
       "time": "21:30",
       "venue_id": "vegas_strip_helicopter",
       "duration_min": 20
+    },
+    {
+      "id": "madame_tussauds_lv_2026_05_29",
+      "type": "visit",
+      "date": "2026-05-29",
+      "time": "10:30",
+      "venue_id": "madame_tussauds_las_vegas",
+      "duration_min": 60
+    },
+    {
+      "id": "venetian_las_vegas_2026_05_29",
+      "type": "visit",
+      "date": "2026-05-29",
+      "time": "11:45",
+      "venue_id": "venetian_las_vegas",
+      "duration_min": 75
+    },
+    {
+      "id": "sphere_las_vegas_2026_05_29",
+      "type": "experience",
+      "date": "2026-05-29",
+      "time": "14:00",
+      "venue_id": "sphere_las_vegas",
+      "duration_min": 90
+    },
+    {
+      "id": "real_bodies_2026_05_29",
+      "type": "visit",
+      "date": "2026-05-29",
+      "time": "16:00",
+      "venue_id": "real_bodies",
+      "duration_min": 60
+    },
+    {
+      "id": "free_time_lv_2026_05_29",
+      "type": "note",
+      "date": "2026-05-29",
+      "time": "17:15",
+      "title": "Free Time · 5:15 PM – 7:00 PM",
+      "body": "Keep this block flexible. If energy is high, stay around <b>Paris / Flamingo / LINQ</b> for dinner or casino wandering; if not, take a short Uber back to <b>Excalibur</b> and reset before the show.",
+      "icon": "🌆"
+    },
+    {
+      "id": "nathan_burton_magic_show_2026_05_29",
+      "type": "experience",
+      "date": "2026-05-29",
+      "time": "19:00",
+      "venue_id": "nathan_burton_magic_show",
+      "duration_min": 70
     },
     {
       "type": "visit",

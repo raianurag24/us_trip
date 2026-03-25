@@ -187,13 +187,24 @@
     "lng": -115.1767
   },
   {
+    "id": "eiffel_tower_paris_lv",
+    "name": "Eiffel Tower Observation Deck at Paris Las Vegas",
+    "city": "lv",
+    "why_special": "A half-scale Eiffel Tower with one of the best elevated views of the Strip, especially as daylight fades and the neon switches on.",
+    "description": "Ride up 46 storeys inside Paris Las Vegas and step onto the observation deck for a classic Vegas panorama: Bellagio below, the Strip stretching north and south, and the whole corridor lighting up as evening arrives. It is one of the cleanest, quickest skyline wins in the city.",
+    "tip": "Aim for golden hour or early evening. It is close enough to Bellagio and the High Roller to make a clean walking sequence.",
+    "lat": 36.1122,
+    "lng": -115.1722
+  },
+  {
     "id": "high_roller",
     "name": "High Roller Observation Wheel",
     "city": "lv",
     "image_folder": "high_roller",
     "why_special": "The world's tallest observation wheel, floating you above the glittering Las Vegas Strip at sunset.",
     "description": "At 550 feet, this is the world's tallest observation Ferris wheel — bigger than the London Eye. Step into one of 28 enormous glass pods and float weightlessly above the entire Las Vegas Strip for 30 minutes as the sun sets and the neon slowly comes alive far below. Cocktails are available inside. Pure, elevated Las Vegas at its most glamorous.",
-    "tip": "Book the Happy Half Hour pod (cocktails included). Rides at sunset for the most spectacular light transition.",
+    "tip": "BOOKING REQUIRED (recommended timed slot): lock a sunset or early-night ride in advance. The Happy Half Hour pod includes cocktails.",
+    "booking_required": true,
     "lat": 36.1177,
     "lng": -115.1686
   },
@@ -237,7 +248,8 @@
     "image_folder": "sphere_las_vegas",
     "why_special": "The most technologically advanced building of the 21st century — a 366-foot spherical screen unlike anything anywhere.",
     "description": "The most technologically mind-bending structure built anywhere in this century — a 366-foot spherical LED screen that completely wraps around you inside and outside in a 160,000-square-foot immersive experience. The exterior alone stops traffic from miles away. Standing next to it is genuinely surreal. Whatever is showing inside, the experience itself is unlike anything anywhere else on Earth.",
-    "tip": "You can walk around and photograph the exterior for free from the street. The MSG Sphere shows require tickets.",
+    "tip": "BOOKING REQUIRED (timed slot): keep your entry time fixed and arrive early enough for security and wayfinding. The exterior is free to admire, but the shows require tickets.",
+    "booking_required": true,
     "lat": 36.1212,
     "lng": -115.1676
   },
@@ -742,6 +754,26 @@
     "lng": -115.1737
   },
   {
+    "id": "mgm_grand_las_vegas",
+    "name": "MGM Grand Las Vegas",
+    "city": "lv",
+    "why_special": "One of the biggest casino resorts in the world — pure classic Vegas scale, energy and people-watching.",
+    "description": "A giant emerald-green megaresort packed with casino floors, restaurants, arena energy and nonstop Strip movement. Even a short walk through the lobby and casino is enough to feel the classic oversized Vegas spectacle.",
+    "tip": "Best treated as a short indoor walk-through while you are already in the South Strip loop with NYNY and Excalibur.",
+    "lat": 36.1024,
+    "lng": -115.1696
+  },
+  {
+    "id": "madame_tussauds_las_vegas",
+    "name": "Madame Tussauds Las Vegas",
+    "city": "lv",
+    "why_special": "Hyper-real wax figures, playful sets and photo stops that feel more like a pop-culture playground than a formal museum.",
+    "description": "Walk past music legends, film stars, athletes and Vegas icons in an attraction built for quick reactions and fun photo ops. It is easy, air-conditioned and a good pass-covered stop before moving deeper into the north Strip cluster.",
+    "tip": "Walk-in is usually fine with the pass. Keep it to about an hour so the north Strip cluster still flows smoothly into Venetian and Sphere.",
+    "lat": 36.1216,
+    "lng": -115.1684
+  },
+  {
     "id": "hoho_bus_lv",
     "name": "Big Bus Las Vegas Hop-On Hop-Off",
     "city": "lv",
@@ -773,6 +805,17 @@
     "tip": "Suitable for all ages. Covered by the Go City Pass. Located at Bally's — easy to reach from the HOHO bus.",
     "lat": 36.1131,
     "lng": -115.1711
+  },
+  {
+    "id": "nathan_burton_magic_show",
+    "name": "Nathan Burton Comedy Magic Show",
+    "city": "lv",
+    "why_special": "A classic affordable Vegas magic show with quick-fire illusions, audience interaction and a strong family-friendly pace.",
+    "description": "Nathan Burton's show is built around energetic illusions, comedy beats and a fast runtime that keeps it easy to pair with dinner or an evening stroll. It gives you a true Vegas theatre stop without committing to a giant production show.",
+    "tip": "BOOKING REQUIRED: confirm the exact May 2026 venue when you buy. The show is often linked with Flamingo-area scheduling, so keep this evening flexible until tickets are locked.",
+    "booking_required": true,
+    "lat": 36.1155,
+    "lng": -115.1716
   },
   {
     "id": "venetian_las_vegas",
