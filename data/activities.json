@@ -175,20 +175,13 @@
       "city": "lv"
     },
     {
-      "id": "nyny_walk_2026_05_28",
-      "type": "visit",
+      "id": "lunch_strip_lv_2026_05_28",
+      "type": "note",
       "date": "2026-05-28",
-      "time": "11:45",
-      "venue_id": "nyny_las_vegas",
-      "duration_min": 40
-    },
-    {
-      "id": "mgm_grand_visit_2026_05_28",
-      "type": "visit",
-      "date": "2026-05-28",
-      "time": "12:30",
-      "venue_id": "mgm_grand_las_vegas",
-      "duration_min": 35
+      "time": "12:00",
+      "title": "Lunch on the Strip · 12:00 PM",
+      "body": "Keep lunch simple near <b>Excalibur / Park MGM</b> so everyone is fueled before the afternoon show and evening Downtown plan.",
+      "icon": "🍽️"
     },
     {
       "id": "free_time_lv_2026_05_28",
@@ -196,7 +189,7 @@
       "date": "2026-05-28",
       "time": "14:00",
       "title": "Free Time · 2:00 PM – 3:45 PM",
-      "body": "Stay close to <b>Excalibur</b> for check-in, freshening up, and a proper reset before Nathan Burton and the evening Downtown run. Keeping this block hotel-based avoids wasting energy on unnecessary backtracking.",
+      "body": "Stay close to <b>Excalibur</b> for check-in, freshening up, and a proper reset before Nathan Burton and the evening Downtown run.",
       "icon": "☕"
     },
     {
@@ -263,56 +256,6 @@
       "note": "Uber back to Excalibur after Downtown Vegas."
     },
     {
-      "type": "experience",
-      "date": "2026-05-28",
-      "time": "11:00",
-      "venue_id": "excalibur_theater",
-      "duration_min": 20
-    },
-    {
-      "type": "visit",
-      "date": "2026-05-28",
-      "time": "11:45",
-      "venue_id": "nyny_las_vegas",
-      "duration_min": 35
-    },
-    {
-      "type": "experience",
-      "date": "2026-05-28",
-      "time": "13:30",
-      "venue_id": "hoho_bus_lv",
-      "duration_min": 120
-    },
-    {
-      "type": "experience",
-      "date": "2026-05-28",
-      "time": "18:00",
-      "venue_id": "high_roller",
-      "duration_min": 30
-    },
-    {
-      "type": "visit",
-      "date": "2026-05-28",
-      "time": "19:30",
-      "venue_id": "bellagio_fountains",
-      "duration_min": 30
-    },
-    {
-      "type": "experience",
-      "date": "2026-05-28",
-      "time": "21:30",
-      "venue_id": "vegas_strip_helicopter",
-      "duration_min": 20
-    },
-    {
-      "id": "madame_tussauds_lv_2026_05_29",
-      "type": "visit",
-      "date": "2026-05-29",
-      "time": "10:30",
-      "venue_id": "madame_tussauds_las_vegas",
-      "duration_min": 60
-    },
-    {
       "id": "venetian_las_vegas_2026_05_29",
       "type": "visit",
       "date": "2026-05-29",
@@ -344,41 +287,6 @@
       "title": "Free Time · 3:45 PM – 6:30 PM",
       "body": "Keep this block flexible for a relaxed meal, a hotel reset, or extra Venetian / LINQ wandering before heading back for the sunset High Roller ride.",
       "icon": "🌆"
-    },
-    {
-      "type": "visit",
-      "date": "2026-05-29",
-      "time": "10:30",
-      "venue_id": "hollywood_cars_museum",
-      "duration_min": 40
-    },
-    {
-      "type": "visit",
-      "date": "2026-05-29",
-      "time": "11:30",
-      "venue_id": "real_bodies",
-      "duration_min": 45
-    },
-    {
-      "type": "visit",
-      "date": "2026-05-29",
-      "time": "12:30",
-      "venue_id": "venetian_las_vegas",
-      "duration_min": 90
-    },
-    {
-      "type": "experience",
-      "date": "2026-05-29",
-      "time": "14:00",
-      "venue_id": "illuminarium_lv",
-      "duration_min": 60
-    },
-    {
-      "type": "visit",
-      "date": "2026-05-29",
-      "time": "20:00",
-      "venue_id": "fremont_street",
-      "duration_min": 90
     },
     {
       "id": "flight_las_dtw",
@@ -430,14 +338,14 @@
     },
     {
       "type": "experience",
-      "date": "2026-05-30",
+      "date": "2026-05-31",
       "time": "13:30",
       "venue_id": "maid_of_the_mist",
       "duration_min": 45
     },
     {
       "type": "experience",
-      "date": "2026-05-30",
+      "date": "2026-05-31",
       "time": "15:00",
       "venue_id": "cave_of_the_winds",
       "duration_min": 45
@@ -467,28 +375,28 @@
     },
     {
       "type": "visit",
-      "date": "2026-05-31",
+      "date": "2026-06-01",
       "time": "15:30",
       "venue_id": "white_house",
       "duration_min": 30
     },
     {
       "type": "visit",
-      "date": "2026-05-31",
+      "date": "2026-06-01",
       "time": "16:30",
       "venue_id": "washington_monument",
       "duration_min": 30
     },
     {
       "type": "visit",
-      "date": "2026-05-31",
+      "date": "2026-06-01",
       "time": "17:30",
       "venue_id": "lincoln_memorial",
       "duration_min": 45
     },
     {
       "type": "visit",
-      "date": "2026-05-31",
+      "date": "2026-06-01",
       "time": "18:30",
       "venue_id": "capitol_hill",
       "duration_min": 45
@@ -1057,26 +965,6 @@
       "from": "Residence Inn New York Queens",
       "to": "Battery Park",
       "note": "Early transfer for the first Statue ferry departure."
-    },
-    {
-      "id": "walk_dumbo_hoho_2026_06_03",
-      "type": "travel",
-      "mode": "walk",
-      "date": "2026-06-03",
-      "time": "15:25",
-      "from": "DUMBO",
-      "to": "HOHO pickup point",
-      "note": "Short walk to the HOHO pickup."
-    },
-    {
-      "id": "hoho_dumbo_midtown_2026_06_03",
-      "type": "travel",
-      "mode": "hoho",
-      "date": "2026-06-03",
-      "time": "15:30",
-      "from": "DUMBO",
-      "to": "Midtown (HOHO)",
-      "note": "HOHO scenic bus from Brooklyn to Midtown (approx 60 min)."
     },
     {
       "id": "midtown_dinner_2026_06_03",

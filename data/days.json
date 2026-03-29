@@ -94,11 +94,10 @@
       "id": "day6",
       "date": "2026-05-28",
       "city": "lv",
-      "title": "Arrival, Magic Show and Fremont",
+      "title": "Arrival, Magic Show and Fremont Night",
       "activities": [
         "flight_lax_las",
-        "nyny_walk_2026_05_28",
-        "mgm_grand_visit_2026_05_28",
+        "lunch_strip_lv_2026_05_28",
         "free_time_lv_2026_05_28",
         "hotel_lv",
         "nathan_burton_magic_show_2026_05_28",
@@ -228,7 +227,15 @@
         "walk_centralpark_amnh_2026_06_05",
         "amnh",
         "uber_hotel_jfk_2026_06_05",
-        "flight_jfk_del",
+        "flight_jfk_del"
+      ]
+    },
+    {
+      "id": "day15",
+      "date": "2026-06-06",
+      "city": "travel",
+      "title": "Frankfurt Connection + Flight to Delhi",
+      "activities": [
         "flight_fra_del"
       ]
     }
