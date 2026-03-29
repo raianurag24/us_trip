@@ -195,31 +195,31 @@
       "type": "note",
       "date": "2026-05-28",
       "time": "14:00",
-      "title": "Free Time · 2:00 PM – 5:30 PM",
-      "body": "Stay close to <b>Excalibur</b> for check-in, freshening up, and a proper reset before the evening run to Paris, Bellagio, LINQ, and Fremont. Keeping this block hotel-based avoids wasting energy on unnecessary backtracking.",
+      "title": "Free Time · 2:00 PM – 3:45 PM",
+      "body": "Stay close to <b>Excalibur</b> for check-in, freshening up, and a proper reset before Nathan Burton and the evening Downtown run. Keeping this block hotel-based avoids wasting energy on unnecessary backtracking.",
       "icon": "☕"
     },
     {
-      "id": "eiffel_tower_paris_lv_2026_05_28",
+      "id": "nathan_burton_magic_show_2026_05_28",
       "type": "experience",
       "date": "2026-05-28",
-      "time": "18:15",
-      "venue_id": "eiffel_tower_paris_lv",
-      "duration_min": 30
+      "time": "16:00",
+      "venue_id": "nathan_burton_magic_show",
+      "duration_min": 70
     },
     {
       "id": "bellagio_fountains_2026_05_28",
       "type": "visit",
       "date": "2026-05-28",
-      "time": "19:00",
+      "time": "18:30",
       "venue_id": "bellagio_fountains",
       "duration_min": 15
     },
     {
-      "id": "high_roller_2026_05_28",
+      "id": "high_roller_2026_05_29",
       "type": "experience",
-      "date": "2026-05-28",
-      "time": "19:45",
+      "date": "2026-05-29",
+      "time": "19:00",
       "venue_id": "high_roller",
       "duration_min": 30
     },
@@ -228,26 +228,35 @@
       "type": "travel",
       "mode": "uber",
       "date": "2026-05-28",
-      "time": "21:00",
-      "from": "LINQ / High Roller area",
+      "time": "19:15",
+      "from": "Paris / Bellagio area",
       "to": "Fremont Street Experience",
       "duration_min": 20,
       "note": "Uber to Downtown after the central Strip cluster. This is the one Vegas transfer that is worth not walking."
     },
     {
+      "id": "fremont_dinner_2026_05_28",
+      "type": "note",
+      "date": "2026-05-28",
+      "time": "19:40",
+      "title": "Dinner at Fremont · 7:40 PM",
+      "body": "Have dinner after reaching <b>Fremont Street</b> so the evening stays as one continuous Downtown block instead of forcing a rushed Strip meal first.",
+      "icon": "🍽️"
+    },
+    {
       "id": "fremont_street_2026_05_28",
       "type": "visit",
       "date": "2026-05-28",
-      "time": "21:30",
+      "time": "20:30",
       "venue_id": "fremont_street",
-      "duration_min": 75
+      "duration_min": 90
     },
     {
       "id": "uber_fremont_excalibur_2026_05_28",
       "type": "travel",
       "mode": "uber",
       "date": "2026-05-28",
-      "time": "22:45",
+      "time": "22:15",
       "from": "Fremont Street Experience",
       "to": "Excalibur Hotel & Casino",
       "duration_min": 20,
@@ -323,7 +332,7 @@
       "id": "real_bodies_2026_05_29",
       "type": "visit",
       "date": "2026-05-29",
-      "time": "16:00",
+      "time": "10:30",
       "venue_id": "real_bodies",
       "duration_min": 60
     },
@@ -331,18 +340,10 @@
       "id": "free_time_lv_2026_05_29",
       "type": "note",
       "date": "2026-05-29",
-      "time": "17:15",
-      "title": "Free Time · 5:15 PM – 7:00 PM",
-      "body": "Keep this block flexible. If energy is high, stay around <b>Paris / Flamingo / LINQ</b> for dinner or casino wandering; if not, take a short Uber back to <b>Excalibur</b> and reset before the show.",
+      "time": "15:45",
+      "title": "Free Time · 3:45 PM – 6:30 PM",
+      "body": "Keep this block flexible for a relaxed meal, a hotel reset, or extra Venetian / LINQ wandering before heading back for the sunset High Roller ride.",
       "icon": "🌆"
-    },
-    {
-      "id": "nathan_burton_magic_show_2026_05_29",
-      "type": "experience",
-      "date": "2026-05-29",
-      "time": "19:00",
-      "venue_id": "nathan_burton_magic_show",
-      "duration_min": 70
     },
     {
       "type": "visit",

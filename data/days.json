@@ -94,17 +94,17 @@
       "id": "day6",
       "date": "2026-05-28",
       "city": "lv",
-      "title": "Arrival, Center Strip and Fremont",
+      "title": "Arrival, Magic Show and Fremont",
       "activities": [
         "flight_lax_las",
         "nyny_walk_2026_05_28",
         "mgm_grand_visit_2026_05_28",
         "free_time_lv_2026_05_28",
         "hotel_lv",
-        "eiffel_tower_paris_lv_2026_05_28",
+        "nathan_burton_magic_show_2026_05_28",
         "bellagio_fountains_2026_05_28",
-        "high_roller_2026_05_28",
         "uber_strip_fremont_2026_05_28",
+        "fremont_dinner_2026_05_28",
         "fremont_street_2026_05_28",
         "uber_fremont_excalibur_2026_05_28"
       ]
@@ -113,14 +113,13 @@
       "id": "day7",
       "date": "2026-05-29",
       "city": "lv",
-      "title": "Sphere, Magic Show and Strip Free Time",
+      "title": "Real Bodies, Sphere and High Roller",
       "activities": [
-        "madame_tussauds_lv_2026_05_29",
+        "real_bodies_2026_05_29",
         "venetian_las_vegas_2026_05_29",
         "sphere_las_vegas_2026_05_29",
-        "real_bodies_2026_05_29",
         "free_time_lv_2026_05_29",
-        "nathan_burton_magic_show_2026_05_29"
+        "high_roller_2026_05_29"
       ]
     },
     {
