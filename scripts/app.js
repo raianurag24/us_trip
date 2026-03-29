@@ -11,8 +11,8 @@ const isWeather = !!document.getElementById('weather-detail');
 const BASE      = isIndex ? '' : '../';
 const DAY_PATH  = isIndex ? 'pages/day.html' : 'day.html';
 const WEATHER_PATH = isIndex ? 'pages/weather.html' : 'weather.html';
-const ASSET_VERSION = '49';
-const HOME_URL  = isIndex ? '#' : `../index.html?v=${ASSET_VERSION}`;
+const ASSET_VERSION = '50';
+const HOME_URL  = isIndex ? '#' : '../index.html';
 
 let leafletMap = null;
 let leafletMarker = null;
@@ -51,11 +51,11 @@ function imgPath(type, folder, manifest) {
 }
 
 function dayUrl(dayId) {
-  return `${DAY_PATH}?id=${encodeURIComponent(dayId || '')}&v=${ASSET_VERSION}`;
+  return `${DAY_PATH}?id=${encodeURIComponent(dayId || '')}`;
 }
 
 function weatherDetailUrl(cityId) {
-  return `${WEATHER_PATH}?v=${ASSET_VERSION}#city-${cityId || ''}`;
+  return `${WEATHER_PATH}#city-${cityId || ''}`;
 }
 
 // Build a canonical Live Flight Tracker URL for a flight activity.

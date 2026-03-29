@@ -223,25 +223,17 @@
       "type": "travel",
       "mode": "uber",
       "date": "2026-05-28",
-      "time": "18:30",
+      "time": "18:15",
       "from": "Excalibur Hotel & Casino",
       "to": "Paris / Bellagio area",
       "duration_min": 20,
-      "note": "Short evening transfer for the Paris-Bellagio cluster."
-    },
-    {
-      "id": "eiffel_tower_paris_lv_2026_05_28",
-      "type": "experience",
-      "date": "2026-05-28",
-      "time": "19:00",
-      "venue_id": "eiffel_tower_paris_lv",
-      "duration_min": 30
+      "note": "Arrive a little early to keep the evening flexible."
     },
     {
       "id": "bellagio_fountains_2026_05_28",
       "type": "visit",
       "date": "2026-05-28",
-      "time": "19:30",
+      "time": "20:10",
       "venue_id": "bellagio_fountains",
       "duration_min": 20
     },
@@ -249,27 +241,35 @@
       "id": "drop_priority_lv_day6_2026_05_28",
       "type": "note",
       "date": "2026-05-28",
-      "time": "19:50",
+      "time": "20:32",
       "title": "Drop Priority Note",
-      "body": "If the evening gets hectic, drop <b>REAL BODIES (Optional)</b> first, then <b>Eiffel Tower (Optional)</b>. Keep Fremont dinner/night protected.",
+      "body": "If the evening gets hectic, keep <b>REAL BODIES</b> and <b>Bellagio</b>, and skip <b>Eiffel Tower (Optional)</b> at run time. Keep Fremont dinner/night protected.",
       "icon": "📝"
     },
     {
-      "id": "real_bodies_optional_note_2026_05_28",
+      "id": "eiffel_optional_note_2026_05_28",
       "type": "note",
       "date": "2026-05-28",
-      "time": "19:58",
-      "title": "REAL BODIES (Optional)",
-      "body": "Keep this only if energy and time are good after Bellagio.",
+      "time": "20:35",
+      "title": "Eiffel Tower (Optional at Run Time)",
+      "body": "If you are tired or running late, skip Eiffel and move directly toward Fremont.",
       "icon": "🧩"
     },
     {
-      "id": "real_bodies_2026_05_29",
+      "id": "real_bodies_2026_05_28",
       "type": "visit",
       "date": "2026-05-28",
-      "time": "20:00",
+      "time": "19:00",
       "venue_id": "real_bodies",
       "duration_min": 60
+    },
+    {
+      "id": "eiffel_tower_paris_lv_2026_05_28",
+      "type": "experience",
+      "date": "2026-05-28",
+      "time": "20:40",
+      "venue_id": "eiffel_tower_paris_lv",
+      "duration_min": 30
     },
     {
       "id": "uber_strip_fremont_2026_05_28",
