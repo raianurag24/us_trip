@@ -11,8 +11,8 @@ const isWeather = !!document.getElementById('weather-detail');
 const BASE      = isIndex ? '' : '../';
 const DAY_PATH  = isIndex ? 'pages/day.html' : 'day.html';
 const WEATHER_PATH = isIndex ? 'pages/weather.html' : 'weather.html';
-const HOME_URL  = isIndex ? '#'              : '../index.html';
-const ASSET_VERSION = '47';
+const ASSET_VERSION = '48';
+const HOME_URL  = isIndex ? '#' : `../index.html?v=${ASSET_VERSION}`;
 
 let leafletMap = null;
 let leafletMarker = null;
@@ -50,8 +50,12 @@ function imgPath(type, folder, manifest) {
   return `${BASE}images/${type}/${folder}/${file}?v=${ASSET_VERSION}`;
 }
 
+function dayUrl(dayId) {
+  return `${DAY_PATH}?id=${encodeURIComponent(dayId || '')}&v=${ASSET_VERSION}`;
+}
+
 function weatherDetailUrl(cityId) {
-  return `${WEATHER_PATH}#city-${cityId || ''}`;
+  return `${WEATHER_PATH}?v=${ASSET_VERSION}#city-${cityId || ''}`;
 }
 
 // Build a canonical Live Flight Tracker URL for a flight activity.
@@ -121,7 +125,7 @@ function renderCityNav(cities, days) {
     const firstDay = days.find(d => d.city === city.id);
     const pill = el('a', 'city-pill');
     pill.textContent = city.name;
-    if (firstDay) pill.href = `${DAY_PATH}?id=${firstDay.id}`;
+    if (firstDay) pill.href = dayUrl(firstDay.id);
     nav.appendChild(pill);
   });
   // — Day Itinerary pill — always navigates to home page
@@ -174,7 +178,7 @@ function renderOverview({ cities, days, manifest }) {
     const tileGrid = el('div', 'day-tile-grid');
     group.days.forEach(day => {
       const tile = el('a', 'day-tile');
-      tile.href  = `${DAY_PATH}?id=${day.id}`;
+      tile.href  = dayUrl(day.id);
 
       if (group.days.length === 1) tile.classList.add('day-tile--full');
 
@@ -1079,14 +1083,14 @@ function buildDayNav(prevDay, nextDay) {
   const prevLink = el('a', 'day-nav-btn day-nav-prev');
   const nextLink = el('a', 'day-nav-btn day-nav-next');
   if (prevDay) {
-    prevLink.href = `${DAY_PATH}?id=${prevDay.id}`;
+    prevLink.href = dayUrl(prevDay.id);
     prevLink.innerHTML = `‹ <span>${prevDay.title}</span>`;
   } else {
     prevLink.classList.add('disabled');
     prevLink.innerHTML = `‹ <span>First day</span>`;
   }
   if (nextDay) {
-    nextLink.href = `${DAY_PATH}?id=${nextDay.id}`;
+    nextLink.href = dayUrl(nextDay.id);
     nextLink.innerHTML = `<span>${nextDay.title}</span> ›`;
   } else {
     nextLink.classList.add('disabled');
