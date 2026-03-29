@@ -34,7 +34,7 @@
       "hotel_id": "hotel_sfo_spero",
       "date": "2026-05-24",
       "time": "15:00",
-      "hotel": "Hotel Spero, Vignette Collection — an IHG Hotel",
+      "hotel": "Hotel Spero, Vignette Collection \u2014 an IHG Hotel",
       "city": "sf"
     },
     {
@@ -120,7 +120,7 @@
       "hotel_id": "hotel_la_airbnb",
       "date": "2026-05-26",
       "time": "15:00",
-      "hotel": "Airbnb — 7111 Santa Monica Blvd, West Hollywood",
+      "hotel": "Airbnb \u2014 7111 Santa Monica Blvd, West Hollywood",
       "city": "la"
     },
     {
@@ -179,123 +179,100 @@
       "type": "note",
       "date": "2026-05-28",
       "time": "10:30",
-      "title": "Arrival + Transfer + Luggage · 10:30 AM – 11:30 AM",
+      "title": "Arrival + Transfer + Luggage \u00b7 10:30 AM \u2013 11:30 AM",
       "body": "Airport arrival, transfer to South Strip, and luggage drop before lunch.",
-      "icon": "🧳"
+      "icon": "\ud83e\uddf3"
     },
     {
       "id": "lunch_strip_lv_2026_05_28",
       "type": "note",
       "date": "2026-05-28",
       "time": "11:30",
-      "title": "Early Lunch · 11:30 AM – 12:15 PM",
+      "title": "Early Lunch \u00b7 11:30 AM \u2013 12:15 PM",
       "body": "Early lunch near <b>Excalibur / NYNY / MGM</b> to keep the afternoon comfortable.",
-      "icon": "🍽️"
+      "icon": "\ud83c\udf7d\ufe0f"
     },
     {
       "id": "move_to_show_area_2026_05_28",
       "type": "note",
       "date": "2026-05-28",
       "time": "12:30",
-      "title": "Move to Show Area · 12:30 PM – 1:00 PM",
+      "title": "Move to Show Area \u00b7 12:30 PM \u2013 1:00 PM",
       "body": "Use this block to move toward the theater and settle in without rush.",
-      "icon": "🚶"
+      "icon": "\ud83d\udeb6"
     },
     {
       "id": "free_time_lv_2026_05_28",
       "type": "note",
       "date": "2026-05-28",
       "time": "15:00",
-      "title": "Hotel Check-in + Rest · 3:00 PM – 5:45 PM",
+      "title": "Hotel Check-in + Rest \u00b7 3:00 PM \u2013 5:45 PM",
       "body": "Return after the show for full check-in, shower/reset, and proper rest before evening outings.",
-      "icon": "☕"
-    },
-    {
-      "id": "nathan_burton_magic_show_2026_05_28",
-      "type": "experience",
-      "date": "2026-05-28",
-      "time": "14:00",
-      "venue_id": "nathan_burton_magic_show",
-      "duration_min": 70
+      "icon": "\u2615"
     },
     {
       "id": "transfer_paris_bellagio_2026_05_28",
       "type": "travel",
       "mode": "uber",
       "date": "2026-05-28",
-      "time": "18:15",
+      "time": "17:45",
       "from": "Excalibur Hotel & Casino",
-      "to": "Paris / Bellagio area",
-      "duration_min": 20,
-      "note": "Arrive a little early to keep the evening flexible."
-    },
-    {
-      "id": "bellagio_fountains_2026_05_28",
-      "type": "visit",
-      "date": "2026-05-28",
-      "time": "20:10",
-      "venue_id": "bellagio_fountains",
-      "duration_min": 20
-    },
-    {
-      "id": "drop_priority_lv_day6_2026_05_28",
-      "type": "note",
-      "date": "2026-05-28",
-      "time": "20:32",
-      "title": "Drop Priority Note",
-      "body": "If the evening gets hectic, keep <b>REAL BODIES</b> and <b>Bellagio</b>, and skip <b>Eiffel Tower (Optional)</b> at run time. Keep Fremont dinner/night protected.",
-      "icon": "📝"
-    },
-    {
-      "id": "eiffel_optional_note_2026_05_28",
-      "type": "note",
-      "date": "2026-05-28",
-      "time": "20:35",
-      "title": "Eiffel Tower (Optional at Run Time)",
-      "body": "If you are tired or running late, skip Eiffel and move directly toward Fremont.",
-      "icon": "🧩"
-    },
-    {
-      "id": "real_bodies_2026_05_28",
-      "type": "visit",
-      "date": "2026-05-28",
-      "time": "19:00",
-      "venue_id": "real_bodies",
-      "duration_min": 60
+      "to": "Eiffel Tower Paris",
+      "duration_min": 15,
+      "note": "Early transfer. Eiffel (daylight\u2192twilight) \u2192 Bellagio (dark backdrop) \u2192 High Roller (sunset)."
     },
     {
       "id": "eiffel_tower_paris_lv_2026_05_28",
       "type": "experience",
       "date": "2026-05-28",
-      "time": "20:40",
       "venue_id": "eiffel_tower_paris_lv",
-      "duration_min": 30
+      "time": "18:00",
+      "duration_min": 45,
+      "note": "Golden hour. Daylight views, twilight colors."
+    },
+    {
+      "id": "bellagio_fountains_2026_05_28",
+      "type": "visit",
+      "date": "2026-05-28",
+      "venue_id": "bellagio_fountains",
+      "time": "18:45",
+      "duration_min": 30,
+      "note": "Dark backdrop makes lights shine."
+    },
+    {
+      "id": "high_roller_2026_05_28",
+      "type": "experience",
+      "date": "2026-05-28",
+      "venue_id": "high_roller",
+      "time": "20:00",
+      "duration_min": 45,
+      "note": "Sunset peaks 8:30 PM mid-ride. 360\u00b0 views."
     },
     {
       "id": "uber_strip_fremont_2026_05_28",
       "type": "travel",
       "mode": "uber",
       "date": "2026-05-28",
-      "time": "21:15",
-      "from": "Paris / Bellagio area",
+      "time": "20:45",
+      "from": "High Roller",
       "to": "Fremont Street Experience",
       "duration_min": 20,
-      "note": "Uber to Downtown after the central Strip cluster. This is the one Vegas transfer that is worth not walking."
+      "note": "Uber to Downtown."
     },
     {
       "id": "fremont_dinner_2026_05_28",
       "type": "note",
       "date": "2026-05-28",
-      "time": "21:40",
-      "title": "Fremont Street + Dinner · 9:40 PM – 11:00 PM",
-      "body": "Dinner at Fremont keeps the final block continuous and relaxed.",
-      "icon": "🍽️"
+      "time": "21:05",
+      "title": "Fremont Street + Dinner \u00b7 9:05 PM \u2013 11:00 PM",
+      "body": "Dinner at Fremont.",
+      "icon": "\ud83c\udf7d\ufe0f"
     },
     {
       "id": "fremont_street_2026_05_28",
       "type": "visit",
       "date": "2026-05-28",
-      "time": "21:40",
+      "time": "21:05",
       "venue_id": "fremont_street",
       "duration_min": 80
     },
@@ -308,106 +285,130 @@
       "from": "Fremont Street Experience",
       "to": "Excalibur Hotel & Casino",
       "duration_min": 20,
-      "note": "Uber back to Excalibur after Downtown Vegas."
+      "note": "Return to Excalibur."
     },
     {
       "id": "leave_hotel_lv_2026_05_29",
       "type": "note",
       "date": "2026-05-29",
       "time": "11:00",
-      "title": "Leave Hotel · 11:00 AM",
-      "body": "Start the day slightly later to keep it comfortable after Fremont night.",
-      "icon": "🚶"
-    },
-    {
-      "id": "madame_tussauds_lv_2026_05_29",
-      "type": "visit",
-      "date": "2026-05-29",
-      "time": "11:20",
-      "venue_id": "madame_tussauds_las_vegas",
-      "duration_min": 60
-    },
-    {
-      "id": "lunch_venetian_linq_2026_05_29",
-      "type": "note",
-      "date": "2026-05-29",
-      "time": "12:30",
-      "title": "Lunch near Venetian/LINQ · 12:30 PM – 1:25 PM",
-      "body": "Take a proper sit-down lunch before Sphere.",
-      "icon": "🍽️"
-    },
-    {
-      "id": "walk_linq_sphere_2026_05_29",
-      "type": "travel",
-      "mode": "walk",
-      "date": "2026-05-29",
-      "time": "13:25",
-      "from": "Venetian / LINQ lunch area",
-      "to": "Sphere",
-      "duration_min": 15,
-      "note": "Short walk toward Sphere entry."
-    },
-    {
-      "id": "sphere_buffer_2026_05_29",
-      "type": "note",
-      "date": "2026-05-29",
-      "time": "13:40",
-      "title": "Sphere Early Arrival Buffer · 1:40 PM – 2:00 PM",
-      "body": "Keep this buffer protected for smooth entry.",
-      "icon": "⏱️"
-    },
-    {
-      "id": "venetian_las_vegas_2026_05_29",
-      "type": "visit",
-      "date": "2026-05-29",
-      "time": "15:45",
-      "venue_id": "venetian_las_vegas",
-      "duration_min": 60
+      "title": "Leave Hotel \u00b7 11:00 AM",
+      "body": "Start with Sphere at 11 AM.",
+      "icon": "\ud83d\udeb6"
     },
     {
       "id": "sphere_las_vegas_2026_05_29",
       "type": "experience",
       "date": "2026-05-29",
-      "time": "14:00",
       "venue_id": "sphere_las_vegas",
+      "time": "11:00",
       "duration_min": 105
     },
     {
-      "id": "coffee_break_lv_2026_05_29",
-      "type": "note",
+      "id": "madame_tussauds_lv_2026_05_29",
+      "type": "visit",
       "date": "2026-05-29",
-      "time": "16:45",
-      "title": "Coffee / Break · 4:45 PM – 5:30 PM",
-      "body": "Short break before sunset High Roller.",
-      "icon": "☕"
+      "venue_id": "madame_tussauds_las_vegas",
+      "time": "12:45",
+      "duration_min": 60
     },
     {
-      "id": "high_roller_2026_05_29",
-      "type": "experience",
+      "id": "real_bodies_2026_05_29",
+      "type": "visit",
       "date": "2026-05-29",
-      "time": "17:45",
-      "venue_id": "high_roller",
-      "duration_min": 45
+      "venue_id": "real_bodies",
+      "time": "13:45",
+      "duration_min": 75,
+      "note": "(moved from Day 6)"
     },
     {
-      "id": "dinner_linq_2026_05_29",
+      "id": "lunch_lv_2026_05_29",
       "type": "note",
       "date": "2026-05-29",
-      "time": "18:45",
-      "title": "Relaxed Dinner · 6:45 PM – 7:45 PM",
-      "body": "Keep dinner easy near LINQ / Venetian after High Roller.",
-      "icon": "🍽️"
+      "time": "14:45",
+      "title": "Lunch \u00b7 2:45 PM \u2013 3:45 PM",
+      "body": "Sit-down lunch.",
+      "icon": "\ud83c\udf7d\ufe0f"
+    },
+    {
+      "id": "rest_buffer_2026_05_29",
+      "type": "note",
+      "date": "2026-05-29",
+      "time": "15:45",
+      "title": "Rest \u00b7 3:45 PM \u2013 4:00 PM",
+      "body": "Break time.",
+      "icon": "\u2615"
+    },
+    {
+      "id": "nyny_mgm_casual_walk_2026_05_29",
+      "type": "visit",
+      "date": "2026-05-29",
+      "venue_id": "nyny_las_vegas",
+      "time": "16:00",
+      "duration_min": 120,
+      "note": "Casual walk: NYNY, MGM."
     },
     {
       "id": "return_hotel_lv_2026_05_29",
-      "type": "travel",
-      "mode": "uber",
+      "type": "note",
       "date": "2026-05-29",
+      "time": "18:00",
+      "title": "Return to Hotel \u00b7 6:00 PM",
+      "body": "Back to Excalibur.",
+      "icon": "\ud83c\udfe8"
+    },
+    {
+      "id": "high_roller_2026_05_28",
+      "type": "experience",
+      "date": "2026-05-28",
+      "venue_id": "high_roller",
       "time": "20:00",
-      "from": "LINQ / Venetian area",
-      "to": "Excalibur Hotel & Casino",
-      "duration_min": 15,
-      "note": "Return early to preserve energy for next-day flights."
+      "duration_min": 45,
+      "note": "Sunset peaks 8:30 PM mid-ride. 360\u00b0 views."
+    },
+    {
+      "id": "real_bodies_2026_05_29",
+      "type": "visit",
+      "date": "2026-05-29",
+      "venue_id": "real_bodies",
+      "time": "13:45",
+      "duration_min": 75,
+      "note": "(moved from Day 6)"
+    },
+    {
+      "id": "lunch_lv_2026_05_29",
+      "type": "note",
+      "date": "2026-05-29",
+      "time": "14:45",
+      "title": "Lunch \u00b7 2:45 PM \u2013 3:45 PM",
+      "body": "Sit-down lunch.",
+      "icon": "\ud83c\udf7d\ufe0f"
+    },
+    {
+      "id": "rest_buffer_2026_05_29",
+      "type": "note",
+      "date": "2026-05-29",
+      "time": "15:45",
+      "title": "Rest \u00b7 3:45 PM \u2013 4:00 PM",
+      "body": "Break time.",
+      "icon": "\u2615"
+    },
+    {
+      "id": "nyny_mgm_casual_walk_2026_05_29",
+      "type": "visit",
+      "date": "2026-05-29",
+      "venue_id": "nyny_las_vegas",
+      "time": "16:00",
+      "duration_min": 120,
+      "note": "Casual walk: NYNY, MGM."
+    },
+    {
+      "id": "nathan_burton_magic_show_2026_05_28",
+      "type": "experience",
+      "date": "2026-05-28",
+      "time": "14:00",
+      "venue_id": "nathan_burton_magic_show",
+      "duration_min": 70
     },
     {
       "id": "flight_las_dtw",
@@ -591,7 +592,7 @@
       "time": "11:45",
       "title": "Ellis Island Skipped",
       "body": "You are skipping Ellis Island to protect the first-ferry flow and keep enough time for 9/11 Museum, Brooklyn, and the Circle Line evening cruise.",
-      "icon": "😌"
+      "icon": "\ud83d\ude0c"
     },
     {
       "type": "visit",
@@ -865,7 +866,7 @@
       "from": "LAX",
       "to": "West Hollywood Airbnb",
       "duration_min": 35,
-      "note": "Uber XL for the family. Allow 30–45 min depending on traffic."
+      "note": "Uber XL for the family. Allow 30\u201345 min depending on traffic."
     },
     {
       "id": "uber_airbnb_beverly",
@@ -876,7 +877,7 @@
       "from": "West Hollywood Airbnb",
       "to": "Beverly Hills",
       "duration_min": 12,
-      "note": "Uber XL — quick 12-minute ride."
+      "note": "Uber XL \u2014 quick 12-minute ride."
     },
     {
       "id": "beverly_hills_sign_visit",
@@ -911,7 +912,7 @@
       "from": "Sunset Strip",
       "to": "Hollywood Boulevard",
       "duration_min": 10,
-      "note": "Uber XL — 10 minutes."
+      "note": "Uber XL \u2014 10 minutes."
     },
     {
       "id": "uber_hollywood_lake",
@@ -922,7 +923,7 @@
       "from": "Hollywood Boulevard",
       "to": "Lake Hollywood Park",
       "duration_min": 12,
-      "note": "Uber XL — 12 minutes."
+      "note": "Uber XL \u2014 12 minutes."
     },
     {
       "id": "uber_lake_griffith",
@@ -933,7 +934,7 @@
       "from": "Lake Hollywood Park",
       "to": "Griffith Observatory",
       "duration_min": 15,
-      "note": "Uber XL — 15 minutes up into the hills."
+      "note": "Uber XL \u2014 15 minutes up into the hills."
     },
     {
       "id": "uber_griffith_airbnb",
@@ -944,7 +945,7 @@
       "from": "Griffith Observatory",
       "to": "West Hollywood Airbnb",
       "duration_min": 20,
-      "note": "Uber XL back to Airbnb — dinner at home."
+      "note": "Uber XL back to Airbnb \u2014 dinner at home."
     },
     {
       "id": "uber_sfo_hotel",
@@ -955,16 +956,16 @@
       "from": "SFO",
       "to": "Hotel Spero",
       "duration_min": 28,
-      "note": "Uber XL for the family. ~25–30 min. Estimated cost $45–60."
+      "note": "Uber XL for the family. ~25\u201330 min. Estimated cost $45\u201360."
     },
     {
       "id": "rest_sfo",
       "type": "note",
       "date": "2026-05-24",
       "time": "11:30",
-      "title": "Rest Window · 11:30 AM – 2:00 PM",
-      "body": "<b>Early check-in</b> is arranged — drop luggage and freshen up immediately on arrival. A short rest here makes a big difference for <b>jet lag & sleep</b> on your first night. 13+ hour overnight flight means everyone will need it, especially the kids.",
-      "icon": "🛌"
+      "title": "Rest Window \u00b7 11:30 AM \u2013 2:00 PM",
+      "body": "<b>Early check-in</b> is arranged \u2014 drop luggage and freshen up immediately on arrival. A short rest here makes a big difference for <b>jet lag & sleep</b> on your first night. 13+ hour overnight flight means everyone will need it, especially the kids.",
+      "icon": "\ud83d\udecc"
     },
     {
       "id": "walk_hotel_powell",
@@ -1005,7 +1006,7 @@
       "mode": "walk",
       "date": "2026-05-25",
       "time": "06:20",
-      "from": "Hilton San Francisco Union Square — 333 O'Farrell St, San Francisco, CA 94102",
+      "from": "Hilton San Francisco Union Square \u2014 333 O'Farrell St, San Francisco, CA 94102",
       "to": "Coach pickup point (Hilton area)",
       "note": "Short walk from the hotel to the coach pickup point."
     },
@@ -1014,9 +1015,9 @@
       "type": "note",
       "date": "2026-05-25",
       "time": "06:30",
-      "title": "Bus Pickup · 6:50 AM (report by 6:30 AM)",
-      "icon": "🚌",
-      "body": "Hilton San Francisco Union Square — 333 O'Farrell St, San Francisco, CA 94102.<br><b>Pickup at 6:50 AM</b> — please be at the pickup point by <b>6:30 AM</b>. Keep an eye on your phone for any last-minute changes."
+      "title": "Bus Pickup \u00b7 6:50 AM (report by 6:30 AM)",
+      "icon": "\ud83d\ude8c",
+      "body": "Hilton San Francisco Union Square \u2014 333 O'Farrell St, San Francisco, CA 94102.<br><b>Pickup at 6:50 AM</b> \u2014 please be at the pickup point by <b>6:30 AM</b>. Keep an eye on your phone for any last-minute changes."
     },
     {
       "id": "bus_sf_yosemite_2026_05_25",
@@ -1036,7 +1037,7 @@
       "time": "13:30",
       "from": "Penn Station",
       "to": "Residence Inn New York Queens",
-      "note": "Uber with luggage — approx 30 min. Rest/refresh on arrival."
+      "note": "Uber with luggage \u2014 approx 30 min. Rest/refresh on arrival."
     },
     {
       "id": "subway_queens_midtown_2026_06_02",
@@ -1053,9 +1054,9 @@
       "type": "note",
       "date": "2026-06-02",
       "time": "18:10",
-      "title": "Midtown Dinner · 6:10 PM",
-      "icon": "🍽️",
-      "body": "Dinner near Bryant Park — relaxed 45‑minute dinner."
+      "title": "Midtown Dinner \u00b7 6:10 PM",
+      "icon": "\ud83c\udf7d\ufe0f",
+      "body": "Dinner near Bryant Park \u2014 relaxed 45\u2011minute dinner."
     },
     {
       "id": "subway_midtown_queens_2026_06_02",
@@ -1093,7 +1094,7 @@
       "date": "2026-06-03",
       "time": "16:50",
       "title": "Early Dinner / Snack Break",
-      "icon": "🍽️",
+      "icon": "\ud83c\udf7d\ufe0f",
       "body": "Quick break before heading to Pier 83 for the 7:00 PM Harbor Lights cruise."
     },
     {
@@ -1184,7 +1185,7 @@
       "time": "18:00",
       "from": "Motto by Hilton New York City Times Square",
       "to": "JFK Airport",
-      "note": "Uber to JFK — estimate 50–60 min; follow flight schedule."
+      "note": "Uber to JFK \u2014 estimate 50\u201360 min; follow flight schedule."
     }
   ]
 }

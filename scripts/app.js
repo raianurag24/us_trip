@@ -11,7 +11,7 @@ const isWeather = !!document.getElementById('weather-detail');
 const BASE      = isIndex ? '' : '../';
 const DAY_PATH  = isIndex ? 'pages/day.html' : 'day.html';
 const WEATHER_PATH = isIndex ? 'pages/weather.html' : 'weather.html';
-const ASSET_VERSION = '50';
+const ASSET_VERSION = '51';
 const HOME_URL  = isIndex ? '#' : '../index.html';
 
 let leafletMap = null;
