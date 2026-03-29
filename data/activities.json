@@ -175,53 +175,108 @@
       "city": "lv"
     },
     {
+      "id": "lv_arrival_transfer_2026_05_28",
+      "type": "note",
+      "date": "2026-05-28",
+      "time": "10:30",
+      "title": "Arrival + Transfer + Luggage · 10:30 AM – 11:30 AM",
+      "body": "Airport arrival, transfer to South Strip, and luggage drop before lunch.",
+      "icon": "🧳"
+    },
+    {
       "id": "lunch_strip_lv_2026_05_28",
       "type": "note",
       "date": "2026-05-28",
-      "time": "12:00",
-      "title": "Lunch on the Strip · 12:00 PM",
-      "body": "Keep lunch simple near <b>Excalibur / Park MGM</b> so everyone is fueled before the afternoon show and evening Downtown plan.",
+      "time": "11:30",
+      "title": "Early Lunch · 11:30 AM – 12:15 PM",
+      "body": "Early lunch near <b>Excalibur / NYNY / MGM</b> to keep the afternoon comfortable.",
       "icon": "🍽️"
+    },
+    {
+      "id": "move_to_show_area_2026_05_28",
+      "type": "note",
+      "date": "2026-05-28",
+      "time": "12:30",
+      "title": "Move to Show Area · 12:30 PM – 1:00 PM",
+      "body": "Use this block to move toward the theater and settle in without rush.",
+      "icon": "🚶"
     },
     {
       "id": "free_time_lv_2026_05_28",
       "type": "note",
       "date": "2026-05-28",
-      "time": "14:00",
-      "title": "Free Time · 2:00 PM – 3:45 PM",
-      "body": "Stay close to <b>Excalibur</b> for check-in, freshening up, and a proper reset before Nathan Burton and the evening Downtown run.",
+      "time": "15:00",
+      "title": "Hotel Check-in + Rest · 3:00 PM – 5:45 PM",
+      "body": "Return after the show for full check-in, shower/reset, and proper rest before evening outings.",
       "icon": "☕"
     },
     {
       "id": "nathan_burton_magic_show_2026_05_28",
       "type": "experience",
       "date": "2026-05-28",
-      "time": "16:00",
+      "time": "14:00",
       "venue_id": "nathan_burton_magic_show",
       "duration_min": 70
+    },
+    {
+      "id": "transfer_paris_bellagio_2026_05_28",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-05-28",
+      "time": "18:30",
+      "from": "Excalibur Hotel & Casino",
+      "to": "Paris / Bellagio area",
+      "duration_min": 20,
+      "note": "Short evening transfer for the Paris-Bellagio cluster."
+    },
+    {
+      "id": "eiffel_tower_paris_lv_2026_05_28",
+      "type": "experience",
+      "date": "2026-05-28",
+      "time": "19:00",
+      "venue_id": "eiffel_tower_paris_lv",
+      "duration_min": 30
     },
     {
       "id": "bellagio_fountains_2026_05_28",
       "type": "visit",
       "date": "2026-05-28",
-      "time": "18:30",
+      "time": "19:30",
       "venue_id": "bellagio_fountains",
-      "duration_min": 15
+      "duration_min": 20
     },
     {
-      "id": "high_roller_2026_05_29",
-      "type": "experience",
-      "date": "2026-05-29",
-      "time": "19:00",
-      "venue_id": "high_roller",
-      "duration_min": 30
+      "id": "drop_priority_lv_day6_2026_05_28",
+      "type": "note",
+      "date": "2026-05-28",
+      "time": "19:50",
+      "title": "Drop Priority Note",
+      "body": "If the evening gets hectic, drop <b>REAL BODIES (Optional)</b> first, then <b>Eiffel Tower (Optional)</b>. Keep Fremont dinner/night protected.",
+      "icon": "📝"
+    },
+    {
+      "id": "real_bodies_optional_note_2026_05_28",
+      "type": "note",
+      "date": "2026-05-28",
+      "time": "19:58",
+      "title": "REAL BODIES (Optional)",
+      "body": "Keep this only if energy and time are good after Bellagio.",
+      "icon": "🧩"
+    },
+    {
+      "id": "real_bodies_2026_05_29",
+      "type": "visit",
+      "date": "2026-05-28",
+      "time": "20:00",
+      "venue_id": "real_bodies",
+      "duration_min": 60
     },
     {
       "id": "uber_strip_fremont_2026_05_28",
       "type": "travel",
       "mode": "uber",
       "date": "2026-05-28",
-      "time": "19:15",
+      "time": "21:15",
       "from": "Paris / Bellagio area",
       "to": "Fremont Street Experience",
       "duration_min": 20,
@@ -231,37 +286,83 @@
       "id": "fremont_dinner_2026_05_28",
       "type": "note",
       "date": "2026-05-28",
-      "time": "19:40",
-      "title": "Dinner at Fremont · 7:40 PM",
-      "body": "Have dinner after reaching <b>Fremont Street</b> so the evening stays as one continuous Downtown block instead of forcing a rushed Strip meal first.",
+      "time": "21:40",
+      "title": "Fremont Street + Dinner · 9:40 PM – 11:00 PM",
+      "body": "Dinner at Fremont keeps the final block continuous and relaxed.",
       "icon": "🍽️"
     },
     {
       "id": "fremont_street_2026_05_28",
       "type": "visit",
       "date": "2026-05-28",
-      "time": "20:30",
+      "time": "21:40",
       "venue_id": "fremont_street",
-      "duration_min": 90
+      "duration_min": 80
     },
     {
       "id": "uber_fremont_excalibur_2026_05_28",
       "type": "travel",
       "mode": "uber",
       "date": "2026-05-28",
-      "time": "22:15",
+      "time": "23:00",
       "from": "Fremont Street Experience",
       "to": "Excalibur Hotel & Casino",
       "duration_min": 20,
       "note": "Uber back to Excalibur after Downtown Vegas."
     },
     {
+      "id": "leave_hotel_lv_2026_05_29",
+      "type": "note",
+      "date": "2026-05-29",
+      "time": "11:00",
+      "title": "Leave Hotel · 11:00 AM",
+      "body": "Start the day slightly later to keep it comfortable after Fremont night.",
+      "icon": "🚶"
+    },
+    {
+      "id": "madame_tussauds_lv_2026_05_29",
+      "type": "visit",
+      "date": "2026-05-29",
+      "time": "11:20",
+      "venue_id": "madame_tussauds_las_vegas",
+      "duration_min": 60
+    },
+    {
+      "id": "lunch_venetian_linq_2026_05_29",
+      "type": "note",
+      "date": "2026-05-29",
+      "time": "12:30",
+      "title": "Lunch near Venetian/LINQ · 12:30 PM – 1:25 PM",
+      "body": "Take a proper sit-down lunch before Sphere.",
+      "icon": "🍽️"
+    },
+    {
+      "id": "walk_linq_sphere_2026_05_29",
+      "type": "travel",
+      "mode": "walk",
+      "date": "2026-05-29",
+      "time": "13:25",
+      "from": "Venetian / LINQ lunch area",
+      "to": "Sphere",
+      "duration_min": 15,
+      "note": "Short walk toward Sphere entry."
+    },
+    {
+      "id": "sphere_buffer_2026_05_29",
+      "type": "note",
+      "date": "2026-05-29",
+      "time": "13:40",
+      "title": "Sphere Early Arrival Buffer · 1:40 PM – 2:00 PM",
+      "body": "Keep this buffer protected for smooth entry.",
+      "icon": "⏱️"
+    },
+    {
       "id": "venetian_las_vegas_2026_05_29",
       "type": "visit",
       "date": "2026-05-29",
-      "time": "11:45",
+      "time": "15:45",
       "venue_id": "venetian_las_vegas",
-      "duration_min": 75
+      "duration_min": 60
     },
     {
       "id": "sphere_las_vegas_2026_05_29",
@@ -269,24 +370,44 @@
       "date": "2026-05-29",
       "time": "14:00",
       "venue_id": "sphere_las_vegas",
-      "duration_min": 90
+      "duration_min": 105
     },
     {
-      "id": "real_bodies_2026_05_29",
-      "type": "visit",
-      "date": "2026-05-29",
-      "time": "10:30",
-      "venue_id": "real_bodies",
-      "duration_min": 60
-    },
-    {
-      "id": "free_time_lv_2026_05_29",
+      "id": "coffee_break_lv_2026_05_29",
       "type": "note",
       "date": "2026-05-29",
-      "time": "15:45",
-      "title": "Free Time · 3:45 PM – 6:30 PM",
-      "body": "Keep this block flexible for a relaxed meal, a hotel reset, or extra Venetian / LINQ wandering before heading back for the sunset High Roller ride.",
-      "icon": "🌆"
+      "time": "16:45",
+      "title": "Coffee / Break · 4:45 PM – 5:30 PM",
+      "body": "Short break before sunset High Roller.",
+      "icon": "☕"
+    },
+    {
+      "id": "high_roller_2026_05_29",
+      "type": "experience",
+      "date": "2026-05-29",
+      "time": "17:45",
+      "venue_id": "high_roller",
+      "duration_min": 45
+    },
+    {
+      "id": "dinner_linq_2026_05_29",
+      "type": "note",
+      "date": "2026-05-29",
+      "time": "18:45",
+      "title": "Relaxed Dinner · 6:45 PM – 7:45 PM",
+      "body": "Keep dinner easy near LINQ / Venetian after High Roller.",
+      "icon": "🍽️"
+    },
+    {
+      "id": "return_hotel_lv_2026_05_29",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-05-29",
+      "time": "20:00",
+      "from": "LINQ / Venetian area",
+      "to": "Excalibur Hotel & Casino",
+      "duration_min": 15,
+      "note": "Return early to preserve energy for next-day flights."
     },
     {
       "id": "flight_las_dtw",
