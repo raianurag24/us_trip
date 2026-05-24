@@ -937,7 +937,7 @@
       "note": "Waymo — Sunset Blvd to Hollywood, all surface streets. ~$10-12."
     },
     {
-      "id": "uber_hollywood_lake",Ro
+      "id": "uber_hollywood_lake",
       "type": "travel",
       "mode": "waymo",
       "date": "2026-05-26",
