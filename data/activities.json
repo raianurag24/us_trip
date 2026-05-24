@@ -871,13 +871,13 @@
     {
       "id": "uber_airbnb_beverly",
       "type": "travel",
-      "mode": "uber",
+      "mode": "waymo",
       "date": "2026-05-26",
       "time": "13:00",
       "from": "West Hollywood Airbnb",
       "to": "Beverly Hills",
       "duration_min": 12,
-      "note": "Uber XL \u2014 quick 12-minute ride."
+      "note": "Waymo — pure surface streets from WeHo to Beverly Hills. ~$12-15."
     },
     {
       "id": "beverly_hills_sign_visit",
@@ -906,46 +906,46 @@
     {
       "id": "uber_beverly_hollywood",
       "type": "travel",
-      "mode": "uber",
+      "mode": "waymo",
       "date": "2026-05-26",
       "time": "2:25 PM",
       "from": "Sunset Strip",
       "to": "Hollywood Boulevard",
       "duration_min": 10,
-      "note": "Uber XL \u2014 10 minutes."
+      "note": "Waymo — Sunset Blvd to Hollywood, all surface streets. ~$10-12."
     },
     {
       "id": "uber_hollywood_lake",
       "type": "travel",
-      "mode": "uber",
+      "mode": "waymo",
       "date": "2026-05-26",
       "time": "4:00 PM",
       "from": "Hollywood Boulevard",
       "to": "Lake Hollywood Park",
       "duration_min": 12,
-      "note": "Uber XL \u2014 12 minutes."
+      "note": "Waymo — up into Beachwood Canyon, no highway. ~$12-15."
     },
     {
       "id": "uber_lake_griffith",
       "type": "travel",
-      "mode": "uber",
+      "mode": "waymo",
       "date": "2026-05-26",
       "time": "4:30 PM",
       "from": "Lake Hollywood Park",
       "to": "Griffith Observatory",
       "duration_min": 15,
-      "note": "Uber XL \u2014 15 minutes up into the hills."
+      "note": "Waymo — up Vermont Canyon to the observatory. ~$12-18."
     },
     {
       "id": "uber_griffith_airbnb",
       "type": "travel",
-      "mode": "uber",
+      "mode": "waymo",
       "date": "2026-05-26",
       "time": "6:15 PM",
       "from": "Griffith Observatory",
       "to": "West Hollywood Airbnb",
       "duration_min": 20,
-      "note": "Uber XL back to Airbnb \u2014 dinner at home."
+      "note": "Waymo back home — down Los Feliz to Santa Monica Blvd. ~$15-22."
     },
     {
       "id": "uber_sfo_hotel",
