@@ -896,12 +896,34 @@
       "duration_min": 25
     },
     {
+      "id": "waymo_rodeo_sunset",
+      "type": "travel",
+      "mode": "waymo",
+      "date": "2026-05-26",
+      "time": "2:00 PM",
+      "from": "Rodeo Drive",
+      "to": "Sunset Strip",
+      "duration_min": 8,
+      "note": "Waymo — Beverly Hills to West Hollywood, ~8 min on surface streets. ~$10-12."
+    },
+    {
       "id": "sunset_strip_visit",
       "type": "experience",
       "venue_id": "sunset_strip",
       "date": "2026-05-26",
       "time": "2:05 PM",
       "duration_min": 15
+    },
+    {
+      "id": "walk_walkoffame_dolby",
+      "type": "travel",
+      "mode": "walk",
+      "date": "2026-05-26",
+      "time": "4:45 PM",
+      "from": "Hollywood Walk of Fame",
+      "to": "Dolby Theatre",
+      "duration_min": 3,
+      "note": "Short walk along Hollywood Blvd — the Dolby Theatre is right there."
     },
     {
       "id": "uber_beverly_hollywood",
@@ -915,7 +937,7 @@
       "note": "Waymo — Sunset Blvd to Hollywood, all surface streets. ~$10-12."
     },
     {
-      "id": "uber_hollywood_lake",
+      "id": "uber_hollywood_lake",Ro
       "type": "travel",
       "mode": "waymo",
       "date": "2026-05-26",
