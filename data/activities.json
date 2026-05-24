@@ -40,21 +40,21 @@
     {
       "type": "visit",
       "date": "2026-05-24",
-      "time": "13:30",
+      "time": "13:35",
       "venue_id": "powell_cable_car",
       "duration_min": 30
     },
     {
       "type": "visit",
       "date": "2026-05-24",
-      "time": "14:15",
+      "time": "14:05",
       "venue_id": "lombard_street",
       "duration_min": 20
     },
     {
       "type": "visit",
       "date": "2026-05-24",
-      "time": "15:00",
+      "time": "14:45",
       "venue_id": "pier_39",
       "duration_min": 60
     },
@@ -963,7 +963,7 @@
       "type": "note",
       "date": "2026-05-24",
       "time": "11:30",
-      "title": "Rest Window \u00b7 11:30 AM \u2013 2:00 PM",
+      "title": "Rest Window \u00b7 11:30 AM \u2013 1:30 PM",
       "body": "<b>Early check-in</b> is arranged \u2014 drop luggage and freshen up immediately on arrival. A short rest here makes a big difference for <b>jet lag & sleep</b> on your first night. 13+ hour overnight flight means everyone will need it, especially the kids.",
       "icon": "\ud83d\udecc"
     },
@@ -972,7 +972,7 @@
       "type": "travel",
       "mode": "walk",
       "date": "2026-05-24",
-      "time": "13:15",
+      "time": "13:30",
       "from": "Hotel Spero",
       "to": "Powell St Cable Car",
       "duration_min": 5,
@@ -983,7 +983,7 @@
       "type": "travel",
       "mode": "walk",
       "date": "2026-05-24",
-      "time": "14:35",
+      "time": "14:25",
       "from": "Lombard Street",
       "to": "Pier 39",
       "duration_min": 18,
@@ -994,11 +994,33 @@
       "type": "travel",
       "mode": "uber",
       "date": "2026-05-24",
-      "time": "16:05",
+      "time": "15:45",
       "from": "Pier 39",
       "to": "Battery Spencer",
       "duration_min": 30,
       "note": "Uber XL up to the Marin Headlands for the Golden Gate sunset view. ~$35-50."
+    },
+    {
+      "id": "uber_battery_fishwharf",
+      "type": "travel",
+      "mode": "uber",
+      "date": "2026-05-24",
+      "time": "19:20",
+      "from": "Battery Spencer",
+      "to": "Fisherman's Wharf",
+      "duration_min": 20,
+      "note": "Uber back over the Golden Gate — drops at Fisherman's Wharf for the Waymo home."
+    },
+    {
+      "id": "waymo_fishwharf_hotel",
+      "type": "travel",
+      "mode": "waymo",
+      "date": "2026-05-24",
+      "time": "19:40",
+      "from": "Fisherman's Wharf",
+      "to": "Hotel Spero",
+      "duration_min": 15,
+      "note": "Self-driving Waymo back to the hotel — a fun end to Day 2. ~$12-18."
     },
     {
       "id": "walk_hilton_bus_2026_05_25",

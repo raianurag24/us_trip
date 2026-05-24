@@ -11,7 +11,7 @@ const isWeather = !!document.getElementById('weather-detail');
 const BASE      = isIndex ? '' : '../';
 const DAY_PATH  = isIndex ? 'pages/day.html' : 'day.html';
 const WEATHER_PATH = isIndex ? 'pages/weather.html' : 'weather.html';
-const ASSET_VERSION = '51';
+const ASSET_VERSION = '52';
 const HOME_URL  = isIndex ? '#' : '../index.html';
 
 let leafletMap = null;
@@ -993,8 +993,8 @@ function buildActivityCard(act, venues, hotels, manifest) {
   }
 
   if (act.type === 'travel') {
-    const modeIcon = act.mode === 'uber' ? '🚗' : '🚌';
-    const modeLabel = act.mode === 'uber' ? 'Uber' : (act.mode || 'Transfer');
+    const modeIcon = act.mode === 'uber' ? '🚗' : act.mode === 'waymo' ? '🤖' : '🚌';
+    const modeLabel = act.mode === 'uber' ? 'Uber' : act.mode === 'waymo' ? 'Waymo' : (act.mode || 'Transfer');
     const durTxt = act.duration_min ? ` · ~${fmtDuration(act.duration_min)}` : '';
     card.classList.add('card-travel');
     card.innerHTML = `
@@ -1178,6 +1178,7 @@ function buildTravelActStrip(act) {
   const mode = act.mode || inferMode(act);
 
   const modeIcon  = mode === 'uber'   ? '🚗'
+                  : mode === 'waymo'  ? '🤖'
                   : mode === 'walk'   ? '🚶'
                   : mode === 'bus'    ? '🚌'
                   : mode === 'subway' ? '🚇'
@@ -1186,6 +1187,7 @@ function buildTravelActStrip(act) {
                   : '🚕';
 
   const modeLabel = mode === 'uber'   ? 'Uber'
+                  : mode === 'waymo'  ? 'Waymo'
                   : mode === 'walk'   ? 'Walk'
                   : mode === 'bus'    ? 'Bus'
                   : mode === 'subway' ? 'Subway'

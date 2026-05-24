@@ -25,7 +25,9 @@
         "walk_lombard_pier",
         "pier_39",
         "uber_pier39_battery",
-        "battery_spencer"
+        "battery_spencer",
+        "uber_battery_fishwharf",
+        "waymo_fishwharf_hotel"
       ]
     },
     {
