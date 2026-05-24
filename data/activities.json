@@ -126,21 +126,21 @@
     {
       "type": "visit",
       "date": "2026-05-26",
-      "time": "16:00",
+      "time": "15:00",
       "venue_id": "hollywood_walk_of_fame",
       "duration_min": 45
     },
     {
       "type": "visit",
       "date": "2026-05-26",
-      "time": "17:00",
+      "time": "15:50",
       "venue_id": "dolby_theatre",
       "duration_min": 30
     },
     {
       "type": "visit",
       "date": "2026-05-26",
-      "time": "18:00",
+      "time": "18:15",
       "venue_id": "lake_hollywood_park",
       "duration_min": 30
     },
@@ -869,11 +869,40 @@
       "note": "Uber XL for the family. Allow 30\u201345 min depending on traffic."
     },
     {
+      "id": "walk_airbnb_melrose",
+      "type": "travel",
+      "mode": "walk",
+      "date": "2026-05-26",
+      "time": "12:20",
+      "from": "West Hollywood Airbnb",
+      "to": "Melrose Avenue",
+      "duration_min": 5,
+      "note": "5-min walk north — Melrose Ave is one block from the Airbnb."
+    },
+    {
+      "id": "melrose_shopping",
+      "type": "note",
+      "date": "2026-05-26",
+      "time": "12:25",
+      "title": "Melrose Avenue Shopping \u00b7 12:25 PM \u2013 1:15 PM",
+      "body": "One of LA\u2019s best streets for actual shopping \u2014 Zara, Free People, Reformation, vintage boutiques, and streetwear all in one stretch. Much more accessible than Rodeo Drive. <b>A 5-min walk from the Airbnb</b>, no ride needed.",
+      "icon": "\ud83d\udecd"
+    },
+    {
+      "id": "hollywood_highland_shopping",
+      "type": "note",
+      "date": "2026-05-26",
+      "time": "16:10",
+      "title": "Hollywood & Highland \u00b7 4:10 PM \u2013 6:00 PM",
+      "body": "Large outdoor mall attached to the Dolby Theatre \u2014 H&M, Sephora, Urban Outfitters, and food options. <b>No extra travel needed</b>: you\u2019re already here after the Walk of Fame and Dolby.",
+      "icon": "\ud83d\udecd"
+    },
+    {
       "id": "uber_airbnb_beverly",
       "type": "travel",
       "mode": "waymo",
       "date": "2026-05-26",
-      "time": "13:00",
+      "time": "13:20",
       "from": "West Hollywood Airbnb",
       "to": "Beverly Hills",
       "duration_min": 12,
@@ -893,7 +922,7 @@
       "venue_id": "rodeo_drive",
       "date": "2026-05-26",
       "time": "1:35 PM",
-      "duration_min": 25
+      "duration_min": 60
     },
     {
       "id": "waymo_rodeo_sunset",
@@ -919,7 +948,7 @@
       "type": "travel",
       "mode": "walk",
       "date": "2026-05-26",
-      "time": "4:45 PM",
+      "time": "15:45",
       "from": "Hollywood Walk of Fame",
       "to": "Dolby Theatre",
       "duration_min": 3,
@@ -930,21 +959,21 @@
       "type": "travel",
       "mode": "waymo",
       "date": "2026-05-26",
-      "time": "2:25 PM",
-      "from": "Sunset Strip",
+      "time": "14:35",
+      "from": "Rodeo Drive",
       "to": "Hollywood Boulevard",
-      "duration_min": 10,
-      "note": "Waymo — Sunset Blvd to Hollywood, all surface streets. ~$10-12."
+      "duration_min": 20,
+      "note": "Waymo — Beverly Hills to Hollywood, ~20 min on surface streets. ~$15-18."
     },
     {
       "id": "uber_hollywood_lake",
       "type": "travel",
       "mode": "waymo",
       "date": "2026-05-26",
-      "time": "4:00 PM",
+      "time": "18:00",
       "from": "Hollywood Boulevard",
       "to": "Lake Hollywood Park",
-      "duration_min": 12,
+      "duration_min": 15,
       "note": "Waymo — up into Beachwood Canyon, no highway. ~$12-15."
     },
     {
@@ -952,7 +981,7 @@
       "type": "travel",
       "mode": "waymo",
       "date": "2026-05-26",
-      "time": "4:30 PM",
+      "time": "18:45",
       "from": "Lake Hollywood Park",
       "to": "Griffith Observatory",
       "duration_min": 15,
@@ -963,7 +992,7 @@
       "type": "travel",
       "mode": "waymo",
       "date": "2026-05-26",
-      "time": "6:15 PM",
+      "time": "20:00",
       "from": "Griffith Observatory",
       "to": "West Hollywood Airbnb",
       "duration_min": 20,
